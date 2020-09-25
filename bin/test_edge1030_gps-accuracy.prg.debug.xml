@@ -56,7 +56,7 @@
         <entry filename="UnitTests" id="10" lineNum="76" pc="268436256" symbol="runTest"/>
         <entry filename="UnitTests" id="10" lineNum="77" pc="268436270" symbol="runTest"/>
         <entry filename="UnitTests" id="10" lineNum="79" pc="268436276" symbol="runTest"/>
-        <entry filename="UnitTests" id="10" lineNum="7" pc="268442995" symbol="&lt;init&gt;"/>
+        <entry filename="UnitTests" id="10" lineNum="7" pc="268443351" symbol="&lt;init&gt;"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Point.mc" id="12" lineNum="5" pc="268436280" symbol="initialize"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Point.mc" id="12" lineNum="6" pc="268436284" symbol="initialize"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Point.mc" id="12" lineNum="7" pc="268436294" symbol="initialize"/>
@@ -70,257 +70,288 @@
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Point.mc" id="18" lineNum="27" pc="268436497" symbol="equals"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Point.mc" id="19" lineNum="30" pc="268436539" symbol="toString"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Point.mc" id="19" lineNum="31" pc="268436543" symbol="toString"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="22" lineNum="10" pc="268436580" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="22" lineNum="11" pc="268436584" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="22" lineNum="12" pc="268436594" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="23" lineNum="15" pc="268436605" symbol="contains"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="23" lineNum="16" pc="268436609" symbol="contains"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="24" lineNum="19" pc="268436648" symbol="containsAll"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="24" lineNum="20" pc="268436652" symbol="containsAll"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="24" lineNum="21" pc="268436676" symbol="containsAll"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="24" lineNum="22" pc="268436696" symbol="containsAll"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="24" lineNum="24" pc="268436702" symbol="containsAll"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="25" lineNum="28" pc="268436719" symbol="getDiameterAsGCD"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="25" lineNum="29" pc="268436723" symbol="getDiameterAsGCD"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="25" lineNum="30" pc="268436784" symbol="getDiameterAsGCD"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="25" lineNum="31" pc="268436845" symbol="getDiameterAsGCD"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="27" lineNum="49" pc="268437213" symbol="toString"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="27" lineNum="50" pc="268437217" symbol="toString"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="28" lineNum="54" pc="268437281" symbol="containsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="28" lineNum="55" pc="268437285" symbol="containsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="28" lineNum="56" pc="268437346" symbol="containsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="65" pc="268437588" symbol="getWidthAsGCDOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="66" pc="268437592" symbol="getWidthAsGCDOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="67" pc="268437626" symbol="getWidthAsGCDOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="68" pc="268437660" symbol="getWidthAsGCDOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="69" pc="268437683" symbol="getWidthAsGCDOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="70" pc="268437703" symbol="getWidthAsGCDOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="4" pc="268443170" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="6" pc="268437727" symbol="makeCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="7" pc="268437731" symbol="makeCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="9" pc="268437746" symbol="makeCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="10" pc="268437749" symbol="makeCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="11" pc="268437773" symbol="makeCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="12" pc="268437780" symbol="makeCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="13" pc="268437807" symbol="makeCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="16" pc="268437862" symbol="makeCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="116" pc="268439441" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="117" pc="268439445" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="119" pc="268439653" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="120" pc="268439671" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="122" pc="268439692" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="123" pc="268439718" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="126" pc="268439724" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="127" pc="268439748" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="128" pc="268439776" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="131" pc="268439795" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="133" pc="268439822" symbol="shuffleOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="43" lineNum="7" pc="268439899" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="43" lineNum="8" pc="268439903" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="44" lineNum="11" pc="268439915" symbol="add"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="44" lineNum="12" pc="268439919" symbol="add"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="44" lineNum="13" pc="268439954" symbol="add"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="44" lineNum="14" pc="268439967" symbol="add"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="44" lineNum="16" pc="268439980" symbol="add"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="44" lineNum="17" pc="268439999" symbol="add"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="45" lineNum="20" pc="268440019" symbol="toArray"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="45" lineNum="21" pc="268440023" symbol="toArray"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="45" lineNum="22" pc="268440034" symbol="toArray"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="45" lineNum="24" pc="268440046" symbol="toArray"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="46" lineNum="29" pc="268440078" symbol="addItemOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="46" lineNum="30" pc="268440082" symbol="addItemOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="46" lineNum="31" pc="268440111" symbol="addItemOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="46" lineNum="32" pc="268440128" symbol="addItemOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="46" lineNum="33" pc="268440141" symbol="addItemOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="46" lineNum="35" pc="268440154" symbol="addItemOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="41" pc="268440192" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="42" pc="268440196" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="43" pc="268440225" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="44" pc="268440242" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="45" pc="268440259" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="46" pc="268440276" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="48" pc="268440293" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="49" pc="268440306" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="47" lineNum="51" pc="268440319" symbol="addItemWrapsOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="50" lineNum="9" pc="268440413" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="50" lineNum="10" pc="268440417" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="51" lineNum="13" pc="268440436" symbol="onStart"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="51" lineNum="14" pc="268440440" symbol="onStart"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="52" lineNum="17" pc="268440489" symbol="onStop"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="52" lineNum="18" pc="268440493" symbol="onStop"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="53" lineNum="21" pc="268440542" symbol="onPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="53" lineNum="22" pc="268440546" symbol="onPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="53" lineNum="23" pc="268440571" symbol="onPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="53" lineNum="24" pc="268440596" symbol="onPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="53" lineNum="26" pc="268440640" symbol="onPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="53" lineNum="27" pc="268440660" symbol="onPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="53" lineNum="28" pc="268440712" symbol="onPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="31" pc="268440748" symbol="getInitialView"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="32" pc="268440752" symbol="getInitialView"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="33" pc="268440782" symbol="getInitialView"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="7" pc="268443082" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="56" lineNum="9" pc="268440806" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="56" lineNum="10" pc="268440810" symbol="initialize"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="57" lineNum="13" pc="268440829" symbol="onLayout"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="58" lineNum="16" pc="268440834" symbol="onShow"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="59" lineNum="19" pc="268440839" symbol="onHide"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="22" pc="268440844" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="24" pc="268440848" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="25" pc="268440888" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="26" pc="268440900" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="28" pc="268440940" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="29" pc="268440959" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="31" pc="268440978" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="32" pc="268440991" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="33" pc="268441037" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="35" pc="268441089" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="36" pc="268441135" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="38" pc="268441187" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="39" pc="268441223" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="41" pc="268441269" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="42" pc="268441305" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="44" pc="268441357" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="45" pc="268441388" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="47" pc="268441440" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="48" pc="268441479" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="60" lineNum="51" pc="268441534" symbol="onUpdate"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="61" lineNum="55" pc="268441584" symbol="setPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="61" lineNum="56" pc="268441588" symbol="setPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="61" lineNum="57" pc="268441598" symbol="setPosition"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="62" lineNum="60" pc="268441615" symbol="setpointArray"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="62" lineNum="61" pc="268441619" symbol="setpointArray"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="63" lineNum="64" pc="268441630" symbol="setSmallestCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="63" lineNum="65" pc="268441634" symbol="setSmallestCircle"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="67" lineNum="98" pc="268442063" symbol="minXYOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="67" lineNum="99" pc="268442067" symbol="minXYOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="67" lineNum="100" pc="268442195" symbol="minXYOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="67" lineNum="101" pc="268442216" symbol="minXYOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="68" lineNum="105" pc="268442252" symbol="translateOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="68" lineNum="106" pc="268442256" symbol="translateOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="68" lineNum="107" pc="268442384" symbol="translateOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="68" lineNum="108" pc="268442405" symbol="translateOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="68" lineNum="109" pc="268442425" symbol="translateOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="68" lineNum="110" pc="268442445" symbol="translateOk"/>
-        <entry filename="Rez" id="74" lineNum="15" pc="268442597" symbol="MainLayout"/>
-        <entry filename="Rez" id="74" lineNum="17" pc="268442609" symbol="MainLayout"/>
-        <entry filename="Rez" id="74" lineNum="18" pc="268442649" symbol="MainLayout"/>
-        <entry filename="Rez" id="74" lineNum="19" pc="268442662" symbol="MainLayout"/>
-        <entry filename="Rez" id="74" lineNum="21" pc="268442678" symbol="MainLayout"/>
-        <entry filename="Rez" id="74" lineNum="22" pc="268442791" symbol="MainLayout"/>
-        <entry filename="Rez" id="74" lineNum="24" pc="268442904" symbol="MainLayout"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="21" lineNum="6" pc="268436580" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="21" lineNum="7" pc="268436584" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="10" pc="268436595" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="11" pc="268436599" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="12" pc="268436640" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="14" pc="268436653" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="15" pc="268436668" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="16" pc="268436694" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="17" pc="268436740" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="18" pc="268436789" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="22" lineNum="20" pc="268436809" symbol="shuffle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="23" lineNum="23" pc="268436835" symbol="containsPoint"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="23" lineNum="24" pc="268436839" symbol="containsPoint"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="23" lineNum="25" pc="268436869" symbol="containsPoint"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="23" lineNum="26" pc="268436894" symbol="containsPoint"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="23" lineNum="29" pc="268436913" symbol="containsPoint"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="24" lineNum="32" pc="268436917" symbol="get"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="24" lineNum="33" pc="268436921" symbol="get"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="25" lineNum="36" pc="268436934" symbol="size"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="25" lineNum="37" pc="268436938" symbol="size"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="26" lineNum="40" pc="268436957" symbol="toArray"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="26" lineNum="41" pc="268436961" symbol="toArray"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="27" lineNum="44" pc="268436971" symbol="toString"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="27" lineNum="45" pc="268436975" symbol="toString"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="49" pc="268436994" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="50" pc="268436998" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="51" pc="268437206" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="53" pc="268437232" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="54" pc="268437250" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="56" pc="268437263" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="57" pc="268437289" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="60" pc="268437295" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="61" pc="268437319" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="62" pc="268437347" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="65" pc="268437366" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Points.mc" id="28" lineNum="67" pc="268437393" symbol="shuffleOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="31" lineNum="10" pc="268437397" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="31" lineNum="11" pc="268437401" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="31" lineNum="12" pc="268437411" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="32" lineNum="15" pc="268437422" symbol="contains"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="32" lineNum="16" pc="268437426" symbol="contains"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="33" lineNum="19" pc="268437465" symbol="containsAll"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="33" lineNum="20" pc="268437469" symbol="containsAll"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="33" lineNum="21" pc="268437493" symbol="containsAll"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="33" lineNum="22" pc="268437513" symbol="containsAll"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="33" lineNum="24" pc="268437519" symbol="containsAll"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="34" lineNum="28" pc="268437536" symbol="getDiameterAsGCD"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="34" lineNum="29" pc="268437540" symbol="getDiameterAsGCD"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="34" lineNum="30" pc="268437601" symbol="getDiameterAsGCD"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="34" lineNum="31" pc="268437662" symbol="getDiameterAsGCD"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="36" lineNum="50" pc="268437986" symbol="toString"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="36" lineNum="51" pc="268437990" symbol="toString"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="37" lineNum="55" pc="268438027" symbol="containsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="37" lineNum="56" pc="268438031" symbol="containsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="37" lineNum="57" pc="268438092" symbol="containsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="37" lineNum="58" pc="268438106" symbol="containsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="38" lineNum="67" pc="268438348" symbol="getWidthAsGCDOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="38" lineNum="68" pc="268438352" symbol="getWidthAsGCDOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="38" lineNum="69" pc="268438386" symbol="getWidthAsGCDOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="38" lineNum="70" pc="268438420" symbol="getWidthAsGCDOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="38" lineNum="71" pc="268438443" symbol="getWidthAsGCDOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="38" lineNum="72" pc="268438463" symbol="getWidthAsGCDOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="38" lineNum="4" pc="268443152" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="6" pc="268438487" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="7" pc="268438491" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="8" pc="268438517" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="10" pc="268438530" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="11" pc="268438533" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="12" pc="268438557" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="13" pc="268438564" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="14" pc="268438591" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="40" lineNum="17" pc="268438646" symbol="makeCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="49" lineNum="7" pc="268440022" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="49" lineNum="8" pc="268440026" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="50" lineNum="11" pc="268440038" symbol="add"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="50" lineNum="12" pc="268440042" symbol="add"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="50" lineNum="13" pc="268440077" symbol="add"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="50" lineNum="14" pc="268440090" symbol="add"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="50" lineNum="16" pc="268440103" symbol="add"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="50" lineNum="17" pc="268440122" symbol="add"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="51" lineNum="20" pc="268440142" symbol="toArray"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="51" lineNum="21" pc="268440146" symbol="toArray"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="51" lineNum="22" pc="268440157" symbol="toArray"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="51" lineNum="24" pc="268440169" symbol="toArray"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="52" lineNum="29" pc="268440201" symbol="addItemOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="52" lineNum="30" pc="268440205" symbol="addItemOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="52" lineNum="31" pc="268440234" symbol="addItemOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="52" lineNum="32" pc="268440251" symbol="addItemOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="52" lineNum="33" pc="268440264" symbol="addItemOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="52" lineNum="35" pc="268440277" symbol="addItemOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="41" pc="268440315" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="42" pc="268440319" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="43" pc="268440348" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="44" pc="268440365" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="45" pc="268440382" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="46" pc="268440399" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="48" pc="268440416" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="49" pc="268440429" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Cache.mc" id="53" lineNum="51" pc="268440442" symbol="addItemWrapsOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="56" lineNum="9" pc="268440536" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="56" lineNum="10" pc="268440540" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="57" lineNum="13" pc="268440559" symbol="onStart"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="57" lineNum="14" pc="268440563" symbol="onStart"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="58" lineNum="17" pc="268440612" symbol="onStop"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="58" lineNum="18" pc="268440616" symbol="onStop"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="59" lineNum="21" pc="268440665" symbol="onPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="59" lineNum="22" pc="268440669" symbol="onPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="59" lineNum="23" pc="268440694" symbol="onPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="59" lineNum="24" pc="268440719" symbol="onPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="59" lineNum="26" pc="268440763" symbol="onPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="59" lineNum="27" pc="268440783" symbol="onPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="59" lineNum="28" pc="268440835" symbol="onPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="60" lineNum="31" pc="268440871" symbol="getInitialView"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="60" lineNum="32" pc="268440875" symbol="getInitialView"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="60" lineNum="33" pc="268440905" symbol="getInitialView"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="60" lineNum="7" pc="268443278" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="62" lineNum="9" pc="268440929" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="62" lineNum="10" pc="268440933" symbol="initialize"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="63" lineNum="13" pc="268440952" symbol="onLayout"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="64" lineNum="16" pc="268440957" symbol="onShow"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="65" lineNum="19" pc="268440962" symbol="onHide"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="22" pc="268440967" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="24" pc="268440971" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="25" pc="268441011" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="26" pc="268441023" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="28" pc="268441063" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="29" pc="268441082" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="31" pc="268441101" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="32" pc="268441114" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="33" pc="268441160" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="35" pc="268441212" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="36" pc="268441258" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="38" pc="268441310" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="39" pc="268441346" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="41" pc="268441392" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="42" pc="268441428" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="44" pc="268441480" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="45" pc="268441511" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="47" pc="268441563" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="48" pc="268441602" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="66" lineNum="51" pc="268441657" symbol="onUpdate"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="67" lineNum="55" pc="268441707" symbol="setPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="67" lineNum="56" pc="268441711" symbol="setPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="67" lineNum="57" pc="268441721" symbol="setPosition"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="68" lineNum="60" pc="268441738" symbol="setpointArray"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="68" lineNum="61" pc="268441742" symbol="setpointArray"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="69" lineNum="64" pc="268441753" symbol="setSmallestCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="69" lineNum="65" pc="268441757" symbol="setSmallestCircle"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="73" lineNum="99" pc="268442186" symbol="minXYOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="73" lineNum="100" pc="268442190" symbol="minXYOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="73" lineNum="101" pc="268442318" symbol="minXYOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="73" lineNum="102" pc="268442339" symbol="minXYOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="74" lineNum="106" pc="268442375" symbol="translateOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="74" lineNum="107" pc="268442379" symbol="translateOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="74" lineNum="108" pc="268442507" symbol="translateOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="74" lineNum="109" pc="268442528" symbol="translateOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="74" lineNum="110" pc="268442548" symbol="translateOk"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="74" lineNum="111" pc="268442568" symbol="translateOk"/>
+        <entry filename="Rez" id="80" lineNum="15" pc="268442720" symbol="MainLayout"/>
+        <entry filename="Rez" id="80" lineNum="17" pc="268442732" symbol="MainLayout"/>
+        <entry filename="Rez" id="80" lineNum="18" pc="268442772" symbol="MainLayout"/>
+        <entry filename="Rez" id="80" lineNum="19" pc="268442785" symbol="MainLayout"/>
+        <entry filename="Rez" id="80" lineNum="21" pc="268442801" symbol="MainLayout"/>
+        <entry filename="Rez" id="80" lineNum="22" pc="268442914" symbol="MainLayout"/>
+        <entry filename="Rez" id="80" lineNum="24" pc="268443027" symbol="MainLayout"/>
     </pcToLineNum>
     <symbolTable>
         <entry id="8388639" module="true" symbol="Graphics"/>
         <entry id="8389792" method="true" symbol="getTestName"/>
         <entry id="8389346" symbol="text"/>
-        <entry id="35" method="true" symbol="shuffleOk"/>
+        <entry id="43" method="true" symbol="shuffleOk"/>
         <entry field="true" id="8388936" method="true" symbol="info"/>
-        <entry id="58" method="true" symbol="setPosition"/>
+        <entry id="24" method="true" symbol="setPosition"/>
         <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
-        <entry id="68" method="true" symbol="toArray"/>
-        <entry id="4" module="true" symbol="globals/Rez/Menus"/>
-        <entry field="true" id="56" symbol="smallestCircle"/>
-        <entry id="11" module="true" symbol="globals/Circle"/>
-        <entry id="37" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeCircleOnePoint&gt;"/>
-        <entry id="29" method="true" symbol="MainLayout"/>
+        <entry id="42" method="true" symbol="toArray"/>
+        <entry id="6" module="true" symbol="globals/Rez/Menus"/>
+        <entry field="true" id="22" symbol="smallestCircle"/>
+        <entry id="3" module="true" symbol="globals/Circle"/>
+        <entry id="66" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeCircleOnePoint&gt;"/>
+        <entry id="47" method="true" symbol="MainLayout"/>
         <entry field="true" id="8389759" symbol="radius"/>
-        <entry id="53" method="true" symbol="&lt;globals/Circle/&lt;&gt;calculateGCD&gt;"/>
-        <entry id="25" method="true" symbol="evaluate_test_entries_0_to_7"/>
-        <entry field="true" id="52" symbol="&lt;globals/Circle/&lt;&gt;R&gt;"/>
+        <entry id="39" method="true" symbol="&lt;globals/Circle/&lt;&gt;calculateGCD&gt;"/>
+        <entry id="64" method="true" symbol="evaluate_test_entries_0_to_7"/>
+        <entry field="true" id="38" symbol="&lt;globals/Circle/&lt;&gt;R&gt;"/>
         <entry id="14" object="true" symbol="RunNoEvil"/>
-        <entry id="60" method="true" symbol="setSmallestCircle"/>
-        <entry id="33" method="true" symbol="onPosition"/>
+        <entry id="26" method="true" symbol="setSmallestCircle"/>
+        <entry id="53" method="true" symbol="onPosition"/>
         <entry field="true" id="8388611" module="true" symbol="Toybox"/>
         <entry id="8388943" method="true" symbol="subtract"/>
         <entry id="8388649" module="true" object="true" symbol="Test"/>
-        <entry field="true" id="30" symbol="AppName"/>
-        <entry field="true" id="34" symbol="&lt;globals/GpsAccuracyApp/&lt;&gt;CACHE_SIZE&gt;"/>
-        <entry id="8" module="true" symbol="globals/Rez/Strings"/>
+        <entry field="true" id="8388782" method="true" symbol="size"/>
+        <entry field="true" id="48" symbol="AppName"/>
+        <entry field="true" id="54" symbol="&lt;globals/GpsAccuracyApp/&lt;&gt;CACHE_SIZE&gt;"/>
+        <entry field="true" id="40" symbol="points"/>
+        <entry id="10" module="true" symbol="globals/Rez/Strings"/>
         <entry id="8388772" module="true" object="true" symbol="Fonts"/>
         <entry id="8388942" method="true" symbol="add"/>
         <entry id="8388648" module="true" symbol="WatchUi"/>
-        <entry id="39" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeCircumcircle&gt;"/>
-        <entry field="true" id="45" symbol="centre"/>
-        <entry id="2" module="true" symbol="globals/Rez"/>
-        <entry field="true" id="66" symbol="&lt;globals/Cache/&lt;&gt;isFull&gt;"/>
+        <entry id="68" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeCircumcircle&gt;"/>
+        <entry field="true" id="31" symbol="centre"/>
+        <entry id="4" module="true" symbol="globals/Rez"/>
+        <entry field="true" id="56" symbol="&lt;globals/Cache/&lt;&gt;isFull&gt;"/>
+        <entry id="8388789" method="true" symbol="get"/>
         <entry id="8389568" method="true" symbol="runTest"/>
         <entry id="8389124" method="true" symbol="onUpdate"/>
         <entry field="true" id="8389065" symbol="locY"/>
         <entry field="true" id="8389064" symbol="locX"/>
         <entry id="8388771" module="true" object="true" symbol="Drawables"/>
         <entry id="8389348" symbol="font"/>
-        <entry id="43" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;shuffle&gt;"/>
-        <entry id="44" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;arrayContainsPoint&gt;"/>
         <entry id="8388783" method="true" symbol="toString"/>
-        <entry id="27" module="true" symbol="Menus"/>
-        <entry id="6" module="true" symbol="globals/Rez/Layouts"/>
-        <entry id="41" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;min&gt;"/>
-        <entry id="63" method="true" symbol="&lt;globals/GpsAccuracyView/&lt;&gt;translate&gt;"/>
+        <entry id="45" module="true" symbol="Menus"/>
+        <entry id="8" module="true" symbol="globals/Rez/Layouts"/>
+        <entry id="70" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;min&gt;"/>
+        <entry id="29" method="true" symbol="&lt;globals/GpsAccuracyView/&lt;&gt;translate&gt;"/>
         <entry id="8388787" method="true" symbol="equals"/>
         <entry id="8389122" method="true" symbol="onLayout"/>
-        <entry id="70" method="true" symbol="addItemWrapsOk"/>
-        <entry id="16" object="true" symbol="Circle"/>
-        <entry id="19" object="true" symbol="GpsAccuracyApp"/>
-        <entry id="7" module="true" symbol="globals/Rez/JsonData"/>
-        <entry id="23" method="true" symbol="getIndexOf"/>
+        <entry id="59" method="true" symbol="addItemWrapsOk"/>
+        <entry id="8390442" method="true" symbol="shuffle"/>
+        <entry id="17" object="true" symbol="Circle"/>
+        <entry id="20" object="true" symbol="GpsAccuracyApp"/>
+        <entry id="9" module="true" symbol="globals/Rez/JsonData"/>
+        <entry id="62" method="true" symbol="getIndexOf"/>
         <entry field="true" id="8388911" method="true" symbol="distance"/>
-        <entry field="true" id="67" symbol="&lt;globals/Cache/&lt;&gt;i&gt;"/>
-        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
-        <entry id="46" method="true" symbol="contains"/>
+        <entry id="41" method="true" symbol="containsPoint"/>
+        <entry field="true" id="57" symbol="&lt;globals/Cache/&lt;&gt;i&gt;"/>
+        <entry id="5" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="32" method="true" symbol="contains"/>
         <entry id="8389823" method="true" symbol="indexOf"/>
-        <entry id="13" module="true" symbol="globals/GpsAccuracyView"/>
-        <entry id="40" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeDiameter&gt;"/>
+        <entry id="2" module="true" symbol="globals/GpsAccuracyView"/>
+        <entry id="69" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeDiameter&gt;"/>
         <entry id="8388644" module="true" symbol="System"/>
-        <entry id="42" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;max&gt;"/>
+        <entry id="71" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;max&gt;"/>
         <entry id="8388769" module="true" object="true" symbol="Rez"/>
-        <entry id="10" module="true" symbol="globals/SmallestEnclosingCircle"/>
-        <entry id="24" method="true" symbol="populate_test_entries_0_to_7"/>
+        <entry id="13" module="true" symbol="globals/SmallestEnclosingCircle"/>
+        <entry id="63" method="true" symbol="populate_test_entries_0_to_7"/>
         <entry id="8388640" module="true" symbol="Lang"/>
         <entry id="8390088" module="true" object="true" symbol="JsonData"/>
-        <entry id="47" method="true" symbol="containsAll"/>
-        <entry field="true" id="28" symbol="LauncherIcon"/>
+        <entry id="33" method="true" symbol="containsAll"/>
+        <entry id="16" object="true" symbol="Points"/>
+        <entry field="true" id="46" symbol="LauncherIcon"/>
         <entry id="8388610" symbol="statics"/>
         <entry id="8389123" method="true" symbol="onShow"/>
         <entry id="15" object="true" symbol="Point"/>
         <entry id="8389567" method="true" symbol="getNumberOfTests"/>
-        <entry id="12" module="true" symbol="globals/Point"/>
-        <entry id="17" object="true" symbol="SmallestEnclosingCircle"/>
+        <entry id="11" module="true" symbol="globals/Point"/>
+        <entry id="18" object="true" symbol="SmallestEnclosingCircle"/>
         <entry id="8389350" module="true" symbol="globals"/>
         <entry id="8388770" module="true" object="true" symbol="Strings"/>
-        <entry id="64" method="true" symbol="&lt;globals/GpsAccuracyView/&lt;&gt;minXY&gt;"/>
+        <entry id="30" method="true" symbol="&lt;globals/GpsAccuracyView/&lt;&gt;minXY&gt;"/>
         <entry id="8388702" method="true" symbol="initialize"/>
         <entry id="8389279" method="true" symbol="onStart"/>
-        <entry id="59" method="true" symbol="setpointArray"/>
-        <entry field="true" id="31" symbol="view"/>
+        <entry id="25" method="true" symbol="setpointArray"/>
+        <entry field="true" id="51" symbol="view"/>
         <entry id="8388641" module="true" symbol="Math"/>
-        <entry id="54" method="true" symbol="cross"/>
-        <entry field="true" id="51" symbol="&lt;globals/Circle/&lt;&gt;MULTIPLICATIVE_EPSILON&gt;"/>
-        <entry field="true" id="65" symbol="&lt;globals/Cache/&lt;&gt;cache&gt;"/>
-        <entry id="36" method="true" symbol="makeCircle"/>
-        <entry id="9" module="true" symbol="globals/GpsAccuracyApp"/>
-        <entry id="69" method="true" symbol="addItemOk"/>
+        <entry id="49" method="true" symbol="cross"/>
+        <entry field="true" id="37" symbol="&lt;globals/Circle/&lt;&gt;MULTIPLICATIVE_EPSILON&gt;"/>
+        <entry field="true" id="55" symbol="&lt;globals/Cache/&lt;&gt;cache&gt;"/>
+        <entry id="65" method="true" symbol="makeCircle"/>
+        <entry id="12" module="true" symbol="globals/GpsAccuracyApp"/>
+        <entry id="58" method="true" symbol="addItemOk"/>
         <entry id="8389280" method="true" symbol="getInitialView"/>
         <entry id="8389281" method="true" symbol="onStop"/>
         <entry id="8389347" symbol="color"/>
-        <entry id="55" method="true" symbol="&lt;globals/Point/&lt;&gt;hypot&gt;"/>
-        <entry id="62" method="true" symbol="translateOk"/>
-        <entry id="61" method="true" symbol="minXYOk"/>
-        <entry id="26" module="true" symbol="Layouts"/>
-        <entry field="true" id="22" symbol="idToName"/>
-        <entry id="50" method="true" symbol="getWidthAsGCDOk"/>
-        <entry field="true" id="57" symbol="pointArray"/>
-        <entry id="48" method="true" symbol="getDiameterAsGCD"/>
-        <entry id="5" module="true" symbol="globals/Rez/Fonts"/>
-        <entry field="true" id="21" symbol="logger"/>
+        <entry id="50" method="true" symbol="&lt;globals/Point/&lt;&gt;hypot&gt;"/>
+        <entry id="28" method="true" symbol="translateOk"/>
+        <entry id="27" method="true" symbol="minXYOk"/>
+        <entry id="44" module="true" symbol="Layouts"/>
+        <entry field="true" id="61" symbol="idToName"/>
+        <entry id="36" method="true" symbol="getWidthAsGCDOk"/>
+        <entry field="true" id="23" symbol="pointArray"/>
+        <entry id="34" method="true" symbol="getDiameterAsGCD"/>
+        <entry id="7" module="true" symbol="globals/Rez/Fonts"/>
+        <entry field="true" id="60" symbol="logger"/>
         <entry id="8389125" method="true" symbol="onHide"/>
-        <entry id="20" object="true" symbol="GpsAccuracyView"/>
-        <entry id="49" method="true" symbol="containsOk"/>
-        <entry id="18" object="true" symbol="Cache"/>
+        <entry id="21" object="true" symbol="GpsAccuracyView"/>
+        <entry id="35" method="true" symbol="containsOk"/>
+        <entry id="19" object="true" symbol="Cache"/>
         <entry id="8388635" module="true" symbol="Application"/>
         <entry field="true" id="8390079" symbol="y"/>
         <entry field="true" id="8390078" symbol="x"/>
-        <entry field="true" id="32" symbol="pointCache"/>
-        <entry id="38" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeCircleTwoPoints&gt;"/>
+        <entry field="true" id="52" symbol="pointCache"/>
+        <entry id="67" method="true" symbol="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeCircleTwoPoints&gt;"/>
         <entry id="8389570" method="true" symbol="getTestObject"/>
     </symbolTable>
     <localVars>
@@ -342,134 +373,137 @@
         <entry arg="true" endPc="268436493" name="x" stackId="1" startPc="268436459"/>
         <entry arg="true" endPc="268436493" name="y" stackId="2" startPc="268436459"/>
         <entry arg="true" endPc="268436539" name="other" stackId="1" startPc="268436493"/>
-        <entry arg="true" endPc="268436605" name="radius" stackId="2" startPc="268436580"/>
-        <entry arg="true" endPc="268436605" name="point" stackId="1" startPc="268436580"/>
-        <entry arg="true" endPc="268436648" name="point" stackId="1" startPc="268436605"/>
-        <entry endPc="268436718" name="i" stackId="2" startPc="268436676"/>
-        <entry arg="true" endPc="268436719" name="points" stackId="1" startPc="268436648"/>
-        <entry endPc="268436861" name="p2" stackId="2" startPc="268436723"/>
-        <entry endPc="268436861" name="p1" stackId="1" startPc="268436723"/>
-        <entry endPc="268437212" name="a" stackId="7" startPc="268436866"/>
-        <entry endPc="268437212" name="deltaLat" stackId="5" startPc="268436866"/>
-        <entry endPc="268437212" name="deltaLong" stackId="6" startPc="268436866"/>
-        <entry endPc="268437212" name="lat2" stackId="4" startPc="268436866"/>
-        <entry endPc="268437212" name="d" stackId="9" startPc="268436866"/>
-        <entry endPc="268437212" name="lat1" stackId="3" startPc="268436866"/>
-        <entry endPc="268437212" name="c" stackId="8" startPc="268436866"/>
-        <entry arg="true" endPc="268437213" name="p2" stackId="2" startPc="268436862"/>
-        <entry arg="true" endPc="268437213" name="p1" stackId="1" startPc="268436862"/>
-        <entry endPc="268437587" name="circle" stackId="2" startPc="268437285"/>
-        <entry arg="true" endPc="268437588" name="logger" stackId="1" startPc="268437281"/>
-        <entry endPc="268437726" name="gcd" stackId="4" startPc="268437592"/>
-        <entry endPc="268437726" name="p2" stackId="3" startPc="268437592"/>
-        <entry endPc="268437726" name="p1" stackId="2" startPc="268437592"/>
-        <entry arg="true" endPc="268437727" name="logger" stackId="1" startPc="268437588"/>
-        <entry endPc="268437849" name="p" stackId="5" startPc="268437773"/>
-        <entry endPc="268437862" name="i" stackId="4" startPc="268437773"/>
-        <entry endPc="268437865" name="shuffled" stackId="2" startPc="268437731"/>
-        <entry endPc="268437865" name="c" stackId="3" startPc="268437731"/>
-        <entry arg="true" endPc="268437866" name="points" stackId="1" startPc="268437727"/>
-        <entry endPc="268438030" name="q" stackId="5" startPc="268437925"/>
-        <entry endPc="268438043" name="i" stackId="4" startPc="268437925"/>
-        <entry endPc="268438046" name="c" stackId="3" startPc="268437870"/>
-        <entry arg="true" endPc="268438047" name="points" stackId="1" startPc="268437866"/>
-        <entry arg="true" endPc="268438047" name="p" stackId="2" startPc="268437866"/>
-        <entry endPc="268438390" name="r" stackId="9" startPc="268438113"/>
-        <entry endPc="268438390" name="c" stackId="11" startPc="268438113"/>
-        <entry endPc="268438390" name="cross" stackId="10" startPc="268438113"/>
-        <entry endPc="268438403" name="i" stackId="8" startPc="268438113"/>
-        <entry endPc="268438480" name="pq" stackId="7" startPc="268438051"/>
-        <entry endPc="268438480" name="right" stackId="6" startPc="268438051"/>
-        <entry endPc="268438480" name="left" stackId="5" startPc="268438051"/>
-        <entry endPc="268438480" name="circle" stackId="4" startPc="268438051"/>
-        <entry arg="true" endPc="268438481" name="points" stackId="1" startPc="268438047"/>
-        <entry arg="true" endPc="268438481" name="q" stackId="3" startPc="268438047"/>
-        <entry arg="true" endPc="268438481" name="p" stackId="2" startPc="268438047"/>
-        <entry endPc="268439055" name="r" stackId="16" startPc="268438485"/>
-        <entry endPc="268439055" name="ax" stackId="6" startPc="268438485"/>
-        <entry endPc="268439055" name="p" stackId="15" startPc="268438485"/>
-        <entry endPc="268439055" name="oy" stackId="5" startPc="268438485"/>
-        <entry endPc="268439055" name="ox" stackId="4" startPc="268438485"/>
-        <entry endPc="268439055" name="cy" stackId="11" startPc="268438485"/>
-        <entry endPc="268439055" name="cx" stackId="10" startPc="268438485"/>
-        <entry endPc="268439055" name="d" stackId="12" startPc="268438485"/>
-        <entry endPc="268439055" name="by" stackId="9" startPc="268438485"/>
-        <entry endPc="268439055" name="bx" stackId="8" startPc="268438485"/>
-        <entry endPc="268439055" name="y" stackId="14" startPc="268438485"/>
-        <entry endPc="268439055" name="x" stackId="13" startPc="268438485"/>
-        <entry endPc="268439055" name="ay" stackId="7" startPc="268438485"/>
-        <entry arg="true" endPc="268439056" name="b" stackId="2" startPc="268438481"/>
-        <entry arg="true" endPc="268439056" name="a" stackId="1" startPc="268438481"/>
-        <entry arg="true" endPc="268439056" name="c" stackId="3" startPc="268438481"/>
-        <entry endPc="268439192" name="c" stackId="3" startPc="268439060"/>
-        <entry arg="true" endPc="268439193" name="b" stackId="2" startPc="268439056"/>
-        <entry arg="true" endPc="268439193" name="a" stackId="1" startPc="268439056"/>
-        <entry arg="true" endPc="268439214" name="x" stackId="1" startPc="268439193"/>
-        <entry arg="true" endPc="268439214" name="y" stackId="2" startPc="268439193"/>
-        <entry arg="true" endPc="268439235" name="x" stackId="1" startPc="268439214"/>
-        <entry arg="true" endPc="268439235" name="y" stackId="2" startPc="268439214"/>
-        <entry endPc="268439424" name="k" stackId="6" startPc="268439296"/>
-        <entry endPc="268439424" name="j" stackId="5" startPc="268439296"/>
-        <entry endPc="268439437" name="i" stackId="4" startPc="268439296"/>
-        <entry endPc="268439440" name="shuffled" stackId="2" startPc="268439239"/>
-        <entry endPc="268439440" name="size" stackId="3" startPc="268439239"/>
-        <entry arg="true" endPc="268439441" name="points" stackId="1" startPc="268439235"/>
-        <entry endPc="268439795" name="j" stackId="5" startPc="268439748"/>
-        <entry endPc="268439809" name="shuffled" stackId="4" startPc="268439671"/>
-        <entry endPc="268439822" name="i" stackId="3" startPc="268439671"/>
-        <entry endPc="268439825" name="points" stackId="2" startPc="268439445"/>
-        <entry arg="true" endPc="268439826" name="logger" stackId="1" startPc="268439441"/>
-        <entry endPc="268439892" name="i" stackId="3" startPc="268439854"/>
-        <entry arg="true" endPc="268439896" name="point" stackId="2" startPc="268439826"/>
-        <entry arg="true" endPc="268439896" name="array" stackId="1" startPc="268439826"/>
-        <entry arg="true" endPc="268439915" name="count" stackId="1" startPc="268439899"/>
-        <entry arg="true" endPc="268440019" name="item" stackId="1" startPc="268439915"/>
-        <entry endPc="268440191" name="cache" stackId="2" startPc="268440082"/>
-        <entry endPc="268440191" name="size" stackId="4" startPc="268440082"/>
-        <entry endPc="268440191" name="contents" stackId="3" startPc="268440082"/>
-        <entry arg="true" endPc="268440192" name="logger" stackId="1" startPc="268440078"/>
-        <entry endPc="268440412" name="cache" stackId="2" startPc="268440196"/>
-        <entry endPc="268440412" name="size" stackId="4" startPc="268440196"/>
-        <entry endPc="268440412" name="contents" stackId="3" startPc="268440196"/>
-        <entry arg="true" endPc="268440413" name="logger" stackId="1" startPc="268440192"/>
-        <entry arg="true" endPc="268440489" name="state" stackId="1" startPc="268440436"/>
-        <entry arg="true" endPc="268440542" name="state" stackId="1" startPc="268440489"/>
-        <entry endPc="268440747" name="long" stackId="3" startPc="268440546"/>
-        <entry endPc="268440747" name="lat" stackId="2" startPc="268440546"/>
-        <entry arg="true" endPc="268440748" name="info" stackId="1" startPc="268440542"/>
-        <entry arg="true" endPc="268440834" name="dc" stackId="1" startPc="268440829"/>
-        <entry endPc="268441531" name="string" stackId="4" startPc="268440991"/>
-        <entry endPc="268441583" name="halfHeight" stackId="3" startPc="268440848"/>
-        <entry endPc="268441583" name="halfWidth" stackId="2" startPc="268440848"/>
-        <entry arg="true" endPc="268441584" name="dc" stackId="1" startPc="268440844"/>
-        <entry arg="true" endPc="268441615" name="info" stackId="1" startPc="268441584"/>
-        <entry arg="true" endPc="268441630" name="pointArray" stackId="1" startPc="268441615"/>
-        <entry arg="true" endPc="268441645" name="smallestCircle" stackId="1" startPc="268441630"/>
-        <entry endPc="268441897" name="x" stackId="5" startPc="268441708"/>
-        <entry endPc="268441897" name="y" stackId="6" startPc="268441708"/>
-        <entry endPc="268441910" name="i" stackId="4" startPc="268441708"/>
-        <entry endPc="268441913" name="min" stackId="3" startPc="268441649"/>
-        <entry endPc="268441913" name="translated" stackId="2" startPc="268441649"/>
-        <entry arg="true" endPc="268441914" name="points" stackId="1" startPc="268441645"/>
-        <entry endPc="268442035" name="i" stackId="4" startPc="268441956"/>
-        <entry endPc="268442062" name="minX" stackId="2" startPc="268441918"/>
-        <entry endPc="268442062" name="minY" stackId="3" startPc="268441918"/>
-        <entry arg="true" endPc="268442063" name="points" stackId="1" startPc="268441914"/>
-        <entry endPc="268442251" name="result" stackId="3" startPc="268442067"/>
-        <entry endPc="268442251" name="points" stackId="2" startPc="268442067"/>
-        <entry arg="true" endPc="268442252" name="logger" stackId="1" startPc="268442063"/>
-        <entry endPc="268442596" name="points" stackId="2" startPc="268442256"/>
-        <entry endPc="268442596" name="translated" stackId="3" startPc="268442256"/>
-        <entry arg="true" endPc="268442597" name="logger" stackId="1" startPc="268442252"/>
-        <entry endPc="268442941" name="rez_cmp_local_text_9699161816" stackId="3" startPc="268442609"/>
-        <entry endPc="268442941" name="rez_cmp_local_custom_drawable_GpsAccuracyView" stackId="2" startPc="268442609"/>
-        <entry endPc="268442941" name="rez_cmp_local_text_9603184569" stackId="4" startPc="268442609"/>
-        <entry arg="true" endPc="268442942" name="dc" stackId="1" startPc="268442597"/>
+        <entry arg="true" endPc="268436595" name="pointArray" stackId="1" startPc="268436580"/>
+        <entry endPc="268436796" name="k" stackId="5" startPc="268436668"/>
+        <entry endPc="268436796" name="j" stackId="4" startPc="268436668"/>
+        <entry endPc="268436809" name="i" stackId="3" startPc="268436668"/>
+        <entry endPc="268436834" name="shuffled" stackId="1" startPc="268436599"/>
+        <entry endPc="268436834" name="size" stackId="2" startPc="268436599"/>
+        <entry endPc="268436913" name="i" stackId="2" startPc="268436869"/>
+        <entry arg="true" endPc="268436917" name="point" stackId="1" startPc="268436835"/>
+        <entry arg="true" endPc="268436934" name="index" stackId="1" startPc="268436917"/>
+        <entry endPc="268437366" name="j" stackId="6" startPc="268437319"/>
+        <entry endPc="268437380" name="shuffled" stackId="5" startPc="268437250"/>
+        <entry endPc="268437393" name="i" stackId="4" startPc="268437250"/>
+        <entry endPc="268437396" name="points" stackId="3" startPc="268436998"/>
+        <entry endPc="268437396" name="pointsArray" stackId="2" startPc="268436998"/>
+        <entry arg="true" endPc="268437397" name="logger" stackId="1" startPc="268436994"/>
+        <entry arg="true" endPc="268437422" name="radius" stackId="2" startPc="268437397"/>
+        <entry arg="true" endPc="268437422" name="point" stackId="1" startPc="268437397"/>
+        <entry arg="true" endPc="268437465" name="point" stackId="1" startPc="268437422"/>
+        <entry endPc="268437535" name="i" stackId="2" startPc="268437493"/>
+        <entry arg="true" endPc="268437536" name="points" stackId="1" startPc="268437465"/>
+        <entry endPc="268437678" name="p2" stackId="2" startPc="268437540"/>
+        <entry endPc="268437678" name="p1" stackId="1" startPc="268437540"/>
+        <entry endPc="268437985" name="a" stackId="8" startPc="268437683"/>
+        <entry endPc="268437985" name="deltaLat" stackId="6" startPc="268437683"/>
+        <entry endPc="268437985" name="deltaLong" stackId="7" startPc="268437683"/>
+        <entry endPc="268437985" name="pi180" stackId="3" startPc="268437683"/>
+        <entry endPc="268437985" name="lat2" stackId="5" startPc="268437683"/>
+        <entry endPc="268437985" name="d" stackId="10" startPc="268437683"/>
+        <entry endPc="268437985" name="lat1" stackId="4" startPc="268437683"/>
+        <entry endPc="268437985" name="c" stackId="9" startPc="268437683"/>
+        <entry arg="true" endPc="268437986" name="p2" stackId="2" startPc="268437679"/>
+        <entry arg="true" endPc="268437986" name="p1" stackId="1" startPc="268437679"/>
+        <entry endPc="268438347" name="circle" stackId="2" startPc="268438031"/>
+        <entry arg="true" endPc="268438348" name="logger" stackId="1" startPc="268438027"/>
+        <entry endPc="268438486" name="gcd" stackId="4" startPc="268438352"/>
+        <entry endPc="268438486" name="p2" stackId="3" startPc="268438352"/>
+        <entry endPc="268438486" name="p1" stackId="2" startPc="268438352"/>
+        <entry arg="true" endPc="268438487" name="logger" stackId="1" startPc="268438348"/>
+        <entry endPc="268438633" name="p" stackId="6" startPc="268438557"/>
+        <entry endPc="268438646" name="i" stackId="5" startPc="268438557"/>
+        <entry endPc="268438649" name="shuffled" stackId="3" startPc="268438491"/>
+        <entry endPc="268438649" name="points" stackId="2" startPc="268438491"/>
+        <entry endPc="268438649" name="c" stackId="4" startPc="268438491"/>
+        <entry arg="true" endPc="268438650" name="pointsArray" stackId="1" startPc="268438487"/>
+        <entry endPc="268438814" name="q" stackId="5" startPc="268438709"/>
+        <entry endPc="268438827" name="i" stackId="4" startPc="268438709"/>
+        <entry endPc="268438830" name="c" stackId="3" startPc="268438654"/>
+        <entry arg="true" endPc="268438831" name="points" stackId="1" startPc="268438650"/>
+        <entry arg="true" endPc="268438831" name="p" stackId="2" startPc="268438650"/>
+        <entry endPc="268439174" name="r" stackId="9" startPc="268438897"/>
+        <entry endPc="268439174" name="c" stackId="11" startPc="268438897"/>
+        <entry endPc="268439174" name="cross" stackId="10" startPc="268438897"/>
+        <entry endPc="268439187" name="i" stackId="8" startPc="268438897"/>
+        <entry endPc="268439264" name="pq" stackId="7" startPc="268438835"/>
+        <entry endPc="268439264" name="right" stackId="6" startPc="268438835"/>
+        <entry endPc="268439264" name="left" stackId="5" startPc="268438835"/>
+        <entry endPc="268439264" name="circle" stackId="4" startPc="268438835"/>
+        <entry arg="true" endPc="268439265" name="points" stackId="1" startPc="268438831"/>
+        <entry arg="true" endPc="268439265" name="q" stackId="3" startPc="268438831"/>
+        <entry arg="true" endPc="268439265" name="p" stackId="2" startPc="268438831"/>
+        <entry endPc="268439839" name="r" stackId="16" startPc="268439269"/>
+        <entry endPc="268439839" name="ax" stackId="6" startPc="268439269"/>
+        <entry endPc="268439839" name="p" stackId="15" startPc="268439269"/>
+        <entry endPc="268439839" name="oy" stackId="5" startPc="268439269"/>
+        <entry endPc="268439839" name="ox" stackId="4" startPc="268439269"/>
+        <entry endPc="268439839" name="cy" stackId="11" startPc="268439269"/>
+        <entry endPc="268439839" name="cx" stackId="10" startPc="268439269"/>
+        <entry endPc="268439839" name="d" stackId="12" startPc="268439269"/>
+        <entry endPc="268439839" name="by" stackId="9" startPc="268439269"/>
+        <entry endPc="268439839" name="bx" stackId="8" startPc="268439269"/>
+        <entry endPc="268439839" name="y" stackId="14" startPc="268439269"/>
+        <entry endPc="268439839" name="x" stackId="13" startPc="268439269"/>
+        <entry endPc="268439839" name="ay" stackId="7" startPc="268439269"/>
+        <entry arg="true" endPc="268439840" name="b" stackId="2" startPc="268439265"/>
+        <entry arg="true" endPc="268439840" name="a" stackId="1" startPc="268439265"/>
+        <entry arg="true" endPc="268439840" name="c" stackId="3" startPc="268439265"/>
+        <entry endPc="268439976" name="c" stackId="3" startPc="268439844"/>
+        <entry arg="true" endPc="268439977" name="b" stackId="2" startPc="268439840"/>
+        <entry arg="true" endPc="268439977" name="a" stackId="1" startPc="268439840"/>
+        <entry arg="true" endPc="268439998" name="x" stackId="1" startPc="268439977"/>
+        <entry arg="true" endPc="268439998" name="y" stackId="2" startPc="268439977"/>
+        <entry arg="true" endPc="268440019" name="x" stackId="1" startPc="268439998"/>
+        <entry arg="true" endPc="268440019" name="y" stackId="2" startPc="268439998"/>
+        <entry arg="true" endPc="268440038" name="count" stackId="1" startPc="268440022"/>
+        <entry arg="true" endPc="268440142" name="item" stackId="1" startPc="268440038"/>
+        <entry endPc="268440314" name="cache" stackId="2" startPc="268440205"/>
+        <entry endPc="268440314" name="size" stackId="4" startPc="268440205"/>
+        <entry endPc="268440314" name="contents" stackId="3" startPc="268440205"/>
+        <entry arg="true" endPc="268440315" name="logger" stackId="1" startPc="268440201"/>
+        <entry endPc="268440535" name="cache" stackId="2" startPc="268440319"/>
+        <entry endPc="268440535" name="size" stackId="4" startPc="268440319"/>
+        <entry endPc="268440535" name="contents" stackId="3" startPc="268440319"/>
+        <entry arg="true" endPc="268440536" name="logger" stackId="1" startPc="268440315"/>
+        <entry arg="true" endPc="268440612" name="state" stackId="1" startPc="268440559"/>
+        <entry arg="true" endPc="268440665" name="state" stackId="1" startPc="268440612"/>
+        <entry endPc="268440870" name="long" stackId="3" startPc="268440669"/>
+        <entry endPc="268440870" name="lat" stackId="2" startPc="268440669"/>
+        <entry arg="true" endPc="268440871" name="info" stackId="1" startPc="268440665"/>
+        <entry arg="true" endPc="268440957" name="dc" stackId="1" startPc="268440952"/>
+        <entry endPc="268441654" name="string" stackId="4" startPc="268441114"/>
+        <entry endPc="268441706" name="halfHeight" stackId="3" startPc="268440971"/>
+        <entry endPc="268441706" name="halfWidth" stackId="2" startPc="268440971"/>
+        <entry arg="true" endPc="268441707" name="dc" stackId="1" startPc="268440967"/>
+        <entry arg="true" endPc="268441738" name="info" stackId="1" startPc="268441707"/>
+        <entry arg="true" endPc="268441753" name="pointArray" stackId="1" startPc="268441738"/>
+        <entry arg="true" endPc="268441768" name="smallestCircle" stackId="1" startPc="268441753"/>
+        <entry endPc="268442020" name="x" stackId="5" startPc="268441831"/>
+        <entry endPc="268442020" name="y" stackId="6" startPc="268441831"/>
+        <entry endPc="268442033" name="i" stackId="4" startPc="268441831"/>
+        <entry endPc="268442036" name="min" stackId="3" startPc="268441772"/>
+        <entry endPc="268442036" name="translated" stackId="2" startPc="268441772"/>
+        <entry arg="true" endPc="268442037" name="points" stackId="1" startPc="268441768"/>
+        <entry endPc="268442158" name="i" stackId="4" startPc="268442079"/>
+        <entry endPc="268442185" name="minX" stackId="2" startPc="268442041"/>
+        <entry endPc="268442185" name="minY" stackId="3" startPc="268442041"/>
+        <entry arg="true" endPc="268442186" name="points" stackId="1" startPc="268442037"/>
+        <entry endPc="268442374" name="result" stackId="3" startPc="268442190"/>
+        <entry endPc="268442374" name="points" stackId="2" startPc="268442190"/>
+        <entry arg="true" endPc="268442375" name="logger" stackId="1" startPc="268442186"/>
+        <entry endPc="268442719" name="points" stackId="2" startPc="268442379"/>
+        <entry endPc="268442719" name="translated" stackId="3" startPc="268442379"/>
+        <entry arg="true" endPc="268442720" name="logger" stackId="1" startPc="268442375"/>
+        <entry endPc="268443064" name="rez_cmp_local_text_1009576455" stackId="3" startPc="268442732"/>
+        <entry endPc="268443064" name="rez_cmp_local_custom_drawable_GpsAccuracyView" stackId="2" startPc="268442732"/>
+        <entry endPc="268443064" name="rez_cmp_local_text_9592076215" stackId="4" startPc="268442732"/>
+        <entry arg="true" endPc="268443065" name="dc" stackId="1" startPc="268442720"/>
     </localVars>
     <annotations>
+        <annotationEntry annotation="test" class="Points" module="globals" symbol="shuffleOk"/>
         <annotationEntry annotation="test" class="Circle" module="globals" symbol="containsOk"/>
         <annotationEntry annotation="test" class="Circle" module="globals" symbol="getWidthAsGCDOk"/>
-        <annotationEntry annotation="test" class="SmallestEnclosingCircle" module="globals" symbol="shuffleOk"/>
         <annotationEntry annotation="test" class="Cache" module="globals" symbol="addItemOk"/>
         <annotationEntry annotation="test" class="Cache" module="globals" symbol="addItemWrapsOk"/>
         <annotationEntry annotation="test" class="GpsAccuracyView" module="globals" symbol="minXYOk"/>
@@ -477,20 +511,21 @@
     </annotations>
     <dataEntryOffsetMappings>
         <dataEntry offset="127" parentId="" symbolId="globals" type="module"/>
-        <dataEntry offset="238" parentId="globals" symbolId="RunNoEvil" type="class"/>
-        <dataEntry offset="349" parentId="globals" symbolId="Rez" type="module"/>
-        <dataEntry offset="428" parentId="Rez" symbolId="Drawables" type="module"/>
-        <dataEntry offset="467" parentId="Rez" symbolId="Menus" type="module"/>
-        <dataEntry offset="498" parentId="Rez" symbolId="Fonts" type="module"/>
-        <dataEntry offset="529" parentId="Rez" symbolId="Layouts" type="module"/>
-        <dataEntry offset="568" parentId="Rez" symbolId="JsonData" type="module"/>
-        <dataEntry offset="599" parentId="Rez" symbolId="Strings" type="module"/>
-        <dataEntry offset="638" parentId="globals" symbolId="GpsAccuracyApp" type="class"/>
-        <dataEntry offset="772" parentId="globals" symbolId="SmallestEnclosingCircle" type="class"/>
-        <dataEntry offset="930" parentId="globals" symbolId="Circle" type="class"/>
-        <dataEntry offset="1096" parentId="globals" symbolId="Point" type="class"/>
-        <dataEntry offset="1238" parentId="globals" symbolId="GpsAccuracyView" type="class"/>
-        <dataEntry offset="1428" parentId="globals" symbolId="Cache" type="class"/>
+        <dataEntry offset="246" parentId="globals" symbolId="GpsAccuracyView" type="class"/>
+        <dataEntry offset="436" parentId="globals" symbolId="Circle" type="class"/>
+        <dataEntry offset="602" parentId="globals" symbolId="Points" type="class"/>
+        <dataEntry offset="713" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry offset="792" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry offset="831" parentId="Rez" symbolId="Menus" type="module"/>
+        <dataEntry offset="862" parentId="Rez" symbolId="Fonts" type="module"/>
+        <dataEntry offset="893" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry offset="932" parentId="Rez" symbolId="JsonData" type="module"/>
+        <dataEntry offset="963" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry offset="1002" parentId="globals" symbolId="Point" type="class"/>
+        <dataEntry offset="1144" parentId="globals" symbolId="GpsAccuracyApp" type="class"/>
+        <dataEntry offset="1278" parentId="globals" symbolId="Cache" type="class"/>
+        <dataEntry offset="1381" parentId="globals" symbolId="RunNoEvil" type="class"/>
+        <dataEntry offset="1492" parentId="globals" symbolId="SmallestEnclosingCircle" type="class"/>
     </dataEntryOffsetMappings>
     <functions>
         <functionEntry accessMode="public" name="getTestObject">
@@ -551,6 +586,34 @@
         <functionEntry accessMode="public" name="toString" parent="Point">
             <documentation/>
         </functionEntry>
+        <functionEntry accessMode="public" name="initialize" parent="Points">
+            <param id="pointArray"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="shuffle" parent="Points">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="containsPoint" parent="Points">
+            <param id="point"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="get" parent="Points">
+            <param id="index"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="size" parent="Points">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="toArray" parent="Points">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="toString" parent="Points">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="shuffleOk" parent="Points">
+            <param id="logger"/>
+            <documentation/>
+        </functionEntry>
         <functionEntry accessMode="public" name="initialize" parent="Circle">
             <param id="point"/>
             <param id="radius"/>
@@ -584,7 +647,7 @@
             <documentation/>
         </functionEntry>
         <functionEntry accessMode="public" name="makeCircle" parent="SmallestEnclosingCircle">
-            <param id="points"/>
+            <param id="pointsArray"/>
             <documentation/>
         </functionEntry>
         <functionEntry accessMode="private" name="&lt;globals/SmallestEnclosingCircle/&lt;&gt;makeCircleOnePoint&gt;" parent="SmallestEnclosingCircle">
@@ -617,19 +680,6 @@
         <functionEntry accessMode="private" name="&lt;globals/SmallestEnclosingCircle/&lt;&gt;max&gt;" parent="SmallestEnclosingCircle">
             <param id="x"/>
             <param id="y"/>
-            <documentation/>
-        </functionEntry>
-        <functionEntry accessMode="private" name="&lt;globals/SmallestEnclosingCircle/&lt;&gt;shuffle&gt;" parent="SmallestEnclosingCircle">
-            <param id="points"/>
-            <documentation/>
-        </functionEntry>
-        <functionEntry accessMode="public" name="shuffleOk" parent="SmallestEnclosingCircle">
-            <param id="logger"/>
-            <documentation/>
-        </functionEntry>
-        <functionEntry accessMode="private" name="&lt;globals/SmallestEnclosingCircle/&lt;&gt;arrayContainsPoint&gt;" parent="SmallestEnclosingCircle">
-            <param id="array"/>
-            <param id="point"/>
             <documentation/>
         </functionEntry>
         <functionEntry accessMode="public" name="initialize" parent="Cache">

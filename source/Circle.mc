@@ -32,10 +32,11 @@ class Circle {
 	}
 	
 	private static function calculateGCD(p1, p2) {
-		var lat1 = p1.x * Math.PI / 180;
-		var lat2 = p2.x * Math.PI / 180;
-		var deltaLat = (p2.x - p1.x) * Math.PI / 180;
-		var deltaLong = (p2.y - p1.y) * Math.PI / 180;
+		var pi180 = Math.PI / 180;
+		var lat1 = p1.x * pi180;
+		var lat2 = p2.x * pi180;
+		var deltaLat = (p2.x - p1.x) * pi180;
+		var deltaLong = (p2.y - p1.y) * pi180;
 		
 		var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
 			Math.cos(lat1) * Math.cos(lat2) *
@@ -47,12 +48,13 @@ class Circle {
 	}
 	
 	public function toString() {
-		return "Circle(x=" + centre.x + ", y=" + centre.y + ", r=" + radius + ")";
+		return "Circle(centre=" + centre + ", r=" + radius + ")";
 	}
 	
 	(:test)
 	function containsOk(logger) {
 		var circle = new Circle(new Point(0, 0), 3);
+		logger.debug(circle);
 		return
 			circle.contains(new Point(-1, 1)) &&
 			circle.contains(new Point(1, 1)) &&

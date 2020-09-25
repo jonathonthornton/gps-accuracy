@@ -3,8 +3,9 @@ using Toybox.System;
 
 class SmallestEnclosingCircle {
 
-	public static function makeCircle(points) {
-		var shuffled = shuffle(points);
+	public static function makeCircle(pointsArray) {
+		var points = new Points(pointsArray);
+		var shuffled = points.shuffle();
 		
 		var c = null;
 		for (var i = 0; i < shuffled.size(); i++) {
@@ -99,46 +100,5 @@ class SmallestEnclosingCircle {
 		return (x > y) ? x : y;
 	}
 	
-	private static function shuffle(points) {
-		var shuffled = points.slice(0, points.size()); // Clone the array.
-		var size = shuffled.size();
-		
-		for (var i = 0; i < size; i++) {
-			var j = i + (Math.rand() % (size - i));
-			var k = new Point(shuffled[j].x, shuffled[j].y);
-			shuffled[j] = new Point(shuffled[i].x, shuffled[i].y);
-			shuffled[i] = k;
-		}
-		return shuffled;
-	}
-	
-	(:test)
-	function shuffleOk(logger) {
-		var points = [new Point(1, 1), new Point(2, 2), new Point(3, 3), new Point(4, 4), new Point(5, 5)];
-		
-		for (var i = 0; i < 20; i++) {
-			var shuffled = SmallestEnclosingCircle.shuffle(points);
-			
-			if (shuffled.size() != points.size()) {
-				return false;
-			}
-			
-			for (var j = 0; j < points.size(); j++) {
-				if (!SmallestEnclosingCircle.arrayContainsPoint(shuffled, points[j])) {
-					return false;
-				}
-			}
-			logger.debug(shuffled);
-		}
-		return true;
-	}
-	
-	private static function arrayContainsPoint(array, point) {
-		for (var i = 0; i < array.size(); i++) {
-			if (array[i].equals(point)) {
-				return true;
-			}
-		}
-		return false;
-	}
+
 }

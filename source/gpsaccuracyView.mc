@@ -66,6 +66,7 @@ class GpsAccuracyView extends WatchUi.View {
     }
 
 	private static function translate(points) {
+		// TODO Y value increase up the screen. Need to flip.
 		var translated = new[points.size()];
 		var min = GpsAccuracyView.minXY(points);
 		
