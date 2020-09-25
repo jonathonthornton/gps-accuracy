@@ -12,10 +12,6 @@ class Circle {
 		self.radius = radius;
 	}
 	
-	public function contains(point) {
-		return centre.distance(point) <= radius * MULTIPLICATIVE_EPSILON;
-	}
-	
 	public function containsAll(points) {
 		for (var i = 0; i < points.size(); i++) {
 			if (!contains(points[i])) {
@@ -23,6 +19,10 @@ class Circle {
 			}
 			return true;
 		}
+	}
+	
+	public function contains(point) {
+		return centre.distance(point) <= radius * MULTIPLICATIVE_EPSILON;
 	}
 	
 	public function getDiameterAsGCD() {
@@ -42,8 +42,9 @@ class Circle {
 			Math.cos(lat1) * Math.cos(lat2) *
 			Math.sin(deltaLong / 2) * Math.sin(deltaLong / 2);
 		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		var d = R * c; // in metres.
+		var d = R * c;
 		
+		// Return distance in metres.
 		return d;
 	}
 	

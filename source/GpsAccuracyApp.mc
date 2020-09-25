@@ -21,11 +21,10 @@ class GpsAccuracyApp extends Application.AppBase {
 	function onPosition(info) {
 		var lat = info.position.toDegrees()[0];
 		var long = info.position.toDegrees()[1];		
-		pointCache.add(new Point(lat, long));		
-        
+		pointCache.add(new Point(lat, long));
+		        
    	    view.setPosition(info);     
-		view.setSmallestCircle(SmallestEnclosingCircle.makeCircle(pointCache.toArray())); 
-		view.setpointArray(pointCache.toArray());
+		view.setPoints(new Points(pointCache.toArray()));
     }
 
     function getInitialView() {

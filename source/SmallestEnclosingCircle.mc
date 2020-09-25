@@ -3,9 +3,9 @@ using Toybox.System;
 
 class SmallestEnclosingCircle {
 
-	public static function makeCircle(pointsArray) {
-		var points = new Points(pointsArray);
-		var shuffled = points.shuffle();
+	public static function makeCircle(points) {
+		System.println("makeCircle points=" + points);
+		var shuffled = points.shuffle().toArray();
 		
 		var c = null;
 		for (var i = 0; i < shuffled.size(); i++) {
@@ -99,6 +99,4 @@ class SmallestEnclosingCircle {
 	private static function max(x, y) {
 		return (x > y) ? x : y;
 	}
-	
-
 }

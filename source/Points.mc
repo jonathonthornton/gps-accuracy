@@ -33,6 +33,10 @@ class Points {
 		return points[index];
 	}
 	
+	function getSmallestEnclosingCircle() {
+		return SmallestEnclosingCircle.makeCircle(self);
+	}
+	
 	public function size() {
 		return points.size();
 	}
