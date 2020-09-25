@@ -25,7 +25,7 @@ class Circle {
 		}
 	}
 	
-	public function getWidthAsGCD() {
+	public function getDiameterAsGCD() {
 		var p1 = new Point(centre.x - radius, centre.y);
 		var p2 = new Point(centre.x + radius, centre.y);	
 		return calculateGCD(p1, p2);

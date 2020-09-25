@@ -1,8 +1,10 @@
 using Toybox.Application;
 
-class gpsaccuracyApp extends Application.AppBase {
+class GpsAccuracyApp extends Application.AppBase {
+	private static const CACHE_SIZE = 10;
+	
 	var view;
-	var positionCache;
+	var pointCache = new Cache(CACHE_SIZE);
 	
     function initialize() {
         AppBase.initialize();
@@ -10,7 +12,6 @@ class gpsaccuracyApp extends Application.AppBase {
 
     function onStart(state) {
     	Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, method(:onPosition));
-    	positionCache = new Cache(10);
     }
 
     function onStop(state) {
@@ -18,17 +19,17 @@ class gpsaccuracyApp extends Application.AppBase {
     }
 
 	function onPosition(info) {
-	    view.setPosition(info);
-	
 		var lat = info.position.toDegrees()[0];
 		var long = info.position.toDegrees()[1];		
-		positionCache.add(new Point(lat, long));		
-        var circle = SmallestEnclosingCircle.makeCircle(positionCache.get());
-		view.setSmallestCircle(circle); 
+		pointCache.add(new Point(lat, long));		
+        
+   	    view.setPosition(info);     
+		view.setSmallestCircle(SmallestEnclosingCircle.makeCircle(pointCache.toArray())); 
+		view.setpointArray(pointCache.toArray());
     }
 
     function getInitialView() {
-    	view = new gpsaccuracyView();
+    	view = new GpsAccuracyView();
         return [ view ];
     }
 }

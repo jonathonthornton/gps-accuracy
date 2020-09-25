@@ -95,7 +95,7 @@
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="68" pc="268437660" symbol="getWidthAsGCDOk"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="69" pc="268437683" symbol="getWidthAsGCDOk"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="70" pc="268437703" symbol="getWidthAsGCDOk"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="4" pc="268443194" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\Circle.mc" id="29" lineNum="4" pc="268443189" symbol="&lt;init&gt;"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="6" pc="268437727" symbol="makeCircle"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="7" pc="268437731" symbol="makeCircle"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\SmallestEnclosingCircle.mc" id="31" lineNum="9" pc="268437746" symbol="makeCircle"/>
@@ -158,7 +158,7 @@
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="31" pc="268440748" symbol="getInitialView"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="32" pc="268440752" symbol="getInitialView"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="33" pc="268440782" symbol="getInitialView"/>
-        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="7" pc="268443106" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyApp.mc" id="54" lineNum="7" pc="268443101" symbol="&lt;init&gt;"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="56" lineNum="9" pc="268440806" symbol="initialize"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="56" lineNum="10" pc="268440810" symbol="initialize"/>
         <entry filename="C:\\development\\eclipse-workspace\\gps-accuracy\\source\\GpsAccuracyView.mc" id="57" lineNum="13" pc="268440829" symbol="onLayout"/>
@@ -461,9 +461,9 @@
         <entry endPc="268442596" name="points" stackId="2" startPc="268442256"/>
         <entry endPc="268442596" name="translated" stackId="3" startPc="268442256"/>
         <entry arg="true" endPc="268442597" name="logger" stackId="1" startPc="268442252"/>
-        <entry endPc="268442965" name="rez_cmp_local_text_1388438371" stackId="4" startPc="268442609"/>
+        <entry endPc="268442965" name="rez_cmp_local_text_6540773784" stackId="3" startPc="268442609"/>
+        <entry endPc="268442965" name="rez_cmp_local_text_1189953356" stackId="4" startPc="268442609"/>
         <entry endPc="268442965" name="rez_cmp_local_custom_drawable_GpsAccuracyView" stackId="2" startPc="268442609"/>
-        <entry endPc="268442965" name="rez_cmp_local_text_9438983185" stackId="3" startPc="268442609"/>
         <entry arg="true" endPc="268442966" name="dc" stackId="1" startPc="268442597"/>
     </localVars>
     <annotations>

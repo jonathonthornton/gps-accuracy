@@ -5,7 +5,6 @@ class SmallestEnclosingCircle {
 
 	public static function makeCircle(points) {
 		var shuffled = shuffle(points);
-		System.println("shuffled=" + shuffled);
 		
 		var c = null;
 		for (var i = 0; i < shuffled.size(); i++) {

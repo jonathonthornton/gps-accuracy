@@ -17,7 +17,7 @@ class Cache {
 		i++;
 	}
 	
-	function get() {
+	function toArray() {
 		if (isFull) {
 			return cache;
 		} else {
@@ -29,8 +29,8 @@ class Cache {
 	function addItemOk(logger) {
 		var cache = new Cache(3);
 		cache.add("the");
-		var size = cache.get().size();
-		var contents = cache.get();
+		var contents = cache.toArray();
+		var size = contents.size();
 		
 		return 
 			size == 1 &&
@@ -45,8 +45,8 @@ class Cache {
 		cache.add("brown");
 		cache.add("fox");
 		
-		var size = cache.get().size();
-		var contents = cache.get();
+		var contents = cache.toArray();
+		var size = contents.size();
 		
 		return
 			size == 3 &&
