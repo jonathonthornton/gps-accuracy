@@ -1,6 +1,7 @@
 using Toybox.Math;
 using Toybox.System;
 
+// See https://www.nayuki.io/page/smallest-enclosing-circle
 class SmallestEnclosingCircle {
 
 	public static function makeCircle(points) {

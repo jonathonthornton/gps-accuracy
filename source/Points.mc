@@ -29,18 +29,50 @@ class Points {
 		return false;
 	}
 	
-	function get(index) {
+	public function get(index) {
 		return points[index];
 	}
 	
-	function getSmallestEnclosingCircle() {
+	public function getSmallestEnclosingCircle() {
 		return SmallestEnclosingCircle.makeCircle(self);
+	}
+		
+	public function toPixelArray(minPixel, maxPixel, scaleMetres) {	
+		var sec = getSmallestEnclosingCircle();		
+		var diameterMetres = sec.getDiameterAsGCD();
+		
+		if (diameterMetres > scaleMetres || sec.radius == 0) {
+			return [];
+		}
+		
+		var xMin = sec.centre.x - sec.radius;
+		var xMax = sec.centre.x + sec.radius;
+		var yMin = sec.centre.y - sec.radius;
+		var yMax = sec.centre.y + sec.radius;
+		var xScale = (maxPixel.x - minPixel.x) / (xMax - xMin);
+		var yScale = -(maxPixel.y - minPixel.y) / (yMax - yMin);
+		
+		System.println("minPixel=" + minPixel);
+		System.println("maxPixel=" + maxPixel);
+		System.println("min=" + new Point(xMin, yMin));
+		System.println("max=" + new Point(xMax, yMax));
+		System.println("sec.radius=" + sec.radius);	
+		System.println("xScale=" + xScale);
+		System.println("yScale=" + yScale);
+			
+		var result = new[points.size()];		
+		for (var i = 0; i < points.size(); i++) {
+			var xPixel = ((points[i].x - xMin) * xScale) + minPixel.x;			
+			var yPixel = ((points[i].y - yMax) * yScale) + minPixel.y;				
+			result[i] = new Point(xPixel, yPixel);	
+		}
+		return result;
 	}
 	
 	public function size() {
 		return points.size();
 	}
-	
+		
 	public function toArray() {
 		return points;
 	}

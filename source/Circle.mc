@@ -31,6 +31,11 @@ class Circle {
 		return calculateGCD(p1, p2);
 	}
 	
+	public function toString() {
+		return "Circle(centre=" + centre + ", r=" + radius + ")";
+	}
+	
+	// See https://www.movable-type.co.uk/scripts/latlong.html
 	private static function calculateGCD(p1, p2) {
 		var pi180 = Math.PI / 180;
 		var lat1 = p1.x * pi180;
@@ -47,11 +52,7 @@ class Circle {
 		// Return distance in metres.
 		return d;
 	}
-	
-	public function toString() {
-		return "Circle(centre=" + centre + ", r=" + radius + ")";
-	}
-	
+
 	(:test)
 	function containsOk(logger) {
 		var circle = new Circle(new Point(0, 0), 3);
