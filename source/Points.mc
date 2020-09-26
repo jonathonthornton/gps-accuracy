@@ -37,6 +37,7 @@ class Points {
 		return SmallestEnclosingCircle.makeCircle(self);
 	}
 		
+	// http://edspi31415.blogspot.com/2012/09/cartesian-coordinates-to-pixel-screen.html
 	public function toPixelArray(minPixel, maxPixel, scaleMetres) {	
 		var sec = getSmallestEnclosingCircle();		
 		var diameterMetres = sec.getDiameterAsGCD();

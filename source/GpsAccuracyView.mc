@@ -42,7 +42,7 @@ class GpsAccuracyView extends WatchUi.View {
             string = "Accuracy(m) = " + gcd.format("%4.2f");
             dc.drawText(halfWidth, 60, Graphics.FONT_SMALL, string, Graphics.TEXT_JUSTIFY_CENTER);
             
-           	var scale = 0.7;
+           	var scale = 0.9;
            	var width = dc.getWidth() * scale;
            	var height = width;          	
             var xOffset = (dc.getWidth() - width) / 2;
@@ -54,8 +54,8 @@ class GpsAccuracyView extends WatchUi.View {
             dc.drawRectangle(minPixel.x, minPixel.y, width, height);           
             
             for (var i = 0; i < pixels.size(); i++) {
-				System.println("drawPoint=" + pixels[i]);
-            	dc.drawPoint(pixels[i].x, pixels[i].y);
+				System.println("fillCircle=" + pixels[i]);
+            	dc.fillCircle(pixels[i].x, pixels[i].y, 3);            	
             }
         } else {
             dc.drawText(halfWidth, halfHeight, Graphics.FONT_SMALL, "No position info", Graphics.TEXT_JUSTIFY_CENTER);
