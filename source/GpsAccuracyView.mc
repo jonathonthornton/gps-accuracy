@@ -2,6 +2,12 @@ using Toybox.WatchUi;
 using Toybox.System;
 
 class GpsAccuracyView extends WatchUi.View {
+	private static const TEXT_Y_OFFSET = 0;
+	private static const TEXT_Y_STEP = 25;	
+	private static const GRAPH_WIDTH_SCALE = 0.9; 
+	private static const GRAPH_WIDTH_METRES = 1000;	
+	private static const GRAPH_Y_OFFSET = 130; 
+	
 	var info = null;
 	var points = null;
 	
@@ -19,55 +25,64 @@ class GpsAccuracyView extends WatchUi.View {
     }
 
 	function onUpdate(dc) {
-        // Set background colour.
         dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_BLACK);
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-               
-        var halfWidth = dc.getWidth() / 2;
-        var halfHeight = dc.getHeight() / 2;     
-        
+                     
         if (info != null) {
-            var string = "Latitude = " + info.position.toDegrees()[0].format("%3.6f");
-            dc.drawText(halfWidth, 0, Graphics.FONT_SMALL, string, Graphics.TEXT_JUSTIFY_CENTER);
-            
-            string = "Longitude = " + info.position.toDegrees()[1].format("%3.6f");
-            dc.drawText(halfWidth, 20, Graphics.FONT_SMALL, string, Graphics.TEXT_JUSTIFY_CENTER);
-                       
-            string = "Altitude(m) = " + info.altitude.format("%4.2f");
-            dc.drawText(halfWidth, 40, Graphics.FONT_SMALL, string, Graphics.TEXT_JUSTIFY_CENTER);
-                       
-            var circle = points.getSmallestEnclosingCircle();
-            var gcd = circle.getDiameterAsGCD();
-            string = "Accuracy(m) = " + gcd.format("%4.2f");
-            dc.drawText(halfWidth, 60, Graphics.FONT_SMALL, string, Graphics.TEXT_JUSTIFY_CENTER);
-            
-           	var scale = 0.9;
-           	var width = dc.getWidth() * scale;
-           	var height = width;          	
-            var xOffset = (dc.getWidth() - width) / 2;
-            var yOffset = 120;
-            var minPixel = new Point(xOffset, yOffset);
-            var maxPixel = new Point(width, yOffset + height);
-            var pixels = points.toPixelArray(minPixel, maxPixel, 1000);
-            
-            dc.drawRectangle(minPixel.x, minPixel.y, width, height);           
-            
-            for (var i = 0; i < pixels.size(); i++) {
-				System.println("fillCircle=" + pixels[i]);
-            	dc.fillCircle(pixels[i].x, pixels[i].y, 3);            	
-            }
-        } else {
-            dc.drawText(halfWidth, halfHeight, Graphics.FONT_SMALL, "No position info", Graphics.TEXT_JUSTIFY_CENTER);
+        	drawText(dc);
+        	drawGraph(dc);
+        } else { 
+        	drawErrorMessage(dc);      
         }
      }
 
-    function setPosition(info) {
+    public function setPosition(info) {
         self.info = info;
         WatchUi.requestUpdate();
     }
     
-    function setPoints(points) {
+    public function setPoints(points) {
     	self.points = points;
+    }
+    
+    private function drawText(dc) {
+        var halfWidth = dc.getWidth() / 2;
+		var circle = points.getSmallestEnclosingCircle();
+        var gcd = circle.getDiameterAsGCD();
+    	var text = [
+        	"Latitude = " + info.position.toDegrees()[0].format("%3.6f"),
+         	"Longitude = " + info.position.toDegrees()[1].format("%3.6f"),
+         	"Altitude(m) = " + info.altitude.format("%4.2f"),
+        	"Accuracy(m) = " + gcd.format("%4.2f")
+        ];
+        
+        var yOffset = TEXT_Y_OFFSET;          
+        for (var i = 0; i < text.size(); i++) {
+        	dc.drawText(halfWidth, yOffset, Graphics.FONT_SMALL, text[i], Graphics.TEXT_JUSTIFY_CENTER);
+        	yOffset += TEXT_Y_STEP;
+       	}    
+    }
+    
+    private function drawErrorMessage(dc) {
+		var halfWidth = dc.getWidth() / 2;
+    	var halfHeight = dc.getHeight() / 2;               
+    	dc.drawText(halfWidth, halfHeight, Graphics.FONT_SMALL, "No position info", Graphics.TEXT_JUSTIFY_CENTER);
+	}
+    
+    private function drawGraph(dc) {
+      	var width = dc.getWidth() * GRAPH_WIDTH_SCALE;
+       	var height = width;          	
+        var xOffset = (dc.getWidth() - width) / 2;
+        var minPixel = new Point(xOffset, GRAPH_Y_OFFSET);
+        var maxPixel = new Point(width, GRAPH_Y_OFFSET + height);
+        var pixels = points.toPixelArray(minPixel, maxPixel, GRAPH_WIDTH_METRES);
+        
+        dc.drawRectangle(minPixel.x, minPixel.y, width, height);           
+        
+        for (var i = 0; i < pixels.size(); i++) {
+			System.println("fillCircle=" + pixels[i]);
+        	dc.fillCircle(pixels[i].x, pixels[i].y, 3);            	
+        }    
     }
 }
