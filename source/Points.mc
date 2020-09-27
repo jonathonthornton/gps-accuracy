@@ -103,6 +103,4 @@ class Points {
 		}
 		return true;
 	}
-	
-
 }

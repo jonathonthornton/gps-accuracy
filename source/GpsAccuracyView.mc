@@ -33,7 +33,7 @@ class GpsAccuracyView extends WatchUi.View {
         	drawText(dc);
         	drawGraph(dc);
         } else { 
-        	drawErrorMessage(dc);      
+        	drawErrorMessage(dc, "No position info");      
         }
      }
 
@@ -47,7 +47,6 @@ class GpsAccuracyView extends WatchUi.View {
     }
     
     private function drawText(dc) {
-        var halfWidth = dc.getWidth() / 2;
 		var circle = points.getSmallestEnclosingCircle();
         var gcd = circle.getDiameterAsGCD();
     	var text = [
@@ -57,6 +56,7 @@ class GpsAccuracyView extends WatchUi.View {
         	"Accuracy(m) = " + gcd.format("%4.2f")
         ];
         
+        var halfWidth = dc.getWidth() / 2;
         var yOffset = TEXT_Y_OFFSET;          
         for (var i = 0; i < text.size(); i++) {
         	dc.drawText(halfWidth, yOffset, Graphics.FONT_SMALL, text[i], Graphics.TEXT_JUSTIFY_CENTER);
@@ -64,10 +64,10 @@ class GpsAccuracyView extends WatchUi.View {
        	}    
     }
     
-    private function drawErrorMessage(dc) {
+    private function drawErrorMessage(dc, errorMessage) {
 		var halfWidth = dc.getWidth() / 2;
     	var halfHeight = dc.getHeight() / 2;               
-    	dc.drawText(halfWidth, halfHeight, Graphics.FONT_SMALL, "No position info", Graphics.TEXT_JUSTIFY_CENTER);
+    	dc.drawText(halfWidth, halfHeight, Graphics.FONT_SMALL, errorMessage, Graphics.TEXT_JUSTIFY_CENTER);
 	}
     
     private function drawGraph(dc) {
