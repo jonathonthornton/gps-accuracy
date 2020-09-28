@@ -5,7 +5,7 @@ class GpsAccuracyView extends WatchUi.View {
 	private static const TEXT_Y_OFFSET = 0;
 	private static const TEXT_Y_STEP = 25;	
 	private static const GRAPH_WIDTH_SCALE = 0.9; 
-	private static const GRAPH_WIDTH_METRES = 50;	
+	private static const GRAPH_WIDTH_METRES = 70;	
 	private static const GRAPH_Y_OFFSET = 130; 
 	private static const POINT_WIDTH = 3;
 	
@@ -34,7 +34,7 @@ class GpsAccuracyView extends WatchUi.View {
         	drawText(dc);
         	drawGraph(dc);
         } else { 
-        	drawErrorMessage(dc, "No position info");      
+        	drawErrorMessage(dc, "No Position Info");      
         }
      }
 
@@ -48,13 +48,12 @@ class GpsAccuracyView extends WatchUi.View {
     }
     
     private function drawText(dc) {
-		var circle = points.getSmallestEnclosingCircle();
-        var gcd = circle.getDiameterAsGCD();
+		var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
     	var text = [
         	"Latitude = " + info.position.toDegrees()[0].format("%3.6f"),
          	"Longitude = " + info.position.toDegrees()[1].format("%3.6f"),
          	"Altitude(m) = " + info.altitude.format("%4.2f"),
-        	"Accuracy(m) = " + gcd.format("%4.2f")
+        	"Accuracy(m) = " + metres.format("%4.2f")
         ];
         
         var halfWidth = dc.getWidth() / 2;
@@ -72,33 +71,40 @@ class GpsAccuracyView extends WatchUi.View {
 	}
         
     private function drawGraph(dc) {
-		drawPoints(dc);
-//        
-//        var pixelCircle = points.toPixelCircle(mapWidth, mapHeight, xOffset, yOffset);
-//        if (pixelCircle != null) {
-//            System.println("pixelCircle=" + pixelCircle);
-//        	dc.drawCircle(pixelCircle.centre.x, pixelCircle.centre.y, pixelCircle.radius);
-//        } else {
-//        	System.println("pixelCircle=null");
-//        }
-    }
-    
-    private function drawPoints(dc) {
       	var mapWidth = dc.getWidth() * GRAPH_WIDTH_SCALE;
        	var mapHeight = mapWidth;          	
         var xOffset = (dc.getWidth() - mapWidth) / 2;
         var yOffset = GRAPH_Y_OFFSET;
-              
-        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight); 
-                
+        var sec = points.getSmallestEnclosingCircle();
+        var metres = sec.getDiameterMetres();
+      
+        if (metres > GRAPH_WIDTH_METRES) {
+	        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);    
+        	var x = xOffset + (mapWidth / 2);
+        	var y = yOffset + (mapHeight / 2) - 10;
+        	dc.drawText(x, y, Graphics.FONT_SMALL, "Poor Accuracy", Graphics.TEXT_JUSTIFY_CENTER);        
+        	return;
+        }
+        
+        var factor = metres / GRAPH_WIDTH_METRES;
+        mapWidth *= factor;
+        mapHeight *= factor;
+        xOffset = (dc.getWidth() - mapWidth) / 2;
+        yOffset = yOffset + (yOffset - (mapHeight / 2));
 		var newMin = new Point(xOffset, yOffset);
 		var newMax = new Point(xOffset + mapWidth, yOffset + mapHeight);
         var pixelArray = points.toPixelArray(newMin, newMax);
         
+        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
+  
+		var pixelCircle = points.toPixelCircle(newMin, newMax);
+		System.println("pixelCircle=" + pixelCircle);
+		dc.drawCircle(pixelCircle.centre.x, pixelCircle.centre.y, pixelCircle.radius);
+
         for (var i = 0; i < pixelArray.size(); i++) {
         	var point = pixelArray[i];
 			System.println("fillCircle=" + point);
         	dc.fillCircle(point.x, point.y, POINT_WIDTH);            	
-        }    
+        }
     }
 }

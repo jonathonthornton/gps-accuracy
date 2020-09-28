@@ -24,7 +24,7 @@ class Circle {
 		return centre.distance(point) <= radius * MULTIPLICATIVE_EPSILON;
 	}
 	
-	public function getDiameterAsGCD() {
+	public function getDiameterMetres() {
 		var p1 = new Point(centre.x - radius, centre.y);
 		var p2 = new Point(centre.x + radius, centre.y);	
 		return MyMath.calculateGCD(p1, p2);

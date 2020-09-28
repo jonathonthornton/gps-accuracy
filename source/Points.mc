@@ -52,30 +52,17 @@ class Points {
 		return result;
 	}
 	
-	public function toPixelCircle(mapWidth, mapHeight, xOffset, yOffset) {
-		return null;
-//		var sec = getSmallestEnclosingCircle();		
-//		
-//		if (sec.radius == 0) {
-//			return null;
-//		}
-//		System.println("sec=" + sec);
-//		
-//		var minX = sec.centre.x - sec.radius;
-//		var maxX = sec.centre.x + sec.radius;
-//		var minY = sec.centre.y - sec.radius;
-//		var maxY = sec.centre.y + sec.radius;
-//				
-//		var longLeft = minY;
-//		var longRight = maxY;
-//		var latBottom = maxX;
-//		
-//		var midX = sec.centre.x;
-//		var midY = sec.centre.y;	
-//		
-//		var pixel = convertGeoToPixel(midX, midY, mapWidth, mapHeight, longLeft, longRight, latBottom);
-//		var offsetPixel = new Point(pixel.x + xOffset, pixel.y - yOffset);
-//		return new Circle(new Point(offsetPixel.x, offsetPixel.y), mapWidth / 2);
+	public function toPixelCircle(newMin, newMax) {
+		var sec = getSmallestEnclosingCircle();
+		var factor = 1 << 6;
+		var oldMin = new Point(getMinX() * factor, getMinY() * factor);
+		var oldMax = new Point(getMaxX() * factor, getMaxY() * factor);
+		
+		var centreX = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, sec.centre.x * factor).toNumber();
+        var edgeX = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, (sec.centre.x + sec.radius) * factor).toNumber();		
+        var centreY = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.y, newMax.y, sec.centre.y * factor).toNumber();
+        var radius = edgeX - centreX;
+        return new Circle(new Point(centreX.toNumber(), centreY.toNumber()), radius);	
 	}
 	
 	public function getMinX() {
