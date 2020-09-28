@@ -8,19 +8,15 @@ class Point {
 	}
 	
 	public function subtract(p) {
-		return new Point(self.x - p.x, y - p.y);
+		return new Point(x - p.x, y - p.y);
 	}
 	
 	public function distance(p) {
-		return hypot(self.x - p.x, y - p.y);
+		return MyMath.hypot(x - p.x, y - p.y);
 	}
 	
 	public function cross(p) {
 		return self.x * p.y - y * p.x;
-	}
-	
-	private static function hypot(x, y) {
-		return Math.sqrt(x * x + y * y);
 	}
 	
 	public function equals(other) {
@@ -28,6 +24,6 @@ class Point {
 	}
 	
 	public function toString() {
-		return "Point(" + self.x + "," + self.y + ")";
-	}	
+		return "Point(" + x + "," + y + ")";
+	}
 }

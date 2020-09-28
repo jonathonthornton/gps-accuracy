@@ -36,40 +36,88 @@ class Points {
 	public function getSmallestEnclosingCircle() {
 		return SmallestEnclosingCircle.makeCircle(self);
 	}
+	
+	public function toPixelArray(newMin, newMax) {
+		var factor = 1 << 6;
+		var oldMin = new Point(getMinX() * factor, getMinY() * factor);
+		var oldMax = new Point(getMaxX() * factor, getMaxY() * factor);
+		var result = [];
 		
-	// http://edspi31415.blogspot.com/2012/09/cartesian-coordinates-to-pixel-screen.html
-	public function toPixelArray(minPixel, maxPixel, scaleMetres) {	
-		var sec = getSmallestEnclosingCircle();		
-		var diameterMetres = sec.getDiameterAsGCD();
-		
-		if (diameterMetres > scaleMetres || sec.radius == 0) {
-			return [];
+		for (var i = 0; i < points.size(); i++) {
+			var x = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, points[i].x * factor);
+        	var y = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.y, newMax.y, points[i].y * factor);
+        	result.add(new Point(x.toNumber(), y.toNumber()));
 		}
 		
-		var xMin = sec.centre.x - sec.radius;
-		var xMax = sec.centre.x + sec.radius;
-		var yMin = sec.centre.y - sec.radius;
-		var yMax = sec.centre.y + sec.radius;
-		var xScale = (maxPixel.x - minPixel.x) / (xMax - xMin);
-		var yScale = -(maxPixel.y - minPixel.y) / (yMax - yMin);
-		
-		System.println("minPixel=" + minPixel);
-		System.println("maxPixel=" + maxPixel);
-		System.println("min=" + new Point(xMin, yMin));
-		System.println("max=" + new Point(xMax, yMax));
-		System.println("sec.radius=" + sec.radius);	
-		System.println("xScale=" + xScale);
-		System.println("yScale=" + yScale);
-			
-		var result = new[points.size()];		
+		return result;
+	}
+	
+	public function toPixelCircle(mapWidth, mapHeight, xOffset, yOffset) {
+		return null;
+//		var sec = getSmallestEnclosingCircle();		
+//		
+//		if (sec.radius == 0) {
+//			return null;
+//		}
+//		System.println("sec=" + sec);
+//		
+//		var minX = sec.centre.x - sec.radius;
+//		var maxX = sec.centre.x + sec.radius;
+//		var minY = sec.centre.y - sec.radius;
+//		var maxY = sec.centre.y + sec.radius;
+//				
+//		var longLeft = minY;
+//		var longRight = maxY;
+//		var latBottom = maxX;
+//		
+//		var midX = sec.centre.x;
+//		var midY = sec.centre.y;	
+//		
+//		var pixel = convertGeoToPixel(midX, midY, mapWidth, mapHeight, longLeft, longRight, latBottom);
+//		var offsetPixel = new Point(pixel.x + xOffset, pixel.y - yOffset);
+//		return new Circle(new Point(offsetPixel.x, offsetPixel.y), mapWidth / 2);
+	}
+	
+	public function getMinX() {
+		var result = 9999999;
 		for (var i = 0; i < points.size(); i++) {
-			var xPixel = ((points[i].x - xMin) * xScale) + minPixel.x;			
-			var yPixel = ((points[i].y - yMax) * yScale) + minPixel.y;				
-			result[i] = new Point(xPixel, yPixel);	
+			if (points[i].x < result) {
+				result = points[i].x;
+			}
 		}
 		return result;
 	}
 	
+	public function getMaxX() {
+		var result = -9999999;
+		for (var i = 0; i < points.size(); i++) {
+			if (points[i].x > result) {
+				result = points[i].x;
+			}
+		}
+		return result;
+	}
+	
+	public function getMinY() {
+		var result = 9999999;
+		for (var i = 0; i < points.size(); i++) {
+			if (points[i].y < result) {
+				result = points[i].y;
+			}
+		}
+		return result;
+	}
+	
+	public function getMaxY() {
+		var result = -9999999;
+		for (var i = 0; i < points.size(); i++) {
+			if (points[i].y > result) {
+				result = points[i].y;
+			}
+		}
+		return result;
+	}
+		
 	public function size() {
 		return points.size();
 	}
@@ -81,7 +129,7 @@ class Points {
 	public function toString() {
 		return points.toString();
 	}
-	
+		
 	(:test)
 	function shuffleOk(logger) {
 		var pointsArray = [new Point(1, 1), new Point(2, 2), new Point(3, 3), new Point(4, 4), new Point(5, 5)];
@@ -103,4 +151,32 @@ class Points {
 		}
 		return true;
 	}
+	
+	(:test)
+	function minXOk(logger) {
+		var pointsArray = [new Point(1, 2), new Point(3, 4), new Point(5, 6)];
+		var points = new Points(pointsArray);
+		return points.getMinX() == 1;
+	}
+
+	(:test)
+	function maxXOk(logger) {
+		var pointsArray = [new Point(1, 2), new Point(3, 4), new Point(5, 6)];
+		var points = new Points(pointsArray);
+		return points.getMaxX() == 5;
+	}
+	
+	(:test)
+	function minYOk(logger) {
+		var pointsArray = [new Point(1, 2), new Point(3, 4), new Point(5, 6)];
+		var points = new Points(pointsArray);
+		return points.getMinY() == 2;
+	}
+	
+	(:test)
+	function maxYOk(logger) {
+		var pointsArray = [new Point(1, 2), new Point(3, 4), new Point(5, 6)];
+		var points = new Points(pointsArray);
+		return points.getMaxY() == 6;
+	}	
 }

@@ -5,8 +5,9 @@ class GpsAccuracyView extends WatchUi.View {
 	private static const TEXT_Y_OFFSET = 0;
 	private static const TEXT_Y_STEP = 25;	
 	private static const GRAPH_WIDTH_SCALE = 0.9; 
-	private static const GRAPH_WIDTH_METRES = 1000;	
+	private static const GRAPH_WIDTH_METRES = 50;	
 	private static const GRAPH_Y_OFFSET = 130; 
+	private static const POINT_WIDTH = 3;
 	
 	var info = null;
 	var points = null;
@@ -28,7 +29,7 @@ class GpsAccuracyView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_BLACK);
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-                     
+ 
         if (info != null) {
         	drawText(dc);
         	drawGraph(dc);
@@ -69,20 +70,35 @@ class GpsAccuracyView extends WatchUi.View {
     	var halfHeight = dc.getHeight() / 2;               
     	dc.drawText(halfWidth, halfHeight, Graphics.FONT_SMALL, errorMessage, Graphics.TEXT_JUSTIFY_CENTER);
 	}
-    
+        
     private function drawGraph(dc) {
-      	var width = dc.getWidth() * GRAPH_WIDTH_SCALE;
-       	var height = width;          	
-        var xOffset = (dc.getWidth() - width) / 2;
-        var minPixel = new Point(xOffset, GRAPH_Y_OFFSET);
-        var maxPixel = new Point(width, GRAPH_Y_OFFSET + height);
-        var pixels = points.toPixelArray(minPixel, maxPixel, GRAPH_WIDTH_METRES);
+		drawPoints(dc);
+//        
+//        var pixelCircle = points.toPixelCircle(mapWidth, mapHeight, xOffset, yOffset);
+//        if (pixelCircle != null) {
+//            System.println("pixelCircle=" + pixelCircle);
+//        	dc.drawCircle(pixelCircle.centre.x, pixelCircle.centre.y, pixelCircle.radius);
+//        } else {
+//        	System.println("pixelCircle=null");
+//        }
+    }
+    
+    private function drawPoints(dc) {
+      	var mapWidth = dc.getWidth() * GRAPH_WIDTH_SCALE;
+       	var mapHeight = mapWidth;          	
+        var xOffset = (dc.getWidth() - mapWidth) / 2;
+        var yOffset = GRAPH_Y_OFFSET;
+              
+        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight); 
+                
+		var newMin = new Point(xOffset, yOffset);
+		var newMax = new Point(xOffset + mapWidth, yOffset + mapHeight);
+        var pixelArray = points.toPixelArray(newMin, newMax);
         
-        dc.drawRectangle(minPixel.x, minPixel.y, width, height);           
-        
-        for (var i = 0; i < pixels.size(); i++) {
-			System.println("fillCircle=" + pixels[i]);
-        	dc.fillCircle(pixels[i].x, pixels[i].y, 3);            	
+        for (var i = 0; i < pixelArray.size(); i++) {
+        	var point = pixelArray[i];
+			System.println("fillCircle=" + point);
+        	dc.fillCircle(point.x, point.y, POINT_WIDTH);            	
         }    
     }
 }

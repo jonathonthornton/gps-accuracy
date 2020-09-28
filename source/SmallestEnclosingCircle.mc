@@ -3,7 +3,6 @@ using Toybox.System;
 
 // See https://www.nayuki.io/page/smallest-enclosing-circle
 class SmallestEnclosingCircle {
-
 	public static function makeCircle(points) {
 		System.println("makeCircle points=" + points);
 		var shuffled = points.shuffle().toArray();
@@ -72,8 +71,8 @@ class SmallestEnclosingCircle {
 	
 	private static function makeCircumcircle(a, b, c) {
 		// Mathematical algorithm from Wikipedia: Circumscribed circle
-		var ox = (min(min(a.x, b.x), c.x) + max(max(a.x, b.x), c.x)) / 2;
-		var oy = (min(min(a.y, b.y), c.y) + max(max(a.y, b.y), c.y)) / 2;
+		var ox = (MyMath.min(MyMath.min(a.x, b.x), c.x) + MyMath.max(MyMath.max(a.x, b.x), c.x)) / 2;
+		var oy = (MyMath.min(MyMath.min(a.y, b.y), c.y) + MyMath.max(MyMath.max(a.y, b.y), c.y)) / 2;
 		var ax = a.x - ox, ay = a.y - oy;
 		var bx = b.x - ox, by = b.y - oy;
 		var cx = c.x - ox, cy = c.y - oy;
@@ -84,20 +83,12 @@ class SmallestEnclosingCircle {
 		var x = ((ax * ax + ay * ay) * (by - cy) + (bx * bx + by * by) * (cy - ay) + (cx * cx + cy * cy) * (ay - by)) / d;
 		var y = ((ax * ax + ay * ay) * (cx - bx) + (bx * bx + by * by) * (ax - cx) + (cx * cx + cy * cy) * (bx - ax)) / d;
 		var p = new Point(ox + x, oy + y);
-		var r = max(max(p.distance(a), p.distance(b)), p.distance(c));
+		var r = MyMath.max(MyMath.max(p.distance(a), p.distance(b)), p.distance(c));
 		return new Circle(p, r);
 	}
 	
 	private static function makeDiameter(a, b) {
 		var c = new Point((a.x + b.x) / 2, (a.y + b.y) / 2);
-		return new Circle(c, max(c.distance(a), c.distance(b)));
-	}
-	
-	private static function min(x, y) {
-		return (x < y) ? x : y;
-	}
-	
-	private static function max(x, y) {
-		return (x > y) ? x : y;
+		return new Circle(c, MyMath.max(c.distance(a), c.distance(b)));
 	}
 }
