@@ -39,14 +39,6 @@ class MyMath {
 		return (x > y) ? x : y;
 	}	
 
-	public static function metresToDegrees(metres) {
-		return (0.00001 * metres) / 1.105743;
-	}
-	
-	public static function degreesToMetres(degrees) {
-		return (1.105743 * degrees) / 0.00001;
-	}
-	
 	(:test)
 	function mapValueToRangeOk(logger) {
 		var oldMin = 1000;
@@ -79,42 +71,6 @@ class MyMath {
 		}
 		return true;
 	}
-
-	(:test)
-	function metresToDegreesOk(logger) {
-		var metres = [1.11, 1105.74, 11057.43];
-		var degrees = [0.00001, 0.01, 0.1];
-		
-		for (var i = 0; i < metres.size(); i++) {
-			var expected = degrees[i];
-			var actual = MyMath.metresToDegrees(metres[i]);
-			var difference = (expected - actual).abs();
-			logger.debug("expected=" + expected + " actual=" + actual + " difference=" + difference);
-			
-			if (difference > 0.000001) {
-				return false;
-			}		
-		}
-		return true;
-	}
-	
-	(:test)
-	function degreesToMetresOk(logger) {
-		var metres = [1.11, 1105.74, 11057.43];
-		var degrees = [0.00001, 0.01, 0.1];
-		
-		for (var i = 0; i < metres.size(); i++) {
-			var expected = metres[i];
-			var actual = MyMath.degreesToMetres(degrees[i]);
-			var difference = (expected - actual).abs();
-			logger.debug("expected=" + expected + " actual=" + actual + " difference=" + difference);
-			
-			if (difference > 0.01) {
-				return false;
-			}		
-		}
-		return true;
-	}	
 		
 	(:test)
 	function getWidthAsGCDOk(logger) {

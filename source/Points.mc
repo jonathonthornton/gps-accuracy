@@ -52,19 +52,6 @@ class Points {
 		return result;
 	}
 	
-	public function toPixelCircle(newMin, newMax) {
-		var sec = getSmallestEnclosingCircle();
-		var factor = 1 << 6;
-		var oldMin = new Point(getMinX() * factor, getMinY() * factor);
-		var oldMax = new Point(getMaxX() * factor, getMaxY() * factor);
-		
-		var centreX = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, sec.centre.x * factor).toNumber();
-        var edgeX = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, (sec.centre.x + sec.radius) * factor).toNumber();		
-        var centreY = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.y, newMax.y, sec.centre.y * factor).toNumber();
-        var radius = edgeX - centreX;
-        return new Circle(new Point(centreX.toNumber(), centreY.toNumber()), radius);	
-	}
-	
 	public function getMinX() {
 		var result = 9999999;
 		for (var i = 0; i < points.size(); i++) {

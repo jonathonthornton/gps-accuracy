@@ -96,11 +96,8 @@ class GpsAccuracyView extends WatchUi.View {
         var pixelArray = points.toPixelArray(newMin, newMax);
         
         dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
+//        dc.drawCircle(xOffset + (mapWidth / 2), yOffset + (mapHeight / 2), mapWidth / 2);
   
-		var pixelCircle = points.toPixelCircle(newMin, newMax);
-		System.println("pixelCircle=" + pixelCircle);
-		dc.drawCircle(pixelCircle.centre.x, pixelCircle.centre.y, pixelCircle.radius);
-
         for (var i = 0; i < pixelArray.size(); i++) {
         	var point = pixelArray[i];
 			System.println("fillCircle=" + point);
