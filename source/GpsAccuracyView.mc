@@ -16,15 +16,6 @@ class GpsAccuracyView extends WatchUi.View {
         View.initialize();
     }
 
-    function onLayout(dc) {
-    }
-    
-    function onShow() {
-    }
-
-    function onHide() {
-    }
-
 	function onUpdate(dc) {
         dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_BLACK);
         dc.clear();
@@ -81,8 +72,7 @@ class GpsAccuracyView extends WatchUi.View {
         dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
         dc.setClip(xOffset, yOffset, mapWidth, mapHeight);
       
-        var sec = points.getSmallestEnclosingCircle();
-        var metres = sec.getDiameterMetres();
+        var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
         
         if (metres > GRAPH_WIDTH_METRES) {
             // Display an error message if the accuracy is so low that points won't fit.
@@ -93,16 +83,16 @@ class GpsAccuracyView extends WatchUi.View {
         } else {        
 	        // Reduce the size of the map so that the points just fit.
 	        var reductionRatio = metres / GRAPH_WIDTH_METRES;
-	        mapWidth *= reductionRatio;
-	        mapHeight *= reductionRatio;
+	        var reducedMapWidth = mapWidth * reductionRatio;
+	        var reducedMapHeight = mapHeight * reductionRatio;
 	        
 	        // Recalculate the offsets so that the size-reduced map remains centred.
-	        xOffset = (dc.getWidth() - mapWidth) / 2;
-	        yOffset = yOffset + (yOffset - (mapHeight / 2));
+	        xOffset = (dc.getWidth() - reducedMapWidth) / 2;
+	        yOffset = GRAPH_Y_OFFSET + ((mapHeight - reducedMapHeight) / 2);
 	        
 	        // Convert the lat/long values to screen x/y values.
 			var newMin = new Point(xOffset, yOffset);
-			var newMax = new Point(xOffset + mapWidth, yOffset + mapHeight);
+			var newMax = new Point(xOffset + reducedMapWidth, yOffset + reducedMapHeight);
 	        var pixelArray = points.toPixelArray(newMin, newMax);
 	        
 	  		// Draw the points.
@@ -113,8 +103,9 @@ class GpsAccuracyView extends WatchUi.View {
 	        }
 	        
 	        // Draw a circle around the points.
-			var mapDiagonal = Math.sqrt(Math.pow(mapWidth, 2) + Math.pow(mapHeight, 2)); 
-	        dc.drawCircle(xOffset + (mapWidth / 2), yOffset + (mapHeight / 2), mapDiagonal / 2);
+			var pixelPoints = new Points(pixelArray);
+			var sec = pixelPoints.getSmallestEnclosingCircle();
+	        dc.drawCircle(xOffset + (reducedMapWidth / 2), yOffset + (reducedMapHeight / 2), sec.radius);	
         }
         
         // Clear the clipping rectangle set above.
