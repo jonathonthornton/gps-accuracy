@@ -3,9 +3,9 @@ using Toybox.System;
 
 class GpsAccuracyView extends WatchUi.View {
 	private static const TEXT_Y_OFFSET = 0;
-	private static const TEXT_Y_STEP = 25;	
+	private static const TEXT_Y_STEP = 30;	
 	private static const GRAPH_WIDTH_SCALE = 0.9; 
-	private static const GRAPH_WIDTH_METRES = 70;	
+	private static const GRAPH_WIDTH_METRES = 20;	
 	private static const GRAPH_Y_OFFSET = 130; 
 	private static const POINT_WIDTH = 3;
 	
@@ -78,6 +78,9 @@ class GpsAccuracyView extends WatchUi.View {
         var sec = points.getSmallestEnclosingCircle();
         var metres = sec.getDiameterMetres();
       
+        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
+        dc.setClip(xOffset, yOffset, mapWidth, mapHeight);
+      
         if (metres > GRAPH_WIDTH_METRES) {
 	        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);    
         	var x = xOffset + (mapWidth / 2);
@@ -95,13 +98,16 @@ class GpsAccuracyView extends WatchUi.View {
 		var newMax = new Point(xOffset + mapWidth, yOffset + mapHeight);
         var pixelArray = points.toPixelArray(newMin, newMax);
         
-        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
-//        dc.drawCircle(xOffset + (mapWidth / 2), yOffset + (mapHeight / 2), mapWidth / 2);
+//        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
+		var mapDiagonal = Math.sqrt(Math.pow(mapWidth, 2) + Math.pow(mapHeight, 2)); 
+        dc.drawCircle(xOffset + (mapWidth / 2), yOffset + (mapHeight / 2), mapDiagonal / 2);
   
         for (var i = 0; i < pixelArray.size(); i++) {
         	var point = pixelArray[i];
 			System.println("fillCircle=" + point);
         	dc.fillCircle(point.x, point.y, POINT_WIDTH);            	
         }
+        
+        dc.clearClip();
     }
 }

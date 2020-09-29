@@ -22,6 +22,7 @@ class MyMath {
 		return R * c;
 	}
 	
+	// See https://stackoverflow.com/questions/929103/convert-a-number-range-to-another-range-maintaining-ratio
 	public static function mapValueToRange(oldMin, oldMax, newMin, newMax, oldValue) {
 		var divideByZeroFiddle = 0.000001;
         return ((oldValue - oldMin) * (newMax - newMin) / (oldMax - oldMin + divideByZeroFiddle)) + newMin;
