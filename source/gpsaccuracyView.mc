@@ -2,11 +2,11 @@ using Toybox.WatchUi;
 using Toybox.System;
 
 class GpsAccuracyView extends WatchUi.View {
-	private static const TEXT_Y_OFFSET = 0;
+	private static const TEXT_Y_OFFSET = 20;
 	private static const TEXT_Y_STEP = 30;	
 	private static const GRAPH_WIDTH_SCALE = 0.9; 
 	private static const GRAPH_WIDTH_METRES = 20;	
-	private static const GRAPH_Y_OFFSET = 130; 
+	private static const GRAPH_Y_OFFSET = 150; 
 	private static const POINT_WIDTH = 3;
 	
 	var info = null;
@@ -71,43 +71,53 @@ class GpsAccuracyView extends WatchUi.View {
 	}
         
     private function drawGraph(dc) {
+    	// Calculate the map dimensions and position.
       	var mapWidth = dc.getWidth() * GRAPH_WIDTH_SCALE;
        	var mapHeight = mapWidth;          	
         var xOffset = (dc.getWidth() - mapWidth) / 2;
         var yOffset = GRAPH_Y_OFFSET;
-        var sec = points.getSmallestEnclosingCircle();
-        var metres = sec.getDiameterMetres();
       
+      	// Draw a rectangle around the map.
         dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
         dc.setClip(xOffset, yOffset, mapWidth, mapHeight);
       
+        var sec = points.getSmallestEnclosingCircle();
+        var metres = sec.getDiameterMetres();
+        
         if (metres > GRAPH_WIDTH_METRES) {
+            // Display an error message if the accuracy is so low that points won't fit.
 	        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);    
         	var x = xOffset + (mapWidth / 2);
         	var y = yOffset + (mapHeight / 2) - 10;
-        	dc.drawText(x, y, Graphics.FONT_SMALL, "Poor Accuracy", Graphics.TEXT_JUSTIFY_CENTER);        
-        	return;
+        	dc.drawText(x, y, Graphics.FONT_SMALL, "Poor Accuracy", Graphics.TEXT_JUSTIFY_CENTER);
+        } else {        
+	        // Reduce the size of the map so that the points just fit.
+	        var reductionRatio = metres / GRAPH_WIDTH_METRES;
+	        mapWidth *= reductionRatio;
+	        mapHeight *= reductionRatio;
+	        
+	        // Recalculate the offsets so that the size-reduced map remains centred.
+	        xOffset = (dc.getWidth() - mapWidth) / 2;
+	        yOffset = yOffset + (yOffset - (mapHeight / 2));
+	        
+	        // Convert the lat/long values to screen x/y values.
+			var newMin = new Point(xOffset, yOffset);
+			var newMax = new Point(xOffset + mapWidth, yOffset + mapHeight);
+	        var pixelArray = points.toPixelArray(newMin, newMax);
+	        
+	  		// Draw the points.
+	        for (var i = 0; i < pixelArray.size(); i++) {
+	        	var point = pixelArray[i];
+				System.println("fillCircle=" + point);
+	        	dc.fillCircle(point.x, point.y, POINT_WIDTH);            	
+	        }
+	        
+	        // Draw a circle around the points.
+			var mapDiagonal = Math.sqrt(Math.pow(mapWidth, 2) + Math.pow(mapHeight, 2)); 
+	        dc.drawCircle(xOffset + (mapWidth / 2), yOffset + (mapHeight / 2), mapDiagonal / 2);
         }
         
-        var factor = metres / GRAPH_WIDTH_METRES;
-        mapWidth *= factor;
-        mapHeight *= factor;
-        xOffset = (dc.getWidth() - mapWidth) / 2;
-        yOffset = yOffset + (yOffset - (mapHeight / 2));
-		var newMin = new Point(xOffset, yOffset);
-		var newMax = new Point(xOffset + mapWidth, yOffset + mapHeight);
-        var pixelArray = points.toPixelArray(newMin, newMax);
-        
-//        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
-		var mapDiagonal = Math.sqrt(Math.pow(mapWidth, 2) + Math.pow(mapHeight, 2)); 
-        dc.drawCircle(xOffset + (mapWidth / 2), yOffset + (mapHeight / 2), mapDiagonal / 2);
-  
-        for (var i = 0; i < pixelArray.size(); i++) {
-        	var point = pixelArray[i];
-			System.println("fillCircle=" + point);
-        	dc.fillCircle(point.x, point.y, POINT_WIDTH);            	
-        }
-        
+        // Clear the clipping rectangle set above.
         dc.clearClip();
     }
 }

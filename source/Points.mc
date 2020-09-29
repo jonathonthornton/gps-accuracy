@@ -7,7 +7,7 @@ class Points {
 		self.points = pointArray;
 	}
 	
-	public  function shuffle() {
+	public function shuffle() {
 		var shuffled = points.slice(0, points.size()); // Clone the array.
 		var size = shuffled.size();
 		
