@@ -38,15 +38,15 @@ class Points {
 	}
 	
 	public function toPixelArray(newMin, newMax) {
-		var factor = 1 << 6;
+		var factor = Math.pow(10, 6);
 		var oldMin = new Point(getMinX() * factor, getMinY() * factor);
 		var oldMax = new Point(getMaxX() * factor, getMaxY() * factor);
-		var result = [];
+		var result = new[points.size()];
 		
 		for (var i = 0; i < points.size(); i++) {
 			var x = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, points[i].x * factor);
         	var y = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.y, newMax.y, points[i].y * factor);
-        	result.add(new Point(x.toNumber(), y.toNumber()));
+        	result[i] = new Point(x.toNumber(), y.toNumber());
 		}
 		
 		return result;

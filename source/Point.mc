@@ -16,7 +16,7 @@ class Point {
 	}
 	
 	public function cross(p) {
-		return self.x * p.y - y * p.x;
+		return x * p.y - y * p.x;
 	}
 	
 	public function equals(other) {
@@ -25,5 +25,12 @@ class Point {
 	
 	public function toString() {
 		return "Point(" + x + "," + y + ")";
+	}
+	
+	(:test)
+	function distanceOk(logger) {
+		var p = new Point(0, 0);
+		var q = new Point(3, 4);
+		return p.distance(q) == 5;
 	}
 }
