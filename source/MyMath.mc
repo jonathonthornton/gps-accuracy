@@ -5,6 +5,9 @@ using Toybox.System;
 class MyMath {
 	private static const R = 6371000;
 	private static const PI_OVER_180 = Math.PI / 180;
+	private static const PI_UNDER_180 = 180 / Math.PI;	
+	private static const PI_OVER_4 = Math.PI / 4;
+	
 
 	// See https://www.movable-type.co.uk/scripts/latlong.html
 	public static function calculateGCD(p1, p2) {
@@ -23,7 +26,7 @@ class MyMath {
 	}
 	
 	public static function latToMercator(lat) {
-		return Math.ln(Math.tan((lat / 90 + 1) * (Math.PI / 4))) * (180 / Math.PI);
+		return Math.ln(Math.tan((lat / 90 + 1) * PI_OVER_4)) * PI_UNDER_180;
 	}
 	
 	public static function longToMercator(long) {
