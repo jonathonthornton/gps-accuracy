@@ -20,7 +20,7 @@ class GpsAccuracyApp extends Application.AppBase {
 
 	function onPosition(info) {
 		var lat = info.position.toDegrees()[0];
-		var long = info.position.toDegrees()[1];		
+		var long = info.position.toDegrees()[1];
 		pointCache.add(new Point(lat, long));
 		        
    	    view.setPosition(info);     

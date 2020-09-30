@@ -1,5 +1,6 @@
 using Toybox.WatchUi;
 using Toybox.System;
+using Toybox.Math;
 
 class GpsAccuracyView extends WatchUi.View {
 	private static const TEXT_Y_OFFSET = 20;
@@ -101,11 +102,14 @@ class GpsAccuracyView extends WatchUi.View {
 				System.println("fillCircle=" + point);
 	        	dc.fillCircle(point.x, point.y, POINT_WIDTH);            	
 	        }
-	        
+	        	        
 	        // Draw a circle around the points.
 			var pixelPoints = new Points(pixelArray);
 			var sec = pixelPoints.getSmallestEnclosingCircle();
-	        dc.drawCircle(xOffset + (reducedMapWidth / 2), yOffset + (reducedMapHeight / 2), sec.radius);	
+	        dc.drawCircle(
+	        	sec.centre.x, 
+	        	sec.centre.y,
+	        	Math.ceil(sec.radius));	
         }
         
         // Clear the clipping rectangle set above.
