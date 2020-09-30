@@ -36,20 +36,27 @@ class Points {
 	public function getSmallestEnclosingCircle() {
 		return SmallestEnclosingCircle.makeCircle(self);
 	}
-	
-	public function toPixelArray(newMin, newMax) {
-		var factor = Math.pow(10, 6);
-		var oldMin = new Point(getMinX() * factor, getMinY() * factor);
-		var oldMax = new Point(getMaxX() * factor, getMaxY() * factor);
-		var result = new[points.size()];
 		
+	public function toPixelArray(newMin, newMax) {
+		var oldMin = new Point(latToMercator(getMinX()), longToMercator(getMinY()));
+		var oldMax = new Point(latToMercator(getMaxX()), longToMercator(getMaxY()));	
+		var result = new[points.size()];
+	
 		for (var i = 0; i < points.size(); i++) {
-			var x = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, points[i].x * factor);
-        	var y = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.y, newMax.y, points[i].y * factor);
-        	result[i] = new Point(x.toNumber(), y.toNumber());
+			var x = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, latToMercator(points[i].x));
+        	var y = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.y, newMax.y, longToMercator(points[i].y));
+        	result[i] = new Point(x.toNumber(), y.toNumber());			
 		}
 		
 		return result;
+	}
+	
+	public function latToMercator(lat) {
+		return Math.ln(Math.tan((lat / 90 + 1) * (Math.PI / 4))) * (180 / Math.PI);
+	}
+	
+	public function longToMercator(long) {
+		return long;
 	}
 	
 	public function getMinX() {
