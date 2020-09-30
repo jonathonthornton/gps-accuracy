@@ -38,13 +38,18 @@ class Points {
 	}
 		
 	public function toPixelArray(newMin, newMax) {
+		// Convert the min/max lat/long to Mercator projection.
 		var oldMin = new Point(MyMath.latToMercator(getMinX()), MyMath.longToMercator(getMinY()));
 		var oldMax = new Point(MyMath.latToMercator(getMaxX()), MyMath.longToMercator(getMaxY()));	
 		var result = new[points.size()];
 	
 		for (var i = 0; i < points.size(); i++) {
-			var x = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, MyMath.latToMercator(points[i].x));
-        	var y = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.y, newMax.y, MyMath.longToMercator(points[i].y));
+			// Convert the y long value to Mercator and then map the result to the new x range.
+        	var x = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.x, newMax.x, MyMath.longToMercator(points[i].y));
+        	
+			// Convert the x lat value to Mercator and then map the result to the new y range.
+			var y = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.y, newMax.y, MyMath.latToMercator(points[i].x));
+			
         	result[i] = new Point(x.toNumber(), y.toNumber());			
 		}
 		

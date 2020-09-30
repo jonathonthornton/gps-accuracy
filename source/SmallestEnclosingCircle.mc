@@ -48,7 +48,6 @@ class SmallestEnclosingCircle {
 			// Form a circumcircle and classify it on left or right side
 			var cross = pq.cross(r.subtract(p));
 			var c = makeCircumcircle(p, q, r);
-			System.println("circumcircle=" + c);
 			if (c == null) {
 				continue;
 			} else if (cross > 0 && (left == null || pq.cross(c.centre.subtract(p)) > pq.cross(left.centre.subtract(p)))) {
