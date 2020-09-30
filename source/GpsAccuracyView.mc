@@ -1,14 +1,22 @@
 using Toybox.WatchUi;
 using Toybox.System;
 using Toybox.Math;
+using Toybox.Graphics;
 
 class GpsAccuracyView extends WatchUi.View {
     private static const TEXT_Y_OFFSET = 20;
     private static const TEXT_Y_STEP = 30;
     private static const GRAPH_WIDTH_SCALE = 0.9;
-    private static const GRAPH_WIDTH_METRES = 20;
+    private static const GRAPH_WIDTH_METRES = 40;
     private static const GRAPH_Y_OFFSET = 150;
     private static const POINT_WIDTH = 3;
+
+    private static const ACCURACY_POOR_COLOUR = Graphics.COLOR_RED;
+    private static const ACCURACY_OK_COLOUR = Graphics.COLOR_YELLOW;
+    private static const ACCURACY_GOOD_COLOUR = Graphics.COLOR_GREEN;
+
+    private static const ACCURACY_OK_THRESHOLD = GRAPH_WIDTH_METRES * 0.4;
+    private static const ACCURACY_GOOD_THRESHOLD = GRAPH_WIDTH_METRES * 0.2;
 
     var info = null;
     var points = null;
@@ -79,8 +87,9 @@ class GpsAccuracyView extends WatchUi.View {
             // Display an error message if the accuracy is so low that points won't fit.
             dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
             var x = xOffset + (mapWidth / 2);
-            var y = yOffset + (mapHeight / 2) - 10;
+            var y = yOffset + (mapHeight / 2) - 30;
             dc.drawText(x, y, Graphics.FONT_SMALL, "Poor Accuracy", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(x, y + TEXT_Y_STEP, Graphics.FONT_SMALL, "(or bike is moving)", Graphics.TEXT_JUSTIFY_CENTER);
         } else {
             // Reduce the size of the map so that the points just fit.
             var reductionRatio = metres / GRAPH_WIDTH_METRES;
@@ -95,6 +104,15 @@ class GpsAccuracyView extends WatchUi.View {
             var newMin = new Point(xOffset, yOffset);
             var newMax = new Point(xOffset + reducedMapWidth, yOffset + reducedMapHeight);
             var pixelArray = points.toPixelArray(newMin, newMax);
+
+            // Set the draw colour.
+            if (metres < ACCURACY_GOOD_THRESHOLD) {
+                dc.setColor(ACCURACY_GOOD_COLOUR, Graphics.COLOR_TRANSPARENT);
+            } else if (metres < ACCURACY_OK_THRESHOLD) {
+                dc.setColor(ACCURACY_OK_COLOUR, Graphics.COLOR_TRANSPARENT);
+            } else {
+                dc.setColor(ACCURACY_POOR_COLOUR, Graphics.COLOR_TRANSPARENT);
+            }
 
             // Draw the points.
             for (var i = 0; i < pixelArray.size(); i++) {

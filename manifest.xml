@@ -2,6 +2,8 @@
     <iq:application entry="GpsAccuracyApp" id="5d98270236384f86a00416056d474dc4" launcherIcon="@Drawables.LauncherIcon" name="@Strings.AppName" type="widget" version="0.0.0">
         <iq:products>
             <iq:product id="edge1030"/>
+            <iq:product id="edge1030bontrager"/>
+            <iq:product id="edge1030plus"/>
             <iq:product id="edge_1000"/>
         </iq:products>
         <iq:permissions>
