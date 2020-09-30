@@ -77,10 +77,11 @@ class GpsAccuracyView extends WatchUi.View {
         var xOffset = (dc.getWidth() - mapWidth) / 2;
         var yOffset = GRAPH_Y_OFFSET;
 
-        // Draw a rectangle around the map.
+        // Draw a border around the map.
         dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
         dc.setClip(xOffset, yOffset, mapWidth, mapHeight);
 
+        // Get the diameter in metres of the smallest circle containing all of the points.
         var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
 
         if (metres > GRAPH_WIDTH_METRES) {
@@ -91,19 +92,17 @@ class GpsAccuracyView extends WatchUi.View {
             dc.drawText(x, y, Graphics.FONT_SMALL, "Poor Accuracy", Graphics.TEXT_JUSTIFY_CENTER);
             dc.drawText(x, y + TEXT_Y_STEP, Graphics.FONT_SMALL, "(or bike is moving)", Graphics.TEXT_JUSTIFY_CENTER);
         } else {
-            // Reduce the size of the map so that the points just fit.
+            // Calculate the dimensions and position of the square within the map containing the points.
             var reductionRatio = metres / GRAPH_WIDTH_METRES;
-            var reducedMapWidth = mapWidth * reductionRatio;
-            var reducedMapHeight = mapHeight * reductionRatio;
+            var subWidth = mapWidth * reductionRatio;
+            var subHeight = mapHeight * reductionRatio;
+            var subXoffset = (dc.getWidth() - subWidth) / 2;
+            var subYoffset = GRAPH_Y_OFFSET + ((mapHeight - subHeight) / 2);
+            var subMin = new Point(subXoffset, subYoffset);
+            var subMax = new Point(subXoffset + subWidth, subYoffset + subHeight);
 
-            // Recalculate the offsets so that the size-reduced map remains centred.
-            xOffset = (dc.getWidth() - reducedMapWidth) / 2;
-            yOffset = GRAPH_Y_OFFSET + ((mapHeight - reducedMapHeight) / 2);
-
-            // Convert the lat/long values to screen x/y values.
-            var newMin = new Point(xOffset, yOffset);
-            var newMax = new Point(xOffset + reducedMapWidth, yOffset + reducedMapHeight);
-            var pixelArray = points.toPixelArray(newMin, newMax);
+            // Convert the lat/long values to screen x/y values within the sub-map.
+            var pixelArray = points.toPixelArray(subMin, subMax);
 
             // Set the draw colour.
             if (metres < ACCURACY_GOOD_THRESHOLD) {
