@@ -22,6 +22,14 @@ class MyMath {
 		return R * c;
 	}
 	
+	public static function latToMercator(lat) {
+		return Math.ln(Math.tan((lat / 90 + 1) * (Math.PI / 4))) * (180 / Math.PI);
+	}
+	
+	public static function longToMercator(long) {
+		return long;
+	}
+	
 	// See https://stackoverflow.com/questions/929103/convert-a-number-range-to-another-range-maintaining-ratio
 	public static function mapValueToRange(oldMin, oldMax, newMin, newMax, oldValue) {
 		var divideByZeroFiddle = 0.000001;
