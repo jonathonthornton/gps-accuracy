@@ -6,7 +6,7 @@ using Toybox.Graphics;
 class GpsAccuracyView extends WatchUi.View {
     private static const TEXT_Y_OFFSET = 20;
     private static const TEXT_Y_STEP = 30;
-    private static const GRAPH_WIDTH_SCALE = 0.9;
+    private static const GRAPH_SCALE = 0.9;
     private static const GRAPH_WIDTH_METRES = 20;
     private static const GRAPH_Y_OFFSET = 150;
     private static const POINT_WIDTH = 3;
@@ -73,8 +73,8 @@ class GpsAccuracyView extends WatchUi.View {
 
     private function drawGraph(dc) {
         // Calculate the map dimensions and position.
-        var mapWidth = dc.getWidth() * GRAPH_WIDTH_SCALE;
-        var mapHeight = mapWidth;
+        var mapWidth = dc.getWidth() * GRAPH_SCALE;
+        var mapHeight = (dc.getHeight() - GRAPH_Y_OFFSET) * GRAPH_SCALE;
         var xOffset = (dc.getWidth() - mapWidth) / 2;
 
         // Draw a border around the map.
