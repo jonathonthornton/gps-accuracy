@@ -61,7 +61,12 @@ class GpsAccuracyView extends WatchUi.View {
     private function drawCentredText(dc, text, yOffset) {
        var halfWidth = dc.getWidth() / 2;
         for (var i = 0; i < text.size(); i++) {
-            dc.drawText(halfWidth, yOffset, Graphics.FONT_SMALL, text[i], Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(
+                halfWidth,
+                yOffset,
+                Graphics.FONT_SMALL,
+                text[i],
+                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             yOffset += TEXT_Y_STEP;
         }
     }
@@ -86,7 +91,7 @@ class GpsAccuracyView extends WatchUi.View {
                 "Poor Accuracy",
                 "(or bike is moving)"
             ];
-            drawCentredText(dc, text, GRAPH_Y_OFFSET + (mapHeight / 2) - 30);
+            drawCentredText(dc, text, GRAPH_Y_OFFSET + (mapHeight / 2) - 20);
         } else {
             // Calculate the dimensions and position of the square within the map containing the points.
             var reductionFactor = metres / GRAPH_WIDTH_METRES;
