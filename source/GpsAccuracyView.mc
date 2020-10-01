@@ -7,7 +7,7 @@ class GpsAccuracyView extends WatchUi.View {
     private static const TEXT_Y_OFFSET = 20;
     private static const TEXT_Y_STEP = 30;
     private static const GRAPH_WIDTH_SCALE = 0.9;
-    private static const GRAPH_WIDTH_METRES = 40;
+    private static const GRAPH_WIDTH_METRES = 20;
     private static const GRAPH_Y_OFFSET = 150;
     private static const POINT_WIDTH = 3;
 
@@ -15,7 +15,7 @@ class GpsAccuracyView extends WatchUi.View {
     private static const ACCURACY_OK_COLOUR = Graphics.COLOR_YELLOW;
     private static const ACCURACY_GOOD_COLOUR = Graphics.COLOR_GREEN;
 
-    private static const ACCURACY_OK_THRESHOLD = GRAPH_WIDTH_METRES * 0.4;
+    private static const ACCURACY_OK_THRESHOLD = GRAPH_WIDTH_METRES * 0.5;
     private static const ACCURACY_GOOD_THRESHOLD = GRAPH_WIDTH_METRES * 0.2;
 
     var info = null;
@@ -93,15 +93,15 @@ class GpsAccuracyView extends WatchUi.View {
             dc.drawText(x, y + TEXT_Y_STEP, Graphics.FONT_SMALL, "(or bike is moving)", Graphics.TEXT_JUSTIFY_CENTER);
         } else {
             // Calculate the dimensions and position of the square within the map containing the points.
-            var reductionRatio = metres / GRAPH_WIDTH_METRES;
-            var subWidth = mapWidth * reductionRatio;
-            var subHeight = mapHeight * reductionRatio;
+            var reductionFactor = metres / GRAPH_WIDTH_METRES;
+            var subWidth = mapWidth * reductionFactor;
+            var subHeight = mapHeight * reductionFactor;
             var subXoffset = (dc.getWidth() - subWidth) / 2;
             var subYoffset = GRAPH_Y_OFFSET + ((mapHeight - subHeight) / 2);
             var subMin = new Point(subXoffset, subYoffset);
             var subMax = new Point(subXoffset + subWidth, subYoffset + subHeight);
 
-            // Convert the lat/long values to screen x/y values within the sub-map.
+            // Convert the lat/long values to screen sub-map x/y values.
             var pixelArray = points.toPixelArray(subMin, subMax);
 
             // Set the draw colour.
@@ -121,8 +121,7 @@ class GpsAccuracyView extends WatchUi.View {
             }
 
             // Draw a circle around the points.
-            var pixelPoints = new Points(pixelArray);
-            var sec = pixelPoints.getSmallestEnclosingCircle();
+            var sec = new Points(pixelArray).getSmallestEnclosingCircle();
             dc.drawCircle(
                 sec.centre.x,
                 sec.centre.y,
