@@ -31,10 +31,10 @@ class GpsAccuracyView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         if (info != null) {
-            drawText(dc);
+            drawPositionText(dc);
             drawGraph(dc);
         } else {
-            drawErrorMessage(dc, "No Position Info");
+            drawCentredText(dc, ["No Position Info"], dc.getHeight() / 2);
         }
      }
 
@@ -47,7 +47,7 @@ class GpsAccuracyView extends WatchUi.View {
         self.points = points;
     }
 
-    private function drawText(dc) {
+    private function drawPositionText(dc) {
         var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
         var text = [
             "Latitude = " + info.position.toDegrees()[0].format("%3.6f"),
@@ -55,19 +55,15 @@ class GpsAccuracyView extends WatchUi.View {
             "Altitude(m) = " + info.altitude.format("%4.2f"),
             "Accuracy(m) = " + metres.format("%4.2f")
         ];
+        drawCentredText(dc, text, TEXT_Y_OFFSET);
+    }
 
-        var halfWidth = dc.getWidth() / 2;
-        var yOffset = TEXT_Y_OFFSET;
+    private function drawCentredText(dc, text, yOffset) {
+       var halfWidth = dc.getWidth() / 2;
         for (var i = 0; i < text.size(); i++) {
             dc.drawText(halfWidth, yOffset, Graphics.FONT_SMALL, text[i], Graphics.TEXT_JUSTIFY_CENTER);
             yOffset += TEXT_Y_STEP;
         }
-    }
-
-    private function drawErrorMessage(dc, errorMessage) {
-        var halfWidth = dc.getWidth() / 2;
-        var halfHeight = dc.getHeight() / 2;
-        dc.drawText(halfWidth, halfHeight, Graphics.FONT_SMALL, errorMessage, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
     private function drawGraph(dc) {
@@ -75,22 +71,22 @@ class GpsAccuracyView extends WatchUi.View {
         var mapWidth = dc.getWidth() * GRAPH_WIDTH_SCALE;
         var mapHeight = mapWidth;
         var xOffset = (dc.getWidth() - mapWidth) / 2;
-        var yOffset = GRAPH_Y_OFFSET;
 
         // Draw a border around the map.
-        dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
-        dc.setClip(xOffset, yOffset, mapWidth, mapHeight);
+        dc.drawRectangle(xOffset, GRAPH_Y_OFFSET, mapWidth, mapHeight);
+        dc.setClip(xOffset, GRAPH_Y_OFFSET, mapWidth, mapHeight);
 
         // Get the diameter in metres of the smallest circle containing all of the points.
         var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
 
         if (metres > GRAPH_WIDTH_METRES) {
             // Display an error message if the accuracy is so low that points won't fit.
-            dc.drawRectangle(xOffset, yOffset, mapWidth, mapHeight);
-            var x = xOffset + (mapWidth / 2);
-            var y = yOffset + (mapHeight / 2) - 30;
-            dc.drawText(x, y, Graphics.FONT_SMALL, "Poor Accuracy", Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(x, y + TEXT_Y_STEP, Graphics.FONT_SMALL, "(or bike is moving)", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawRectangle(xOffset, GRAPH_Y_OFFSET, mapWidth, mapHeight);
+            var text = [
+                "Poor Accuracy",
+                "(or bike is moving)"
+            ];
+            drawCentredText(dc, text, GRAPH_Y_OFFSET + (mapHeight / 2) - 30);
         } else {
             // Calculate the dimensions and position of the square within the map containing the points.
             var reductionFactor = metres / GRAPH_WIDTH_METRES;
