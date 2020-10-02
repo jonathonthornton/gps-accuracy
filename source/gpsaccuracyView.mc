@@ -8,7 +8,7 @@ class GpsAccuracyView extends WatchUi.View {
     private static const TEXT_Y_STEP = 30;
     private static const GRAPH_SCALE = 0.9;
     private static const GRAPH_WIDTH_METRES = 35;
-    private static const GRAPH_Y_OFFSET = 150;
+    private static const VIEWPORT_Y_OFFSET = 150;
     private static const POINT_WIDTH = 3;
 
     private static const ACCURACY_POOR_COLOUR = Graphics.COLOR_RED;
@@ -72,34 +72,39 @@ class GpsAccuracyView extends WatchUi.View {
     }
 
     private function drawGraph(dc) {
-        // Calculate the map dimensions and position.
-        var mapWidth = dc.getWidth() * GRAPH_SCALE;
-        var mapHeight = (dc.getHeight() - GRAPH_Y_OFFSET) * GRAPH_SCALE;
-        var xOffset = (dc.getWidth() - mapWidth) / 2;
+        // Calculate the viewport dimensions and position.
+        var viewportWidth = dc.getWidth() * GRAPH_SCALE;
+        var viewportHeight = (dc.getHeight() - VIEWPORT_Y_OFFSET) * GRAPH_SCALE;
+        var viewportXoffset = (dc.getWidth() - viewportWidth) / 2;
 
-        // Draw a border around the map.
-        dc.drawRectangle(xOffset, GRAPH_Y_OFFSET, mapWidth, mapHeight);
-        dc.setClip(xOffset, GRAPH_Y_OFFSET, mapWidth, mapHeight);
+        // Calculate the map dimensions and position.
+        var mapWidth = viewportWidth;
+        var mapHeight = viewportWidth;
+        var mapXOffset = viewportXoffset;
+
+        // Draw a border around the viewport.
+        dc.drawRectangle(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
+        dc.setClip(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
 
         // Get the diameter in metres of the smallest circle containing all of the points.
         var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
 
         if (metres > GRAPH_WIDTH_METRES) {
             // Display an error message if the accuracy is so low that points won't fit.
-            dc.drawRectangle(xOffset, GRAPH_Y_OFFSET, mapWidth, mapHeight);
+            dc.drawRectangle(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
             var text = [
                 "Poor Accuracy",
                 "(or bike is moving)"
             ];
-            drawCentredText(dc, text, GRAPH_Y_OFFSET + (mapHeight / 2) - 20);
+            drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - 20);
         } else {
             // Calculate the dimensions and position of the rectangle within the map containing the points.
-            var mapDiagonal = Math.sqrt(Math.pow(mapWidth, 2) + (mapHeight * mapHeight));
-            var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
-            var subWidth = mapWidth * reductionFactor;
-            var subHeight = mapHeight * reductionFactor;
+            var viewportDiagonal = MyMath.hypot(viewportWidth, viewportHeight);
+            var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (viewportWidth / viewportDiagonal);
+            var subWidth = viewportWidth * reductionFactor;
+            var subHeight = viewportHeight * reductionFactor;
             var subXoffset = (dc.getWidth() - subWidth) / 2;
-            var subYoffset = GRAPH_Y_OFFSET + ((mapHeight - subHeight) / 2);
+            var subYoffset = VIEWPORT_Y_OFFSET + ((viewportHeight - subHeight) / 2);
             var subMin = new Point(subXoffset, subYoffset);
             var subMax = new Point(subXoffset + subWidth, subYoffset + subHeight);
 
