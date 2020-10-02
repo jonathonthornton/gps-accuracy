@@ -7,7 +7,7 @@ class GpsAccuracyView extends WatchUi.View {
     private static const TEXT_Y_OFFSET = 20;
     private static const TEXT_Y_STEP = 30;
     private static const GRAPH_SCALE = 0.9;
-    private static const GRAPH_WIDTH_METRES = 20;
+    private static const GRAPH_WIDTH_METRES = 35;
     private static const GRAPH_Y_OFFSET = 150;
     private static const POINT_WIDTH = 3;
 
@@ -93,8 +93,9 @@ class GpsAccuracyView extends WatchUi.View {
             ];
             drawCentredText(dc, text, GRAPH_Y_OFFSET + (mapHeight / 2) - 20);
         } else {
-            // Calculate the dimensions and position of the square within the map containing the points.
-            var reductionFactor = metres / GRAPH_WIDTH_METRES;
+            // Calculate the dimensions and position of the rectangle within the map containing the points.
+            var mapDiagonal = Math.sqrt(Math.pow(mapWidth, 2) + (mapHeight * mapHeight));
+            var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
             var subWidth = mapWidth * reductionFactor;
             var subHeight = mapHeight * reductionFactor;
             var subXoffset = (dc.getWidth() - subWidth) / 2;
