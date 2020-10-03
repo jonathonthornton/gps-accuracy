@@ -1,7 +1,4 @@
 using Toybox.WatchUi;
-using Toybox.System;
-using Toybox.Math;
-using Toybox.Graphics;
 
 (:glance)
 class GpsAccuracyGlanceView extends WatchUi.GlanceView {
