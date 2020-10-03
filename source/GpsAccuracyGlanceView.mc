@@ -13,7 +13,7 @@ class GpsAccuracyGlanceView extends WatchUi.View {
         var text = [
             "GPS Accuracy",
             "Jon Thornton",
-            "2020"
+            "Version " + GpsAccuracyView.VERSION
         ];
         drawCentredText(dc, text, (dc.getHeight() / 2) - 30);
     }

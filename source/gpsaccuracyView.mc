@@ -4,11 +4,12 @@ using Toybox.Math;
 using Toybox.Graphics;
 
 class GpsAccuracyView extends WatchUi.View {
-    private static const VERSION = "1.3";
-    private static const TEXT_Y_OFFSET = 20;
-    private static const TEXT_Y_STEP = 30;
+    public static const VERSION = "1.5";
+    private static const GRAPH_WIDTH_METRES = 20;
+
+    private static const TEXT_Y_OFFSET = 40;
+    private static const TEXT_Y_STEP = 25;
     private static const GRAPH_SCALE = 0.9;
-    private static const GRAPH_WIDTH_METRES = 35;
     private static const VIEWPORT_Y_OFFSET = 150;
     private static const POINT_WIDTH = 3;
 
@@ -35,7 +36,18 @@ class GpsAccuracyView extends WatchUi.View {
             drawPositionText(dc);
             drawGraph(dc);
         } else {
-            drawCentredText(dc, ["No Position Info", "Version " + VERSION], dc.getHeight() / 2);
+            var text = [
+                "GPS Accuracy Widget",
+                "",
+                "No Position Info",
+                "(please wait)",
+                "",
+                "Jon Thornton",
+                "Version " + VERSION
+            ];
+            var textHeight = text.size() * (TEXT_Y_STEP - 1);
+            var yOffset = (dc.getHeight() - textHeight) / 2;
+            drawCentredText(dc, text, yOffset);
         }
      }
 
@@ -78,11 +90,6 @@ class GpsAccuracyView extends WatchUi.View {
         var viewportHeight = (dc.getHeight() - VIEWPORT_Y_OFFSET) * GRAPH_SCALE;
         var viewportXoffset = (dc.getWidth() - viewportWidth) / 2;
 
-        // Calculate the map dimensions and position.
-        var mapWidth = viewportWidth;
-        var mapHeight = viewportWidth;
-        var mapXOffset = viewportXoffset;
-
         // Draw a border around the viewport.
         dc.drawRectangle(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
         dc.setClip(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
@@ -99,19 +106,23 @@ class GpsAccuracyView extends WatchUi.View {
             ];
             drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - 20);
         } else {
-            // Calculate the dimensions and position of the rectangle within the map containing the points.
+            // Calculate the map dimensions and position.
+            var mapWidth = viewportWidth;
+            var mapHeight = viewportWidth;
+            var mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
             var mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
+
+            // Calculate the dimensions and position of the square within the map containing the points.
             var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
-            var subWidth = mapWidth * reductionFactor;
-            var subHeight = mapHeight * reductionFactor;
-            var subXoffset = (dc.getWidth() - subWidth) / 2;
-            var mapYoffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
-            var subYoffset = mapYoffset + ((mapHeight - subHeight) / 2);
-            var subMin = new Point(subXoffset, subYoffset);
-            var subMax = new Point(subXoffset + subWidth, subYoffset + subHeight);
+            var pointsWidth = mapWidth * reductionFactor;
+            var pointsHeight = mapHeight * reductionFactor;
+            var pointsXOffset = (dc.getWidth() - pointsWidth) / 2;
+            var pointsYOffset = mapYOffset + ((mapHeight - pointsHeight) / 2);
+            var pointsMin = new Point(pointsXOffset, pointsYOffset);
+            var pointsMax = new Point(pointsXOffset + pointsWidth, pointsYOffset + pointsHeight);
 
             // Convert the lat/long values to screen sub-map x/y values.
-            var pixelArray = points.toPixelArray(subMin, subMax);
+            var pixelArray = points.toPixelArray(pointsMin, pointsMax);
 
             // Set the draw colour.
             if (metres < ACCURACY_GOOD_THRESHOLD) {
