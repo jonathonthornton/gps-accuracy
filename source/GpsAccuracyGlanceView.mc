@@ -3,31 +3,20 @@ using Toybox.System;
 using Toybox.Math;
 using Toybox.Graphics;
 
-class GpsAccuracyGlanceView extends WatchUi.View {
+(:glance)
+class GpsAccuracyGlanceView extends WatchUi.GlanceView {
 
     function initialize() {
-        View.initialize();
+        GlanceView.initialize();
     }
 
     function onUpdate(dc) {
         var text = [
-            "GPS Accuracy",
-            "Jon Thornton",
-            "Version " + GpsAccuracyView.VERSION
+            Constants.APP_NAME,
+            "",
+            Constants.APP_AUTHOR,
+            Constants.APP_VERSION
         ];
-        drawCentredText(dc, text, (dc.getHeight() / 2) - 30);
-    }
-
-    private function drawCentredText(dc, text, yOffset) {
-       var halfWidth = dc.getWidth() / 2;
-        for (var i = 0; i < text.size(); i++) {
-           dc.drawText(
-                halfWidth,
-                yOffset,
-                Graphics.FONT_SMALL,
-                text[i],
-                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-            yOffset += TEXT_Y_STEP;
-        }
+        Util.drawFullScreenCentredText(dc, text);
     }
 }

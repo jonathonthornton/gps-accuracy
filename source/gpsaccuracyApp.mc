@@ -1,11 +1,9 @@
 using Toybox.Application;
 
 class GpsAccuracyApp extends Application.AppBase {
-    private static const CACHE_SIZE = 10;
-
     var view;
     var glanceView;
-    var pointCache = new Cache(CACHE_SIZE);
+    var pointCache = new Cache(Constants.CACHE_SIZE);
 
     function initialize() {
         AppBase.initialize();

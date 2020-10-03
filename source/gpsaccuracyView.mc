@@ -4,11 +4,9 @@ using Toybox.Math;
 using Toybox.Graphics;
 
 class GpsAccuracyView extends WatchUi.View {
-    public static const VERSION = "1.5";
     private static const GRAPH_WIDTH_METRES = 20;
 
     private static const TEXT_Y_OFFSET = 40;
-    private static const TEXT_Y_STEP = 25;
     private static const GRAPH_SCALE = 0.9;
     private static const VIEWPORT_Y_OFFSET = 150;
     private static const POINT_WIDTH = 3;
@@ -37,17 +35,15 @@ class GpsAccuracyView extends WatchUi.View {
             drawGraph(dc);
         } else {
             var text = [
-                "GPS Accuracy Widget",
+                Constants.APP_NAME,
                 "",
                 "No Position Info",
                 "(please wait)",
                 "",
-                "Jon Thornton",
-                "Version " + VERSION
+                Constants.APP_AUTHOR,
+                Constants.APP_VERSION
             ];
-            var textHeight = text.size() * (TEXT_Y_STEP - 1);
-            var yOffset = (dc.getHeight() - textHeight) / 2;
-            drawCentredText(dc, text, yOffset);
+            Util.drawFullScreenCentredText(dc, text);
         }
      }
 
@@ -68,20 +64,7 @@ class GpsAccuracyView extends WatchUi.View {
             "Altitude(m) = " + info.altitude.format("%4.2f"),
             "Accuracy(m) = " + metres.format("%4.2f")
         ];
-        drawCentredText(dc, text, TEXT_Y_OFFSET);
-    }
-
-    private function drawCentredText(dc, text, yOffset) {
-       var halfWidth = dc.getWidth() / 2;
-        for (var i = 0; i < text.size(); i++) {
-            dc.drawText(
-                halfWidth,
-                yOffset,
-                Graphics.FONT_SMALL,
-                text[i],
-                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-            yOffset += TEXT_Y_STEP;
-        }
+        Util.drawCentredText(dc, text, TEXT_Y_OFFSET);
     }
 
     private function drawGraph(dc) {
@@ -100,29 +83,12 @@ class GpsAccuracyView extends WatchUi.View {
         if (metres > GRAPH_WIDTH_METRES) {
             // Display an error message if the accuracy is so low that points won't fit.
             dc.drawRectangle(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
-            var text = [
-                "Poor Accuracy",
-                "(or bike is moving)"
-            ];
-            drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - 20);
+            var text = ["Poor Accuracy", "(or bike is moving)"];
+            Util.drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - 20);
         } else {
-            // Calculate the map dimensions and position.
-            var mapWidth = viewportWidth;
-            var mapHeight = viewportWidth;
-            var mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
-            var mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
-
-            // Calculate the dimensions and position of the square within the map containing the points.
-            var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
-            var pointsWidth = mapWidth * reductionFactor;
-            var pointsHeight = mapHeight * reductionFactor;
-            var pointsXOffset = (dc.getWidth() - pointsWidth) / 2;
-            var pointsYOffset = mapYOffset + ((mapHeight - pointsHeight) / 2);
-            var pointsMin = new Point(pointsXOffset, pointsYOffset);
-            var pointsMax = new Point(pointsXOffset + pointsWidth, pointsYOffset + pointsHeight);
-
             // Convert the lat/long values to screen sub-map x/y values.
-            var pixelArray = points.toPixelArray(pointsMin, pointsMax);
+            var boundingBox = calculateBoundingBox(metres, dc.getWidth(), viewportWidth, viewportHeight);
+            var pixelArray = points.toPixelArray(boundingBox[0], boundingBox[1]);
 
             // Set the draw colour.
             if (metres < ACCURACY_GOOD_THRESHOLD) {
@@ -150,5 +116,24 @@ class GpsAccuracyView extends WatchUi.View {
 
         // Clear the clipping rectangle set above.
         dc.clearClip();
+    }
+
+    private function calculateBoundingBox(metres, screenWidth, viewportWidth, viewportHeight) {
+        // Calculate the map dimensions and position.
+        var mapWidth = viewportWidth;
+        var mapHeight = viewportWidth;
+        var mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
+        var mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
+
+        // Calculate the dimensions and position of the square within the map containing the points.
+        var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
+        var pointsWidth = mapWidth * reductionFactor;
+        var pointsHeight = mapHeight * reductionFactor;
+        var pointsXOffset = (screenWidth - pointsWidth) / 2;
+        var pointsYOffset = mapYOffset + ((mapHeight - pointsHeight) / 2);
+        var pointsMin = new Point(pointsXOffset, pointsYOffset);
+        var pointsMax = new Point(pointsXOffset + pointsWidth, pointsYOffset + pointsHeight);
+
+        return [pointsMin, pointsMax];
     }
 }
