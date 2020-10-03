@@ -4,6 +4,7 @@ using Toybox.Math;
 using Toybox.Graphics;
 
 class GpsAccuracyView extends WatchUi.View {
+    private static const VERSION = "1.3";
     private static const TEXT_Y_OFFSET = 20;
     private static const TEXT_Y_STEP = 30;
     private static const GRAPH_SCALE = 0.9;
@@ -34,7 +35,7 @@ class GpsAccuracyView extends WatchUi.View {
             drawPositionText(dc);
             drawGraph(dc);
         } else {
-            drawCentredText(dc, ["No Position Info"], dc.getHeight() / 2);
+            drawCentredText(dc, ["No Position Info", "Version " + VERSION], dc.getHeight() / 2);
         }
      }
 
@@ -99,12 +100,13 @@ class GpsAccuracyView extends WatchUi.View {
             drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - 20);
         } else {
             // Calculate the dimensions and position of the rectangle within the map containing the points.
-            var viewportDiagonal = MyMath.hypot(viewportWidth, viewportHeight);
-            var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (viewportWidth / viewportDiagonal);
-            var subWidth = viewportWidth * reductionFactor;
-            var subHeight = viewportHeight * reductionFactor;
+            var mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
+            var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
+            var subWidth = mapWidth * reductionFactor;
+            var subHeight = mapHeight * reductionFactor;
             var subXoffset = (dc.getWidth() - subWidth) / 2;
-            var subYoffset = VIEWPORT_Y_OFFSET + ((viewportHeight - subHeight) / 2);
+            var mapYoffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
+            var subYoffset = mapYoffset + ((mapHeight - subHeight) / 2);
             var subMin = new Point(subXoffset, subYoffset);
             var subMax = new Point(subXoffset + subWidth, subYoffset + subHeight);
 
