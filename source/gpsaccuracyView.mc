@@ -34,16 +34,7 @@ class GpsAccuracyView extends WatchUi.View {
             drawPositionText(dc);
             drawGraph(dc);
         } else {
-            var text = [
-                Constants.APP_NAME,
-                "",
-                "No Position Info",
-                "(please wait)",
-                "",
-                Constants.APP_AUTHOR,
-                Constants.APP_VERSION
-            ];
-            Util.drawFullScreenCentredText(dc, text);
+            drawNoPositionText(dc);
         }
      }
 
@@ -67,6 +58,19 @@ class GpsAccuracyView extends WatchUi.View {
         Util.drawCentredText(dc, text, TEXT_Y_OFFSET);
     }
 
+    private function drawNoPositionText(dc) {
+        var text = [
+            Constants.APP_NAME,
+            "",
+            "No Position Info",
+            "(please wait)",
+            "",
+            Constants.APP_AUTHOR,
+            Constants.APP_VERSION
+        ];
+        Util.drawFullScreenCentredText(dc, text);
+    }
+
     private function drawGraph(dc) {
         // Calculate the viewport dimensions and position.
         var viewportWidth = dc.getWidth() * GRAPH_SCALE;
@@ -84,11 +88,11 @@ class GpsAccuracyView extends WatchUi.View {
             // Display an error message if the accuracy is so low that points won't fit.
             dc.drawRectangle(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
             var text = ["Poor Accuracy", "(or bike is moving)"];
-            Util.drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - 20);
+            Util.drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - (Constants.TEXT_Y_STEP / 2));
         } else {
             // Convert the lat/long values to screen sub-map x/y values.
             var boundingBox = calculateBoundingBox(metres, viewportXOffset, viewportWidth, viewportHeight);
-            var pixelArray = points.toPixelArray(boundingBox["topLeft"], boundingBox["bottomRight"]);
+            var pixelArray = points.toPixelArray(boundingBox);
 
             // Set the draw colour.
             if (metres < ACCURACY_GOOD_THRESHOLD) {
@@ -132,9 +136,8 @@ class GpsAccuracyView extends WatchUi.View {
         var pointsHeight = mapHeight * reductionFactor;
         var pointsXOffset = mapXOffset + ((mapWidth - pointsWidth) / 2);
         var pointsYOffset = mapYOffset + ((mapHeight - pointsHeight) / 2);
-        var pointsMin = new Point(pointsXOffset, pointsYOffset);
-        var pointsMax = new Point(pointsXOffset + pointsWidth, pointsYOffset + pointsHeight);
-
-        return {"topLeft" => pointsMin, "bottomRight" => pointsMax};
+        var topLeft = new Point(pointsXOffset, pointsYOffset);
+        var bottomRight = new Point(pointsXOffset + pointsWidth, pointsYOffset + pointsHeight);
+        return new BoundingBox(topLeft, bottomRight);
     }
 }

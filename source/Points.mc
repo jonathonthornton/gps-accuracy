@@ -37,18 +37,31 @@ class Points {
         return SmallestEnclosingCircle.makeCircle(self);
     }
 
-    public function toPixelArray(newMin, newMax) {
+    public function toPixelArray(newBoundingBox) {
         // Convert the min/max lat/long to Mercator projection.
-        var oldMin = new Point(MyMath.latToMercator(getMinX()), MyMath.longToMercator(getMinY()));
-        var oldMax = new Point(MyMath.latToMercator(getMaxX()), MyMath.longToMercator(getMaxY()));
+        var oldBoundingBox = new BoundingBox(
+            new Point(MyMath.latToMercator(getMinX()), MyMath.longToMercator(getMinY())),
+            new Point(MyMath.latToMercator(getMaxX()), MyMath.longToMercator(getMaxY())));
         var result = new[points.size()];
 
         for (var i = 0; i < points.size(); i++) {
+            var pointToMap = points[i];
+
             // Convert the x lat value to Mercator and then map the result to the new x range.
-            var x = MyMath.mapValueToRange(oldMin.x, oldMax.x, newMin.x, newMax.x, MyMath.latToMercator(points[i].x));
+            var x = MyMath.mapValueToRange(
+                oldBoundingBox.topLeft.x,
+                oldBoundingBox.bottomRight.x,
+                newBoundingBox.topLeft.x,
+                newBoundingBox.bottomRight.x,
+                MyMath.latToMercator(pointToMap.x));
 
             // Convert the y long value to Mercator and then map the result to the new y range.
-            var y = MyMath.mapValueToRange(oldMin.y, oldMax.y, newMin.y, newMax.y, MyMath.longToMercator(points[i].y));
+            var y = MyMath.mapValueToRange(
+               oldBoundingBox.topLeft.y,
+                oldBoundingBox.bottomRight.y,
+                newBoundingBox.topLeft.y,
+                newBoundingBox.bottomRight.y,
+                MyMath.longToMercator(pointToMap.y));
 
             result[i] = new Point(x.toNumber(), y.toNumber());
         }

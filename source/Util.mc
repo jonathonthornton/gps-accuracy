@@ -2,7 +2,7 @@ using Toybox.Graphics;
 
 class Util {
     public static function drawFullScreenCentredText(dc, text) {
-       var textHeight = text.size() * (Constants.TEXT_Y_STEP - 1);
+       var textHeight = (text.size() - 1) * Constants.TEXT_Y_STEP;
        var yOffset = (dc.getHeight() - textHeight) / 2;
        drawCentredText(dc, text, yOffset);
     }
