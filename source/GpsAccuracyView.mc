@@ -86,7 +86,6 @@ class GpsAccuracyView extends WatchUi.View {
 
         if (metres > GRAPH_WIDTH_METRES) {
             // Display an error message if the accuracy is so low that points won't fit.
-            dc.drawRectangle(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
             var text = ["Poor Accuracy", "(or bike is moving)"];
             Util.drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - (Constants.TEXT_Y_STEP / 2));
         } else {
@@ -138,6 +137,7 @@ class GpsAccuracyView extends WatchUi.View {
         var pointsYOffset = mapYOffset + ((mapHeight - pointsHeight) / 2);
         var topLeft = new Point(pointsXOffset, pointsYOffset);
         var bottomRight = new Point(pointsXOffset + pointsWidth, pointsYOffset + pointsHeight);
+
         return new BoundingBox(topLeft, bottomRight);
     }
 }

@@ -28,6 +28,7 @@ class MyMath {
         return R * c;
     }
 
+    // See https://wiki.openstreetmap.org/wiki/Mercator
     public static function latToMercator(lat) {
         return Math.ln(Math.tan((lat / 90 + 1) * PI_OVER_4)) * PI_UNDER_180;
     }
@@ -70,14 +71,14 @@ class MyMath {
         }
 
         for (var oldValue = oldMin; oldValue <= oldMax; oldValue += oldStep) {
-            var newValue = MyMath.mapValueToRange(oldMin, oldMax, newMin, newMax, oldValue);
+            var newValue = MyMath.mapValueToRange(oldMin, oldMax, newMin, newMax, oldValue).toNumber();
             actual.add(newValue);
             logger.debug("oldValue=" + oldValue + " newValue=" + newValue);
         }
 
         for (var newValue = newMin; newValue <= newMax; newValue++) {
-            if (actual.indexOf(newValue)) {
-                logger.debug("found newValue=" + newValue);
+            if (actual.indexOf(newValue) != -1) {
+                logger.debug("indexOf(" + newValue + ")=" + actual.indexOf(newValue));
             } else {
                 logger.debug("not found newValue=" + newValue);
                 return false;
