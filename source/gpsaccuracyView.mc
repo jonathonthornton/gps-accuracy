@@ -71,24 +71,24 @@ class GpsAccuracyView extends WatchUi.View {
         // Calculate the viewport dimensions and position.
         var viewportWidth = dc.getWidth() * GRAPH_SCALE;
         var viewportHeight = (dc.getHeight() - VIEWPORT_Y_OFFSET) * GRAPH_SCALE;
-        var viewportXoffset = (dc.getWidth() - viewportWidth) / 2;
+        var viewportXOffset = (dc.getWidth() - viewportWidth) / 2;
 
         // Draw a border around the viewport.
-        dc.drawRectangle(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
-        dc.setClip(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
+        dc.drawRectangle(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
+        dc.setClip(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
 
         // Get the diameter in metres of the smallest circle containing all of the points.
         var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
 
         if (metres > GRAPH_WIDTH_METRES) {
             // Display an error message if the accuracy is so low that points won't fit.
-            dc.drawRectangle(viewportXoffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
+            dc.drawRectangle(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
             var text = ["Poor Accuracy", "(or bike is moving)"];
             Util.drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - 20);
         } else {
             // Convert the lat/long values to screen sub-map x/y values.
-            var boundingBox = calculateBoundingBox(metres, dc.getWidth(), viewportWidth, viewportHeight);
-            var pixelArray = points.toPixelArray(boundingBox[0], boundingBox[1]);
+            var boundingBox = calculateBoundingBox(metres, viewportXOffset, viewportWidth, viewportHeight);
+            var pixelArray = points.toPixelArray(boundingBox["topLeft"], boundingBox["bottomRight"]);
 
             // Set the draw colour.
             if (metres < ACCURACY_GOOD_THRESHOLD) {
@@ -118,10 +118,11 @@ class GpsAccuracyView extends WatchUi.View {
         dc.clearClip();
     }
 
-    private function calculateBoundingBox(metres, screenWidth, viewportWidth, viewportHeight) {
+    private function calculateBoundingBox(metres, viewportXOffset, viewportWidth, viewportHeight) {
         // Calculate the map dimensions and position.
         var mapWidth = viewportWidth;
         var mapHeight = viewportWidth;
+        var mapXOffset = viewportXOffset;
         var mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
         var mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
 
@@ -129,11 +130,11 @@ class GpsAccuracyView extends WatchUi.View {
         var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
         var pointsWidth = mapWidth * reductionFactor;
         var pointsHeight = mapHeight * reductionFactor;
-        var pointsXOffset = (screenWidth - pointsWidth) / 2;
+        var pointsXOffset = mapXOffset + ((mapWidth - pointsWidth) / 2);
         var pointsYOffset = mapYOffset + ((mapHeight - pointsHeight) / 2);
         var pointsMin = new Point(pointsXOffset, pointsYOffset);
         var pointsMax = new Point(pointsXOffset + pointsWidth, pointsYOffset + pointsHeight);
 
-        return [pointsMin, pointsMax];
+        return {"topLeft" => pointsMin, "bottomRight" => pointsMax};
     }
 }
