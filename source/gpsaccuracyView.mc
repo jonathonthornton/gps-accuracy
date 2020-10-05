@@ -4,7 +4,7 @@ using Toybox.Math;
 using Toybox.Graphics;
 
 class GpsAccuracyView extends WatchUi.View {
-    private static const GRAPH_WIDTH_METRES = 50;
+    private static const GRAPH_WIDTH_METRES = 20;
 
     private static const TEXT_Y_OFFSET = 40;
     private static const GRAPH_SCALE = 0.9;
@@ -88,6 +88,7 @@ class GpsAccuracyView extends WatchUi.View {
         } else {
             // Convert the lat/long values to screen sub-map x/y values.
             var boundingBox = calculateBoundingBox(metres, viewportXOffset, viewportWidth, viewportHeight);
+            System.println(boundingBox);
             var pixelArray = points.toPixelArray(boundingBox);
 
             // Set the draw colour.
@@ -121,7 +122,7 @@ class GpsAccuracyView extends WatchUi.View {
     private function calculateBoundingBox(metres, viewportXOffset, viewportWidth, viewportHeight) {
         // Calculate the map dimensions and position.
         var mapWidth = viewportWidth;
-        var mapHeight = viewportWidth;
+        var mapHeight = mapWidth / 2;
         var mapXOffset = viewportXOffset;
         var mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
         var mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
@@ -132,8 +133,12 @@ class GpsAccuracyView extends WatchUi.View {
         var pointsHeight = mapHeight * reductionFactor;
         var pointsXOffset = mapXOffset + ((mapWidth - pointsWidth) / 2);
         var pointsYOffset = mapYOffset + ((mapHeight - pointsHeight) / 2);
-        var topLeft = new Point(pointsXOffset, pointsYOffset);
-        var bottomRight = new Point(pointsXOffset + pointsWidth, pointsYOffset + pointsHeight);
+        var topLeft = new Point(
+            pointsXOffset.toNumber(),
+            pointsYOffset.toNumber());
+        var bottomRight = new Point(
+            (pointsXOffset + pointsWidth).toNumber(),
+            (pointsYOffset + pointsHeight).toNumber());
 
         return new BoundingBox(topLeft, bottomRight);
     }

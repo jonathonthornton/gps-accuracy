@@ -44,40 +44,44 @@ class Points {
         for (var i = 0; i < points.size() - 1; i++) {
             for (var j = i + 1; j < points.size(); j++) {
                 var distance = MyMath.calculateGCD(points[i], points[j]);
+                System.println("distance=" + distance);
                 if (result == null || result < distance) {
                     result = distance;
                 }
             }
         }
 
+        System.println("==================================");
+
         return result == null ? 0 : result;
     }
 
-    public function toPixelArray(newBoundingBox) {
-        // Convert the min/max lat/long to Mercator projection.
-        var oldBoundingBox = new BoundingBox(
-            new Point(MyMath.latToMercator(getMinX()), MyMath.longToMercator(getMinY())),
-            new Point(MyMath.latToMercator(getMaxX()), MyMath.longToMercator(getMaxY())));
+    public function toPixelArray(boundingBox) {
+        var minLatitudeMerc = MyMath.latToMercator(getMinX());
+        var maxLatitudeMerc = MyMath.latToMercator(getMaxX());
+        var minLongitudeMerc = MyMath.longToMercator(getMinY());
+        var maxLongitudeMerc = MyMath.longToMercator(getMaxY());
         var result = new[points.size()];
 
         for (var i = 0; i < points.size(); i++) {
-            var pointToMap = points[i];
+            var latitudeMerc = MyMath.latToMercator(points[i].x);
+            var longitudeMerc = MyMath.longToMercator(points[i].y);
 
-            // Convert the x lat value to Mercator and then map the result to the new x range.
+           // Map the longitudeMerc to the new x range.
             var x = MyMath.mapValueToRange(
-                oldBoundingBox.topLeft.x,
-                oldBoundingBox.bottomRight.x,
-                newBoundingBox.topLeft.x,
-                newBoundingBox.bottomRight.x,
-                MyMath.latToMercator(pointToMap.x));
+                minLongitudeMerc,
+                maxLongitudeMerc,
+                boundingBox.topLeft.x,
+                boundingBox.bottomRight.x,
+                longitudeMerc);
 
-            // Convert the y long value to Mercator and then map the result to the new y range.
+            // Map the latitudeMerc to the new y range.
             var y = MyMath.mapValueToRange(
-               oldBoundingBox.topLeft.y,
-                oldBoundingBox.bottomRight.y,
-                newBoundingBox.topLeft.y,
-                newBoundingBox.bottomRight.y,
-                MyMath.longToMercator(pointToMap.y));
+                minLatitudeMerc,
+                maxLatitudeMerc,
+                boundingBox.topLeft.y,
+                boundingBox.bottomRight.y,
+                latitudeMerc);
 
             result[i] = new Point(x.toNumber(), y.toNumber());
         }

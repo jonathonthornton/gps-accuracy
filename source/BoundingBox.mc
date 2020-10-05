@@ -6,4 +6,8 @@ class BoundingBox {
         self.topLeft = topLeft;
         self.bottomRight = bottomRight;
     }
+
+    public function toString() {
+        return "BoundingBox topLeft=" + topLeft + ", bottomRight=" + bottomRight;
+    }
 }
