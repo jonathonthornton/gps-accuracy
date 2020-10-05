@@ -37,6 +37,22 @@ class Points {
         return SmallestEnclosingCircle.makeCircle(self);
     }
 
+    // TODO Replace this brute force implementation with a convex hull solution.
+    public function getGreatestDistance() {
+        var result = null;
+
+        for (var i = 0; i < points.size() - 1; i++) {
+            for (var j = i + 1; j < points.size(); j++) {
+                var distance = MyMath.calculateGCD(points[i], points[j]);
+                if (result == null || result < distance) {
+                    result = distance;
+                }
+            }
+        }
+
+        return result == null ? 0 : result;
+    }
+
     public function toPixelArray(newBoundingBox) {
         // Convert the min/max lat/long to Mercator projection.
         var oldBoundingBox = new BoundingBox(

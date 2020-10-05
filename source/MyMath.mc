@@ -88,11 +88,25 @@ class MyMath {
     }
 
     (:test)
-    function getWidthAsGCDOk(logger) {
+    function calculateGCDOk(logger) {
         var p1 = new Point(38.555421, -94.799646);
         var p2 = new Point(38.855421, -94.698646);
         var gcd = MyMath.calculateGCD(p1, p2);
         logger.debug("GCD=" + gcd);
         return gcd.toNumber() == 34490;
+    }
+
+    (:test)
+    function latToMercatorOk(logger) {
+        for (var i = -85d; i <= 85; i += 5) {
+            logger.debug("lat=" + i + " latToMercator(lat)=" + MyMath.latToMercator(i));
+        }
+
+        return
+            MyMath.latToMercator(-85d).toNumber() == -179 &&
+            MyMath.latToMercator(-40d).toNumber() == -43 &&
+            MyMath.latToMercator(0d).toNumber() == 0 &&
+            MyMath.latToMercator(60d).toNumber() == 75 &&
+            MyMath.latToMercator(85d).toNumber() == 179;
     }
 }

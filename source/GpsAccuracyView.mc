@@ -4,7 +4,7 @@ using Toybox.Math;
 using Toybox.Graphics;
 
 class GpsAccuracyView extends WatchUi.View {
-    private static const GRAPH_WIDTH_METRES = 20;
+    private static const GRAPH_WIDTH_METRES = 50;
 
     private static const TEXT_Y_OFFSET = 40;
     private static const GRAPH_SCALE = 0.9;
@@ -31,8 +31,9 @@ class GpsAccuracyView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         if (info != null) {
-            drawPositionText(dc);
-            drawGraph(dc);
+            var metres = points.getGreatestDistance();
+            drawPositionText(dc, metres);
+            drawGraph(dc, metres);
         } else {
             drawNoPositionText(dc);
         }
@@ -47,8 +48,7 @@ class GpsAccuracyView extends WatchUi.View {
         self.points = points;
     }
 
-    private function drawPositionText(dc) {
-        var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
+    private function drawPositionText(dc, metres) {
         var text = [
             "Latitude = " + info.position.toDegrees()[0].format("%3.6f"),
             "Longitude = " + info.position.toDegrees()[1].format("%3.6f"),
@@ -71,7 +71,7 @@ class GpsAccuracyView extends WatchUi.View {
         Util.drawFullScreenCentredText(dc, text);
     }
 
-    private function drawGraph(dc) {
+    private function drawGraph(dc, metres) {
         // Calculate the viewport dimensions and position.
         var viewportWidth = dc.getWidth() * GRAPH_SCALE;
         var viewportHeight = (dc.getHeight() - VIEWPORT_Y_OFFSET) * GRAPH_SCALE;
@@ -80,9 +80,6 @@ class GpsAccuracyView extends WatchUi.View {
         // Draw a border around the viewport.
         dc.drawRectangle(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
         dc.setClip(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
-
-        // Get the diameter in metres of the smallest circle containing all of the points.
-        var metres = points.getSmallestEnclosingCircle().getDiameterMetres();
 
         if (metres > GRAPH_WIDTH_METRES) {
             // Display an error message if the accuracy is so low that points won't fit.

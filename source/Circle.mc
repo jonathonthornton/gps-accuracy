@@ -1,4 +1,5 @@
-using Toybox.Math as Math;
+using Toybox.Math;
+using Toybox.System;
 
 class Circle {
     private static const MULTIPLICATIVE_EPSILON = 1 + MyMath.SMALL_DOUBLE;
@@ -22,12 +23,6 @@ class Circle {
 
     public function contains(point) {
         return centre.distance(point) <= radius * MULTIPLICATIVE_EPSILON;
-    }
-
-    public function getDiameterMetres() {
-        var p1 = new Point(centre.x - radius, centre.y);
-        var p2 = new Point(centre.x + radius, centre.y);
-        return MyMath.calculateGCD(p1, p2);
     }
 
     public function toString() {
