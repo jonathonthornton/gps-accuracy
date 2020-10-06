@@ -31,7 +31,7 @@ class GpsAccuracyView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         if (info != null) {
-            var metres = points.getGreatestDistance();
+            var metres = points.getGreatestDistanceNearCircumference();
             drawPositionText(dc, metres);
             drawGraph(dc, metres);
         } else {

@@ -37,13 +37,30 @@ class Points {
         return SmallestEnclosingCircle.makeCircle(self);
     }
 
-    // TODO Replace this brute force implementation with a convex hull solution.
+    public function getGreatestDistanceNearCircumference() {
+        var sec = getSmallestEnclosingCircle();
+        var onCircumference = [];
+
+        for (var i = 0; i < points.size(); i++) {
+            if (sec.radius - sec.centre.distance(points[i]) < sec.radius / 5) {
+                // Add the point to the array if the point is on or near the circumference.
+                onCircumference.add(points[i]);
+            }
+        }
+
+        return new Points(onCircumference).getGreatestDistance();
+    }
+
     public function getGreatestDistance() {
+        // N^2 efficiency. Use getGreatestDistanceNearCircumference()
+        // to reduce the number of points under consideration.
         var result = null;
+        var distanceCount = 0;
 
         for (var i = 0; i < points.size() - 1; i++) {
             for (var j = i + 1; j < points.size(); j++) {
                 var distance = MyMath.calculateGCD(points[i], points[j]);
+                distanceCount++;
                 System.println("distance=" + distance);
                 if (result == null || result < distance) {
                     result = distance;
@@ -51,7 +68,7 @@ class Points {
             }
         }
 
-        System.println("==================================");
+        System.println("distanceCount=" + distanceCount);
 
         return result == null ? 0 : result;
     }
