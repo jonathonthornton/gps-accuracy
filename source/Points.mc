@@ -84,7 +84,7 @@ class Points {
             var latitudeMerc = MyMath.latToMercator(points[i].x);
             var longitudeMerc = MyMath.longToMercator(points[i].y);
 
-           // Map the longitudeMerc to the new x range.
+           // Map the longitudeMerc to the boundingBox x range.
             var x = MyMath.mapValueToRange(
                 minLongitudeMerc,
                 maxLongitudeMerc,
@@ -92,7 +92,7 @@ class Points {
                 boundingBox.bottomRight.x,
                 longitudeMerc);
 
-            // Map the latitudeMerc to the new y range.
+            // Map the latitudeMerc to the boundingBox y range.
             var y = MyMath.mapValueToRange(
                 minLatitudeMerc,
                 maxLatitudeMerc,

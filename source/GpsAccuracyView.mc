@@ -18,11 +18,33 @@ class GpsAccuracyView extends WatchUi.View {
     private static const ACCURACY_OK_THRESHOLD = GRAPH_WIDTH_METRES * 0.5;
     private static const ACCURACY_GOOD_THRESHOLD = GRAPH_WIDTH_METRES * 0.2;
 
-    var info = null;
-    var points = null;
+    private var info = null;
+    private var points = null;
+    private var viewportWidth = 0;
+    private var viewportHeight = 0;
+    private var viewportXOffset = 0;
+    private var mapWidth = 0;
+    private var mapHeight = 0;
+    private var mapXOffset = 0;
+    private var mapYOffset = 0;
+    private var mapDiagonal = 0;
 
     function initialize() {
         View.initialize();
+    }
+
+    function onLayout(dc) {
+        // Calculate the viewport dimensions and position.
+        viewportWidth = dc.getWidth() * GRAPH_SCALE;
+        viewportHeight = (dc.getHeight() - VIEWPORT_Y_OFFSET) * GRAPH_SCALE;
+        viewportXOffset = (dc.getWidth() - viewportWidth) / 2;
+
+        // Calculate the map dimensions and position.
+        mapWidth = viewportWidth;
+        mapHeight = mapWidth / 2;
+        mapXOffset = viewportXOffset;
+        mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
+        mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
     }
 
     function onUpdate(dc) {
@@ -30,7 +52,7 @@ class GpsAccuracyView extends WatchUi.View {
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-        if (info != null) {
+        if (info != null && points != null) {
             var metres = points.getGreatestDistanceNearCircumference();
             drawPositionText(dc, metres);
             drawGraph(dc, metres);
@@ -72,11 +94,6 @@ class GpsAccuracyView extends WatchUi.View {
     }
 
     private function drawGraph(dc, metres) {
-        // Calculate the viewport dimensions and position.
-        var viewportWidth = dc.getWidth() * GRAPH_SCALE;
-        var viewportHeight = (dc.getHeight() - VIEWPORT_Y_OFFSET) * GRAPH_SCALE;
-        var viewportXOffset = (dc.getWidth() - viewportWidth) / 2;
-
         // Draw a border around the viewport.
         dc.drawRectangle(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
         dc.setClip(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
@@ -87,7 +104,7 @@ class GpsAccuracyView extends WatchUi.View {
             Util.drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - (Constants.TEXT_Y_STEP / 2));
         } else {
             // Convert the lat/long values to screen sub-map x/y values.
-            var boundingBox = calculateBoundingBox(metres, viewportXOffset, viewportWidth, viewportHeight);
+            var boundingBox = calculateBoundingBox(metres);
             System.println(boundingBox);
             var pixelArray = points.toPixelArray(boundingBox);
 
@@ -119,14 +136,7 @@ class GpsAccuracyView extends WatchUi.View {
         dc.clearClip();
     }
 
-    private function calculateBoundingBox(metres, viewportXOffset, viewportWidth, viewportHeight) {
-        // Calculate the map dimensions and position.
-        var mapWidth = viewportWidth;
-        var mapHeight = mapWidth / 2;
-        var mapXOffset = viewportXOffset;
-        var mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
-        var mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
-
+    private function calculateBoundingBox(metres) {
         // Calculate the dimensions and position of the square within the map containing the points.
         var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
         var pointsWidth = mapWidth * reductionFactor;
