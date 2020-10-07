@@ -1,4 +1,18 @@
+using Toybox.Math;
+
 class Arrays {
+
+    // Array elements must implement the clone() method.
+    public static function shuffle(array) {
+        var size = array.size();
+
+        for (var i = 0; i < size; i++) {
+            var j = i + (Math.rand() % (size - i));
+            var temp = array[j].clone();
+            array[j] = array[i];
+            array[i] = temp;
+        }
+    }
 
     // See https://www.geeksforgeeks.org/merge-sort/
     // Array elements must implement the compareTo() method.

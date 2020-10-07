@@ -14,12 +14,7 @@ class Points {
     }
 
     public function shuffle() {
-        for (var i = 0; i < pointsArray.size(); i++) {
-            var j = i + (Math.rand() % (pointsArray.size() - i));
-            var tempPoint = new Point(pointsArray[j].x, pointsArray[j].y);
-            pointsArray[j] = new Point(pointsArray[i].x, pointsArray[i].y);
-            pointsArray[i] = tempPoint;
-        }
+        Arrays.shuffle(pointsArray);
     }
 
     public function sort() {
@@ -71,7 +66,7 @@ class Points {
 
     private static function getAccuracyBruteForceImpl(pointsArray) {
         // N^2 efficiency.
-        var result = null;
+        var result = 0;
         var distanceCount = 0;
 
         for (var i = 0; i < pointsArray.size() - 1; i++) {
@@ -79,7 +74,7 @@ class Points {
                 var distance = pointsArray[i].calculateGCD(pointsArray[j]);
                 distanceCount++;
                 System.println("getAccracyBruteForce() distance=" + distance);
-                if (result == null || result < distance) {
+                if (distance > result) {
                     result = distance;
                 }
             }

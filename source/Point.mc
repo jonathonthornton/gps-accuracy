@@ -14,6 +14,10 @@ class Point {
         self.y = y;
     }
 
+    public function clone() {
+        return new Point(x, y);
+    }
+
     public function subtract(p) {
         return new Point(x - p.x, y - p.y);
     }
