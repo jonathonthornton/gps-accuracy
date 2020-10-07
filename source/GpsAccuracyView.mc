@@ -54,7 +54,9 @@ class GpsAccuracyView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         if (info != null && points != null) {
-            var metres = points.getGreatestDistanceConvexHull();
+            var altMetres = points.getGreatestDistanceConvexHull();
+            var metres = Antipodal.findLargestDistance(points);
+            System.println("altMetres=" + altMetres + " metres=" + metres);
             drawPositionText(dc, metres);
             drawGraph(dc, metres);
         } else {
