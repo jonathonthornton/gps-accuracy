@@ -1,6 +1,7 @@
 class Arrays {
 
     // See https://www.geeksforgeeks.org/merge-sort/
+    // Array elements must implement the compareTo() method.
     public static function mergeSort(array) {
         mergeSortImpl(array, 0, array.size() - 1);
     }
@@ -15,7 +16,7 @@ class Arrays {
         var L = new [n1];
         var R = new [n2];
 
-        // Copy data to temp arrays.
+        // Copy array to temp arrays.
         for (var i = 0; i < n1; i++) {
             L[i] = array[l + i];
         }
@@ -75,17 +76,18 @@ class Arrays {
 
     (:test)
     function mergeSortOk(logger) {
-        var data = [];
+        var array = [];
+        var pointCount = 10;
 
-        for (var i = 0; i < 100; i++) {
-            data.add(new Point(Math.rand() % 100, Math.rand() % 100));
+        for (var i = 0; i < pointCount; i++) {
+            array.add(new Point(Math.rand() % 100, Math.rand() % 100));
         }
 
-        Arrays.mergeSort(data);
+        Arrays.mergeSort(array);
 
-        for (var i = 0; i < 99; i++) {
-            logger.debug(data[i]);
-            if (data[i].compareTo(data[i + 1]) > 0) {
+        for (var i = 0; i < pointCount - 1; i++) {
+            logger.debug(array[i]);
+            if (array[i].compareTo(array[i + 1]) > 0) {
                 return false;
             }
         }

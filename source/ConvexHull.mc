@@ -5,10 +5,9 @@ class ConvexHull {
     // the given set of points. The convex hull excludes collinear points.
     // This algorithm runs in O(n log n) time.
     public static function makeHull(points) {
-        var newPointsArray = points.pointsArray.slice(0, points.pointsArray.size()); // Clone the array.
-        var newPoints = new Points(newPointsArray);
-        Arrays.mergeSort(newPoints.pointsArray);
-        return ConvexHull.makeHullPresorted(newPoints);
+        var clonedPoints = points.clone();
+        clonedPoints.sort();
+        return ConvexHull.makeHullPresorted(clonedPoints);
     }
 
     // Returns the convex hull, assuming that each points[i] <= points[i + 1]. Runs in O(n) time.

@@ -5,7 +5,9 @@ using Toybox.System;
 class SmallestEnclosingCircle {
     public static function makeCircle(points) {
         System.println("makeCircle points=" + points);
-        var shuffled = points.shuffle().toArray();
+        var clone = points.clone();
+        clone.shuffle();
+        var shuffled = clone.pointsArray;
 
         var c = null;
         for (var i = 0; i < shuffled.size(); i++) {

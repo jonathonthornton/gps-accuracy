@@ -1,23 +1,29 @@
 using Toybox.Math;
+using Toybox.System;
 
 class Points {
     var pointsArray = null;
 
-    public function initialize(pointArray) {
-        self.pointsArray = pointArray;
+    public function initialize(pointsArray) {
+        self.pointsArray = pointsArray;
+    }
+
+    public function clone() {
+        var clonedPointsArray = pointsArray.slice(0, pointsArray.size());
+        return new Points(clonedPointsArray);
     }
 
     public function shuffle() {
-        var shuffled = pointsArray.slice(0, pointsArray.size()); // Clone the array.
-        var size = shuffled.size();
-
-        for (var i = 0; i < size; i++) {
-            var j = i + (Math.rand() % (size - i));
-            var k = new Point(shuffled[j].x, shuffled[j].y);
-            shuffled[j] = new Point(shuffled[i].x, shuffled[i].y);
-            shuffled[i] = k;
+        for (var i = 0; i < pointsArray.size(); i++) {
+            var j = i + (Math.rand() % (pointsArray.size() - i));
+            var tempPoint = new Point(pointsArray[j].x, pointsArray[j].y);
+            pointsArray[j] = new Point(pointsArray[i].x, pointsArray[i].y);
+            pointsArray[i] = tempPoint;
         }
-        return new Points(shuffled);
+    }
+
+    public function sort() {
+        Arrays.mergeSort(pointsArray);
     }
 
     public function containsPoint(point) {
@@ -33,16 +39,37 @@ class Points {
         return SmallestEnclosingCircle.makeCircle(self);
     }
 
-    public function getConvexHull() {
-        return ConvexHull.makeHull(self);
+    public function getAccuracySmallestEnclosingCircle() {
+        System.println("getAccuracySmallestEnclosingCircle()");
+        var sec = getSmallestEnclosingCircle();
+        var pointsNearCircumference = [];
+        var thresholdDistance = sec.radius * 0.8;
+
+        for (var i = 0; i < pointsArray.size(); i++) {
+            if (sec.centre.distance(pointsArray[i]) >= thresholdDistance) {
+                pointsNearCircumference.add(pointsArray[i]);
+            }
+        }
+
+        return Points.getAccuracyBruteForceImpl(pointsNearCircumference);
     }
 
-    public function getGreatestDistanceConvexHull() {
-        var points = new Points(getConvexHull());
-        return points.getGreatestDistance();
+    public function getAccuracyConvexHull() {
+        System.println("getAccuracyConvexHull()");
+        var convexHull = ConvexHull.makeHull(self);
+        return Points.getAccuracyBruteForceImpl(convexHull);
     }
 
-    public function getGreatestDistance() {
+    public function getAccuracyAntipodal() {
+        System.println("getAccuracyAntipodal()");
+        return Antipodal.findLargestDistance(self);
+    }
+
+    public function getAccuracyBruteForce() {
+        return Points.getAccuracyBruteForceImpl(pointsArray);
+    }
+
+    private static function getAccuracyBruteForceImpl(pointsArray) {
         // N^2 efficiency.
         var result = null;
         var distanceCount = 0;
@@ -51,23 +78,25 @@ class Points {
             for (var j = i + 1; j < pointsArray.size(); j++) {
                 var distance = pointsArray[i].calculateGCD(pointsArray[j]);
                 distanceCount++;
-                System.println("distance=" + distance);
+                System.println("getAccracyBruteForce() distance=" + distance);
                 if (result == null || result < distance) {
                     result = distance;
                 }
             }
         }
 
-        System.println("distanceCount=" + distanceCount);
+        System.println("getAccracyBruteForce() distanceCount=" + distanceCount);
 
         return result == null ? 0 : result;
     }
 
     public function toPixelArray(boundingBoxTo) {
         var mercPoints = toMercator();
-        var mercArray = mercPoints.toArray();
+        var mercArray = mercPoints.pointsArray;
         var boundingBoxFrom = mercPoints.getBoundingBox();
         var result = new [mercArray.size()];
+
+        System.println("points size=" + pointsArray.size() + " mercPoints size=" + mercArray.size());
 
         for (var i = 0; i < mercArray.size(); i++) {
             var merc = mercArray[i];
@@ -160,20 +189,22 @@ class Points {
     function shuffleOk(logger) {
         var pointsArray = [new Point(1, 1), new Point(2, 2), new Point(3, 3), new Point(4, 4), new Point(5, 5)];
         var points = new Points(pointsArray);
+        var shuffledPoints = points.clone();
 
-        for (var i = 0; i < 20; i++) {
-            var shuffled = points.shuffle();
+        for (var i = 0; i < 10; i++) {
+            shuffledPoints.shuffle();
 
-            if (shuffled.size() != points.size()) {
+            if (shuffledPoints.size() != points.size()) {
                 return false;
             }
 
             for (var j = 0; j < points.size(); j++) {
-                if (!shuffled.containsPoint(points.get(j))) {
+                if (!shuffledPoints.containsPoint(points.get(j))) {
                     return false;
                 }
             }
-            logger.debug(shuffled);
+
+            logger.debug("shuffled=" + shuffledPoints);
         }
         return true;
     }
