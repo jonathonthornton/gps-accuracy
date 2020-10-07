@@ -1,4 +1,11 @@
+using Toybox.Math;
+
 class Point {
+    private static const R = 6371000;
+    private static const PI_OVER_180 = Math.PI / 180;
+    private static const PI_UNDER_180 = 180 / Math.PI;
+    private static const PI_OVER_4 = Math.PI / 4;
+
     public var x;
     public var y;
 
@@ -23,8 +30,47 @@ class Point {
         return x == other.x && y == other.y;
     }
 
+    public function compareTo(other) {
+        if (x == other.x) {
+            if (y < other.y) {
+                return -1;
+            } else if (y > other.y) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            if (x < other.x) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }
+    }
+
     public function toString() {
         return "Point(" + x + "," + y + ")";
+    }
+
+    // See https://www.movable-type.co.uk/scripts/latlong.html
+    public  function calculateGCD(other) {
+        var lat1 = x * PI_OVER_180;
+        var lat2 = other.x * PI_OVER_180;
+        var deltaLat = (other.x - x) * PI_OVER_180;
+        var deltaLong = (other.y - y) * PI_OVER_180;
+
+        var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+            Math.cos(lat1) * Math.cos(lat2) *
+            Math.sin(deltaLong / 2) * Math.sin(deltaLong / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        // Return distance in metres.
+        return R * c;
+    }
+
+    // See https://wiki.openstreetmap.org/wiki/Mercator
+    public function toMercator() {
+        return new Point(Math.ln(Math.tan((x / 90 + 1) * PI_OVER_4)) * PI_UNDER_180, y);
     }
 
     (:test)
@@ -32,5 +78,29 @@ class Point {
         var p = new Point(0, 0);
         var q = new Point(3, 4);
         return p.distance(q) == 5;
+    }
+
+    (:test)
+    function calculateGCDOk(logger) {
+        var point1 = new Point(38.555421, -94.799646);
+        var point2 = new Point(38.855421, -94.698646);
+        var gcd = point1.calculateGCD(point2);
+        logger.debug("GCD=" + gcd);
+        return gcd.toNumber() == 34490;
+    }
+
+    (:test)
+    function toMercatorOk(logger) {
+        for (var lat = -85d; lat <= 85; lat += 5) {
+            var point = new Point(lat, 0);
+            logger.debug("toMercator(" + point + ")=" + point.toMercator());
+        }
+
+        return
+            new Point(-85d, 0).toMercator().x.toNumber() == -179 &&
+            new Point(-40d, 0).toMercator().x.toNumber() == -43 &&
+            new Point(0d, 0).toMercator().x.toNumber() == 0 &&
+            new Point(60d, 0).toMercator().x.toNumber() == 75 &&
+            new Point(85d, 0).toMercator().x.toNumber() == 179;
     }
 }

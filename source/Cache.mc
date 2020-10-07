@@ -4,7 +4,7 @@ class Cache {
     private var i = 0;
 
     function initialize(count) {
-        cache = new[count];
+        cache = new [count];
     }
 
     function add(item) {

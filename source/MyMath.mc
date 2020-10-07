@@ -7,36 +7,6 @@ class MyMath {
     public static const MAX_INT = ~(1 << 31);
     public static const SMALL_DOUBLE = Math.pow(10, -14);
 
-    private static const R = 6371000;
-    private static const PI_OVER_180 = Math.PI / 180;
-    private static const PI_UNDER_180 = 180 / Math.PI;
-    private static const PI_OVER_4 = Math.PI / 4;
-
-    // See https://www.movable-type.co.uk/scripts/latlong.html
-    public static function calculateGCD(p1, p2) {
-        var lat1 = p1.x * PI_OVER_180;
-        var lat2 = p2.x * PI_OVER_180;
-        var deltaLat = (p2.x - p1.x) * PI_OVER_180;
-        var deltaLong = (p2.y - p1.y) * PI_OVER_180;
-
-        var a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
-            Math.cos(lat1) * Math.cos(lat2) *
-            Math.sin(deltaLong / 2) * Math.sin(deltaLong / 2);
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        // Return distance in metres.
-        return R * c;
-    }
-
-    // See https://wiki.openstreetmap.org/wiki/Mercator
-    public static function latToMercator(lat) {
-        return Math.ln(Math.tan((lat / 90 + 1) * PI_OVER_4)) * PI_UNDER_180;
-    }
-
-    public static function longToMercator(long) {
-        return long;
-    }
-
     // See https://stackoverflow.com/questions/929103/convert-a-number-range-to-another-range-maintaining-ratio
     public static function mapValueToRange(oldMin, oldMax, newMin, newMax, oldValue) {
         return ((oldValue - oldMin) * (newMax - newMin) / (oldMax - oldMin + SMALL_DOUBLE)) + newMin;
@@ -85,28 +55,5 @@ class MyMath {
             }
         }
         return true;
-    }
-
-    (:test)
-    function calculateGCDOk(logger) {
-        var p1 = new Point(38.555421, -94.799646);
-        var p2 = new Point(38.855421, -94.698646);
-        var gcd = MyMath.calculateGCD(p1, p2);
-        logger.debug("GCD=" + gcd);
-        return gcd.toNumber() == 34490;
-    }
-
-    (:test)
-    function latToMercatorOk(logger) {
-        for (var i = -85d; i <= 85; i += 5) {
-            logger.debug("lat=" + i + " latToMercator(lat)=" + MyMath.latToMercator(i));
-        }
-
-        return
-            MyMath.latToMercator(-85d).toNumber() == -179 &&
-            MyMath.latToMercator(-40d).toNumber() == -43 &&
-            MyMath.latToMercator(0d).toNumber() == 0 &&
-            MyMath.latToMercator(60d).toNumber() == 75 &&
-            MyMath.latToMercator(85d).toNumber() == 179;
     }
 }

@@ -2,9 +2,10 @@ using Toybox.WatchUi;
 using Toybox.System;
 using Toybox.Math;
 using Toybox.Graphics;
+using Toybox.Lang;
 
 class GpsAccuracyView extends WatchUi.View {
-    private static const GRAPH_WIDTH_METRES = 20;
+    private static const GRAPH_WIDTH_METRES = 70;
 
     private static const TEXT_Y_OFFSET = 40;
     private static const GRAPH_SCALE = 0.9;
@@ -53,7 +54,7 @@ class GpsAccuracyView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         if (info != null && points != null) {
-            var metres = points.getGreatestDistanceNearCircumference();
+            var metres = points.getGreatestDistanceConvexHull();
             drawPositionText(dc, metres);
             drawGraph(dc, metres);
         } else {
@@ -103,11 +104,6 @@ class GpsAccuracyView extends WatchUi.View {
             var text = ["Poor Accuracy", "(or bike is moving)"];
             Util.drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - (Constants.TEXT_Y_STEP / 2));
         } else {
-            // Convert the lat/long values to screen sub-map x/y values.
-            var boundingBox = calculateBoundingBox(metres);
-            System.println(boundingBox);
-            var pixelArray = points.toPixelArray(boundingBox);
-
             // Set the draw colour.
             if (metres < ACCURACY_GOOD_THRESHOLD) {
                 dc.setColor(ACCURACY_GOOD_COLOUR, Graphics.COLOR_TRANSPARENT);
@@ -116,6 +112,11 @@ class GpsAccuracyView extends WatchUi.View {
             } else {
                 dc.setColor(ACCURACY_POOR_COLOUR, Graphics.COLOR_TRANSPARENT);
             }
+
+            // Convert the lat/long values to pixel x/y values.
+            var boundingBox = calculateBoundingBox(metres);
+            System.println(boundingBox);
+            var pixelArray = points.toPixelArray(boundingBox);
 
             // Draw the points.
             for (var i = 0; i < pixelArray.size(); i++) {

@@ -1,14 +1,14 @@
 using Toybox.Math;
 
 class Points {
-    var points = null;
+    var pointsArray = null;
 
     public function initialize(pointArray) {
-        self.points = pointArray;
+        self.pointsArray = pointArray;
     }
 
     public function shuffle() {
-        var shuffled = points.slice(0, points.size()); // Clone the array.
+        var shuffled = pointsArray.slice(0, pointsArray.size()); // Clone the array.
         var size = shuffled.size();
 
         for (var i = 0; i < size; i++) {
@@ -21,45 +21,35 @@ class Points {
     }
 
     public function containsPoint(point) {
-        for (var i = 0; i < points.size(); i++) {
-            if (points[i].equals(point)) {
+        for (var i = 0; i < pointsArray.size(); i++) {
+            if (pointsArray[i].equals(point)) {
                 return true;
             }
         }
         return false;
     }
 
-    public function get(index) {
-        return points[index];
-    }
-
     public function getSmallestEnclosingCircle() {
         return SmallestEnclosingCircle.makeCircle(self);
     }
 
-    public function getGreatestDistanceNearCircumference() {
-        var sec = getSmallestEnclosingCircle();
-        var onCircumference = [];
+    public function getConvexHull() {
+        return ConvexHull.makeHull(self);
+    }
 
-        for (var i = 0; i < points.size(); i++) {
-            if (sec.radius - sec.centre.distance(points[i]) < sec.radius / 5) {
-                // Add the point to the array if the point is on or near the circumference.
-                onCircumference.add(points[i]);
-            }
-        }
-
-        return new Points(onCircumference).getGreatestDistance();
+    public function getGreatestDistanceConvexHull() {
+        var points = new Points(getConvexHull());
+        return points.getGreatestDistance();
     }
 
     public function getGreatestDistance() {
-        // N^2 efficiency. Use getGreatestDistanceNearCircumference()
-        // to reduce the number of points under consideration.
+        // N^2 efficiency.
         var result = null;
         var distanceCount = 0;
 
-        for (var i = 0; i < points.size() - 1; i++) {
-            for (var j = i + 1; j < points.size(); j++) {
-                var distance = MyMath.calculateGCD(points[i], points[j]);
+        for (var i = 0; i < pointsArray.size() - 1; i++) {
+            for (var j = i + 1; j < pointsArray.size(); j++) {
+                var distance = pointsArray[i].calculateGCD(pointsArray[j]);
                 distanceCount++;
                 System.println("distance=" + distance);
                 if (result == null || result < distance) {
@@ -73,32 +63,30 @@ class Points {
         return result == null ? 0 : result;
     }
 
-    public function toPixelArray(boundingBox) {
-        var minLatitudeMerc = MyMath.latToMercator(getMinX());
-        var maxLatitudeMerc = MyMath.latToMercator(getMaxX());
-        var minLongitudeMerc = MyMath.longToMercator(getMinY());
-        var maxLongitudeMerc = MyMath.longToMercator(getMaxY());
-        var result = new[points.size()];
+    public function toPixelArray(boundingBoxTo) {
+        var mercPoints = toMercator();
+        var mercArray = mercPoints.toArray();
+        var boundingBoxFrom = mercPoints.getBoundingBox();
+        var result = new [mercArray.size()];
 
-        for (var i = 0; i < points.size(); i++) {
-            var latitudeMerc = MyMath.latToMercator(points[i].x);
-            var longitudeMerc = MyMath.longToMercator(points[i].y);
+        for (var i = 0; i < mercArray.size(); i++) {
+            var merc = mercArray[i];
 
-           // Map the longitudeMerc to the boundingBox x range.
+           // Map the longitude merc to the x range.
             var x = MyMath.mapValueToRange(
-                minLongitudeMerc,
-                maxLongitudeMerc,
-                boundingBox.topLeft.x,
-                boundingBox.bottomRight.x,
-                longitudeMerc);
+                boundingBoxFrom.topLeft.y,
+                boundingBoxFrom.bottomRight.y,
+                boundingBoxTo.topLeft.x,
+                boundingBoxTo.bottomRight.x,
+                merc.y);
 
-            // Map the latitudeMerc to the boundingBox y range.
+            // Map the latitude to the y range.
             var y = MyMath.mapValueToRange(
-                minLatitudeMerc,
-                maxLatitudeMerc,
-                boundingBox.topLeft.y,
-                boundingBox.bottomRight.y,
-                latitudeMerc);
+                boundingBoxFrom.topLeft.x,
+                boundingBoxFrom.bottomRight.x,
+                boundingBoxTo.topLeft.y,
+                boundingBoxTo.bottomRight.y,
+                merc.x);
 
             result[i] = new Point(x.toNumber(), y.toNumber());
         }
@@ -106,48 +94,66 @@ class Points {
         return result;
     }
 
+    public function toMercator() {
+        var result = new [pointsArray.size()];
+        for (var i = 0; i < pointsArray.size(); i++) {
+            result[i] = pointsArray[i].toMercator();
+        }
+        return new Points(result);
+    }
+
+    public function getBoundingBox() {
+        return new BoundingBox(
+            new Point(getMinX(), getMinY()),
+            new Point(getMaxX(), getMaxY()));
+    }
+
     public function getMinX() {
         var result = MyMath.MAX_INT;
-        for (var i = 0; i < points.size(); i++) {
-            result = MyMath.min(result, points[i].x);
+        for (var i = 0; i < pointsArray.size(); i++) {
+            result = MyMath.min(result, pointsArray[i].x);
         }
         return result;
     }
 
     public function getMaxX() {
         var result = MyMath.MIN_INT;
-        for (var i = 0; i < points.size(); i++) {
-            result = MyMath.max(result, points[i].x);
+        for (var i = 0; i < pointsArray.size(); i++) {
+            result = MyMath.max(result, pointsArray[i].x);
         }
         return result;
     }
 
     public function getMinY() {
         var result = MyMath.MAX_INT;
-        for (var i = 0; i < points.size(); i++) {
-            result = MyMath.min(result, points[i].y);
+        for (var i = 0; i < pointsArray.size(); i++) {
+            result = MyMath.min(result, pointsArray[i].y);
         }
         return result;
     }
 
     public function getMaxY() {
         var result = MyMath.MIN_INT;
-        for (var i = 0; i < points.size(); i++) {
-            result = MyMath.max(result, points[i].y);
+        for (var i = 0; i < pointsArray.size(); i++) {
+            result = MyMath.max(result, pointsArray[i].y);
         }
         return result;
     }
 
+    public function get(index) {
+        return pointsArray[index];
+    }
+
     public function size() {
-        return points.size();
+        return pointsArray.size();
     }
 
     public function toArray() {
-        return points;
+        return pointsArray;
     }
 
     public function toString() {
-        return points.toString();
+        return pointsArray.toString();
     }
 
     (:test)
