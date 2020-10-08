@@ -1,4 +1,5 @@
 using Toybox.WatchUi;
+using Toybox.Graphics;
 
 (:glance)
 class GpsAccuracyGlanceView extends WatchUi.GlanceView {
@@ -8,6 +9,9 @@ class GpsAccuracyGlanceView extends WatchUi.GlanceView {
     }
 
     function onUpdate(dc) {
+        dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_BLACK);
+        dc.clear();
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         var text = [
             Constants.APP_NAME,
             "",
