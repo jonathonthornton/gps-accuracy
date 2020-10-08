@@ -89,6 +89,30 @@ class Arrays {
     }
 
     (:test)
+    function shuffleOk(logger) {
+        var pointsArray = [new Point(1, 1), new Point(2, 2), new Point(3, 3), new Point(4, 4), new Point(5, 5)];
+        var points = new Points(pointsArray);
+        var shuffledPoints = points.clone();
+
+        for (var i = 0; i < 10; i++) {
+            shuffledPoints.shuffle();
+
+            if (shuffledPoints.size() != points.size()) {
+                return false;
+            }
+
+            for (var j = 0; j < points.size(); j++) {
+                if (!shuffledPoints.containsPoint(points.get(j))) {
+                    return false;
+                }
+            }
+
+            logger.debug("shuffled=" + shuffledPoints);
+        }
+        return true;
+    }
+
+    (:test)
     function mergeSortOk(logger) {
         var array = [];
         var pointCount = 10;

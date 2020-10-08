@@ -73,7 +73,6 @@ class Points {
             for (var j = i + 1; j < pointsArray.size(); j++) {
                 var distance = pointsArray[i].calculateGCD(pointsArray[j]);
                 distanceCount++;
-                System.println("getAccracyBruteForce() distance=" + distance);
                 if (distance > result) {
                     result = distance;
                 }
@@ -181,27 +180,40 @@ class Points {
     }
 
     (:test)
-    function shuffleOk(logger) {
-        var pointsArray = [new Point(1, 1), new Point(2, 2), new Point(3, 3), new Point(4, 4), new Point(5, 5)];
-        var points = new Points(pointsArray);
-        var shuffledPoints = points.clone();
+    function getAccuracyMethodsAgree(logger) {
+        var pointCount = 10;
+        var pointArray = new [pointCount];
+        var point = new Point(-37.706568, 145.681750);
+        var i = 0;
 
-        for (var i = 0; i < 10; i++) {
-            shuffledPoints.shuffle();
+        do {
+            logger.debug("Adding point=" + point);
+            pointArray[i] = point;
+            point = point.clone();
 
-            if (shuffledPoints.size() != points.size()) {
-                return false;
-            }
+            var multiplier = Math.rand() % 2 ? 1 : -1;
+            point.x += (Math.rand() % 1000) * 0.000001 * multiplier;
 
-            for (var j = 0; j < points.size(); j++) {
-                if (!shuffledPoints.containsPoint(points.get(j))) {
-                    return false;
-                }
-            }
+            multiplier = Math.rand() % 2 ? 1 : -1;
+            point.y += (Math.rand() % 1000) * 0.000001 * multiplier;
+            i++;
+        } while (i < pointArray.size());
 
-            logger.debug("shuffled=" + shuffledPoints);
-        }
-        return true;
+        var points = new Points(pointArray);
+        var bruteForce = points.getAccuracyBruteForce();
+        var smallestEnclosingCircle = points.getAccuracySmallestEnclosingCircle();
+        var convexHull = points.getAccuracyConvexHull();
+        var rotatingCalipers = points.getAccuracyRotatingCalipers();
+
+        logger.debug("bruteForce=" + bruteForce);
+        logger.debug("smallestEnclosingCircle=" + smallestEnclosingCircle);
+        logger.debug("convexHull=" + convexHull);
+        logger.debug("rotatingCalipers=" + rotatingCalipers);
+
+        return
+            bruteForce == smallestEnclosingCircle &&
+            smallestEnclosingCircle == convexHull &&
+            convexHull == rotatingCalipers;
     }
 
     (:test)

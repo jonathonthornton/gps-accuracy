@@ -6,6 +6,7 @@ class RotatingCalipers {
     public static function getMaxDistance(points) {
         var hull = ConvexHull.makeHull(points);
         var n = hull.size();
+        System.println("RotatingCaliper hull size=" + n);
 
         // Base Cases.
         if (n <= 1) {
@@ -19,6 +20,7 @@ class RotatingCalipers {
         while (absArea(hull[n - 1], hull[0], hull[(k + 1) % n])
                > absArea(hull[n - 1], hull[0], hull[k])) {
             k++;
+            System.println("RotatingCaliper finding vertex.");
         }
 
         var result = 0;
