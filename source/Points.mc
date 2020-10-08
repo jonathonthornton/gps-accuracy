@@ -179,15 +179,12 @@ class Points {
         return pointsArray.toString();
     }
 
-    (:test)
-    function getAccuracyMethodsAgree(logger) {
-        var pointCount = 10;
+    public static function getRandomPoints(pointCount) {
         var pointArray = new [pointCount];
         var point = new Point(-37.706568, 145.681750);
         var i = 0;
 
         do {
-            logger.debug("Adding point=" + point);
             pointArray[i] = point;
             point = point.clone();
 
@@ -199,7 +196,20 @@ class Points {
             i++;
         } while (i < pointArray.size());
 
-        var points = new Points(pointArray);
+        return new Points(pointArray);
+    }
+
+    (:test)
+    function areRotatingCalipersFast(logger) {
+        var points = Points.getRandomPoints(100);
+        var rotatingCalipers = points.getAccuracyRotatingCalipers();
+        logger.debug("rotatingCalipers=" + rotatingCalipers);
+        return true;
+    }
+
+    (:test)
+    function getAccuracyMethodsAgree(logger) {
+        var points = Points.getRandomPoints(10);
         var bruteForce = points.getAccuracyBruteForce();
         var smallestEnclosingCircle = points.getAccuracySmallestEnclosingCircle();
         var convexHull = points.getAccuracyConvexHull();
