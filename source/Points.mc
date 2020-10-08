@@ -206,7 +206,7 @@ class Points {
         var points = Points.getRandomPoints(pointCount);
 
         var t1 = Time.now();
-        var rotatingCalipers = points.getAccuracyRotatingCalipers();
+        points.getAccuracyRotatingCalipers();
         var t2 = Time.now();
 
         var secs = MyMath.max(t2.subtract(t1).value(), 1);
@@ -214,7 +214,6 @@ class Points {
 
         logger.debug("duration=" + secs + " secs");
         logger.debug("pointsPerSec=" + pointsPerSec);
-        logger.debug("rotatingCalipers=" + rotatingCalipers);
         return pointsPerSec > 100;
     }
 

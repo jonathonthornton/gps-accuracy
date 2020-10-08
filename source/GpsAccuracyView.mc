@@ -5,8 +5,6 @@ using Toybox.Graphics;
 using Toybox.Lang;
 
 class GpsAccuracyView extends WatchUi.View {
-    private static const GRAPH_WIDTH_METRES = 70;
-
     private static const TEXT_Y_OFFSET = 40;
     private static const GRAPH_SCALE = 0.9;
     private static const VIEWPORT_Y_OFFSET = 150;
@@ -16,8 +14,8 @@ class GpsAccuracyView extends WatchUi.View {
     private static const ACCURACY_OK_COLOUR = Graphics.COLOR_YELLOW;
     private static const ACCURACY_GOOD_COLOUR = Graphics.COLOR_GREEN;
 
-    private static const ACCURACY_OK_THRESHOLD = GRAPH_WIDTH_METRES * 0.5;
-    private static const ACCURACY_GOOD_THRESHOLD = GRAPH_WIDTH_METRES * 0.2;
+    private static const ACCURACY_OK_THRESHOLD = Constants.GRAPH_WIDTH_METRES * 0.5;
+    private static const ACCURACY_GOOD_THRESHOLD = Constants.GRAPH_WIDTH_METRES * 0.2;
 
     private var info = null;
     private var points = null;
@@ -54,19 +52,8 @@ class GpsAccuracyView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         if (info != null && points != null) {
-//            var bruteForceMetres = points.getAccuracyBruteForce();
-//            System.println("bruteForceMetres=" + bruteForceMetres);
-
-//            var secMetres = points.getAccuracySmallestEnclosingCircle();
-//            System.println("secMetres=" + secMetres);
-
-//            var convexHullMetres = points.getAccuracyConvexHull();
-//            System.println("convexHullMetres=" + convexHullMetres);
-
-            var rotatingCalipersDistance = points.getAccuracyRotatingCalipers();
-            System.println("rotatingCalipersDistance=" + rotatingCalipersDistance);
-
-            var metres = rotatingCalipersDistance;
+            var metres = points.getAccuracyRotatingCalipers();
+            System.println("metres=" + metres);
             drawPositionText(dc, metres);
             drawGraph(dc, metres);
         } else {
@@ -111,7 +98,7 @@ class GpsAccuracyView extends WatchUi.View {
         dc.drawRectangle(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
         dc.setClip(viewportXOffset, VIEWPORT_Y_OFFSET, viewportWidth, viewportHeight);
 
-        if (metres > GRAPH_WIDTH_METRES) {
+        if (metres > Constants.GRAPH_WIDTH_METRES) {
             // Display an error message if the accuracy is so low that points won't fit.
             var text = ["Poor Accuracy", "(or bike is moving)"];
             Util.drawCentredText(dc, text, VIEWPORT_Y_OFFSET + (viewportHeight / 2) - (Constants.TEXT_Y_STEP / 2));
@@ -151,7 +138,7 @@ class GpsAccuracyView extends WatchUi.View {
 
     private function calculateBoundingBox(metres) {
         // Calculate the dimensions and position of the square within the map containing the points.
-        var reductionFactor = (metres / GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
+        var reductionFactor = (metres / Constants.GRAPH_WIDTH_METRES) * (mapWidth / mapDiagonal);
         var pointsWidth = mapWidth * reductionFactor;
         var pointsHeight = mapHeight * reductionFactor;
         var pointsXOffset = mapXOffset + ((mapWidth - pointsWidth) / 2);
