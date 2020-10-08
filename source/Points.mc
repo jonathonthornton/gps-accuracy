@@ -55,9 +55,9 @@ class Points {
         return Points.getAccuracyBruteForceImpl(convexHull);
     }
 
-    public function getAccuracyAntipodal() {
-        System.println("getAccuracyAntipodal()");
-        return Antipodal.findLargestDistance(self);
+    public function getAccuracyRotatingCalipers() {
+        System.println("getAccuracyRotatingCalipers()");
+        return RotatingCalipers.getMaxDistance(self);
     }
 
     public function getAccuracyBruteForce() {

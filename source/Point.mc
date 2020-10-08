@@ -56,8 +56,12 @@ class Point {
         return "Point(" + x + "," + y + ")";
     }
 
+    public function calculateDistance(other) {
+        return calculateGCD(other);
+    }
+
     // See https://www.movable-type.co.uk/scripts/latlong.html
-    public  function calculateGCD(other) {
+    public function calculateGCD(other) {
         var lat1 = x * PI_OVER_180;
         var lat2 = other.x * PI_OVER_180;
         var deltaLat = (other.x - x) * PI_OVER_180;

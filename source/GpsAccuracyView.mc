@@ -54,17 +54,19 @@ class GpsAccuracyView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         if (info != null && points != null) {
-//            var convexHullMetres = points.getAccuracyConvexHull();
-//            System.println("convexHullMetres=" + convexHullMetres);
-//            var antipodalMetres = points.getAccuracyAntipodal();
-//            System.println("antipodalMetres=" + antipodalMetres);
 //            var bruteForceMetres = points.getAccuracyBruteForce();
 //            System.println("bruteForceMetres=" + bruteForceMetres);
 
-            var secMetres = points.getAccuracySmallestEnclosingCircle();
-            System.println("secMetres=" + secMetres);
+//            var secMetres = points.getAccuracySmallestEnclosingCircle();
+//            System.println("secMetres=" + secMetres);
 
-            var metres = secMetres;
+//            var convexHullMetres = points.getAccuracyConvexHull();
+//            System.println("convexHullMetres=" + convexHullMetres);
+
+            var rotatingCalipersDistance = points.getAccuracyRotatingCalipers();
+            System.println("rotatingCalipersDistance=" + rotatingCalipersDistance);
+
+            var metres = rotatingCalipersDistance;
             drawPositionText(dc, metres);
             drawGraph(dc, metres);
         } else {
