@@ -201,6 +201,23 @@ class Points {
     }
 
     (:test)
+    function isSmallestEnclosingCircleFast(logger) {
+        var pointCount = 1000;
+        var points = Points.getRandomPoints(pointCount);
+
+        var t1 = Time.now();
+        points.getSmallestEnclosingCircle();
+        var t2 = Time.now();
+
+        var secs = MyMath.max(t2.subtract(t1).value(), 1);
+        var pointsPerSec = pointCount / secs;
+
+        logger.debug("duration=" + secs + " secs");
+        logger.debug("pointsPerSec=" + pointsPerSec);
+        return pointsPerSec > 100;
+    }
+
+    (:test)
     function areRotatingCalipersFast(logger) {
         var pointCount = 1000;
         var points = Points.getRandomPoints(pointCount);
@@ -218,7 +235,7 @@ class Points {
     }
 
     (:test)
-    function getAccuracyMethodsAgree(logger) {
+    function doAccuracyMethodsAgree(logger) {
         var points = Points.getRandomPoints(10);
         var bruteForce = points.getAccuracyBruteForce();
         var smallestEnclosingCircle = points.getAccuracySmallestEnclosingCircle();

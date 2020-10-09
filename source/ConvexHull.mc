@@ -62,7 +62,7 @@ class ConvexHull {
 
     (:test)
     function makeHullOk(logger) {
-        var edge = [
+        var vertices = [
             new Point(2, 2),
             new Point(4, 2),
             new Point(1, 4),
@@ -78,23 +78,23 @@ class ConvexHull {
         ];
 
         var all = [];
-        all.addAll(edge);
+        all.addAll(vertices);
         all.addAll(inside);
 
         var hull = ConvexHull.makeHull(new Points(all));
         logger.debug("hull=" + hull);
 
-        for (var i = 0; i < edge.size(); i++) {
+        for (var i = 0; i < vertices.size(); i++) {
             var found = false;
             for (var j = 0; j < hull.size(); j++) {
-                if (edge[i].equals(hull[j])) {
-                    logger.debug(edge[i] + " is on edge");
+                if (vertices[i].equals(hull[j])) {
+                    logger.debug(vertices[i] + " correctly classified as a hull point");
                     found = true;
                     break;
                 }
             }
             if (!found) {
-                logger.debug(edge[i] + "expected but not found");
+                logger.debug(vertices[i] + " incorrectly excluded from the hull points");
                 return false;
             }
         }
@@ -102,11 +102,11 @@ class ConvexHull {
         for (var i = 0; i < inside.size(); i++) {
             for (var j = 0; j < hull.size(); j++) {
                 if (inside[i].equals(hull[j])) {
-                    logger.debug(inside[i] + " incorrectly classified as edge");
+                    logger.debug(inside[i] + " incorrectly classified as a hull point");
                     return false;
                 }
             }
-            logger.debug(inside[i] + " is not on edge");
+            logger.debug(inside[i] + " correctly classifed as a non-hull point");
         }
 
         return true;
