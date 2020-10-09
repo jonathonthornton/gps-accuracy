@@ -40,7 +40,7 @@ class GpsAccuracyView extends WatchUi.View {
 
         // Calculate the map dimensions and position.
         mapWidth = viewportWidth;
-        mapHeight = mapWidth / 2;
+        mapHeight = mapWidth;
         mapXOffset = viewportXOffset;
         mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
         mapDiagonal = MyMath.hypot(mapWidth, mapHeight);
@@ -68,6 +68,7 @@ class GpsAccuracyView extends WatchUi.View {
 
     public function setPoints(points) {
         self.points = points;
+//        self.points = Points.getRandomPoints(300);
     }
 
     private function drawPositionText(dc, metres) {
