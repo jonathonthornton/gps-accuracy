@@ -68,7 +68,8 @@ class GpsAccuracyView extends WatchUi.View {
 
     public function setPoints(points) {
         self.points = points;
-//        self.points = Points.getRandomPoints(300);
+//        self.points = Points.getRandomPoints(30);
+//        self.points = Points.getSquare();
     }
 
     private function drawPositionText(dc, metres) {

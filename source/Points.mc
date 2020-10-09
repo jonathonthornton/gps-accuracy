@@ -105,11 +105,12 @@ class Points {
                 merc.y);
 
             // Map the latitude to the y range.
+            // Invert the values on output so that y increases down the screen.
             var y = MyMath.mapValueToRange(
                 boundingBoxFrom.topLeft.x,
                 boundingBoxFrom.bottomRight.x,
-                boundingBoxTo.topLeft.y,
                 boundingBoxTo.bottomRight.y,
+                boundingBoxTo.topLeft.y,
                 merc.x);
 
             result[i] = new Point(x.toNumber(), y.toNumber());
@@ -181,6 +182,7 @@ class Points {
     }
 
     public static function getRandomPoints(pointCount) {
+        Math.srand(Time.now().value());
         var pointArray = new [pointCount];
         var point = new Point(-37.706568, 145.681750);
         var i = 0;
@@ -197,6 +199,17 @@ class Points {
             i++;
         } while (i < pointArray.size());
 
+        return new Points(pointArray);
+    }
+
+    // Edges are parallel, but shape only approximately square. Shape is a rectangle.
+    public static function getSquare() {
+        var pointArray = [
+            new Point(-37.706963, 145.680826), // Top left.
+            new Point(-37.706963, 145.692423), // Top right.
+            new Point(-37.715580, 145.680826), // Bottom left.
+            new Point(-37.715580, 145.692423)  // Bottom right.
+        ];
         return new Points(pointArray);
     }
 
