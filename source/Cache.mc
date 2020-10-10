@@ -18,39 +18,44 @@ class Cache {
 
     function toArray() {
         if (isFull) {
-            return cache;
+            var head = cache.slice(i + 1, cache.size());
+            var tail = cache.slice(0, i);
+            return head.addAll(tail);
         } else {
             return cache.slice(0, i);
         }
     }
 
     (:test)
-    function addItemOk(logger) {
+    function toArrayReturnsPortionOfCacheWhenCacheNotFull(logger) {
         var cache = new Cache(3);
         cache.add("the");
-        var contents = cache.toArray();
-        var size = contents.size();
 
+        var contents = cache.toArray();
         return
-            size == 1 &&
+            contents.size() == 1 &&
             contents[0].equals("the");
     }
 
     (:test)
-    function addItemWrapsOk(logger) {
+    function addOverwritesOldestItemWhenQueueFull(logger) {
         var cache = new Cache(3);
         cache.add("the");
         cache.add("quick");
         cache.add("brown");
-        cache.add("fox");
+        cache.add("jumps");
+        cache.add("over");
+        cache.add("a");
+        cache.add("lazy");
+        cache.add("dog");
 
         var contents = cache.toArray();
         var size = contents.size();
 
         return
-            size == 3 &&
-            contents[0].equals("fox") &&
-            contents[1].equals("quick") &&
-            contents[2].equals("brown");
+            contents.size() == 3 &&
+            contents[0].equals("a") &&
+            contents[1].equals("lazy") &&
+            contents[2].equals("dog");
     }
 }
