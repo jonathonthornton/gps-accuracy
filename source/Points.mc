@@ -255,8 +255,7 @@ class Points {
 
     (:test)
     function boundingBoxOkWhenOnePoint(logger) {
-        var pointsArray = [];
-        pointsArray.add(new Point(2, 2));
+        var pointsArray = [new Point(2, 2)];
         var points = new Points(pointsArray);
         var boundingBox = points.getBoundingBox();
         logger.debug("boundingBox=" + boundingBox);
@@ -269,13 +268,14 @@ class Points {
 
     (:test)
     function boundingBoxOkWhenMultiplePoints(logger) {
-        var pointsArray = [];
-        pointsArray.add(new Point(2, 2));
-        pointsArray.add(new Point(1, 4));
-        pointsArray.add(new Point(3, 7));
-        pointsArray.add(new Point(5, 6));
-        pointsArray.add(new Point(6, 4));
-        pointsArray.add(new Point(4, 2));
+        var pointsArray = [
+            new Point(2, 2),
+            new Point(1, 4),
+            new Point(3, 7),
+            new Point(5, 6),
+            new Point(6, 4),
+            new Point(4, 2)
+        ];
         var points = new Points(pointsArray);
         var boundingBox = points.getBoundingBox();
         logger.debug("boundingBox=" + boundingBox);

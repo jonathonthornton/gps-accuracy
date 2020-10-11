@@ -40,7 +40,7 @@ class GpsAccuracyView extends WatchUi.View {
 
         // Calculate the map dimensions and position.
         mapWidth = viewportWidth;
-        mapHeight = mapWidth;
+        mapHeight = viewportWidth;
         mapXOffset = viewportXOffset;
         mapYOffset = VIEWPORT_Y_OFFSET - ((mapHeight - viewportHeight) / 2);
         mapDiagonal = MyMath.hypot(mapWidth, mapHeight);

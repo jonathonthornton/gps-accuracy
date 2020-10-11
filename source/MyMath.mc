@@ -35,8 +35,6 @@ class MyMath {
         var oldStep = 100;
         var newMin = 20;
         var newMax = newMin;
-        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
-        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
         return MyMath.mapToSmallerRange(logger, oldMin, oldMax, oldStep, newMin, newMax);
     }
 
@@ -47,8 +45,6 @@ class MyMath {
         var oldStep = 100;
         var newMin = 20;
         var newMax = 30;
-        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
-        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
         return MyMath.mapToSmallerRange(logger, oldMin, oldMax, oldStep, newMin, newMax);
     }
 
@@ -59,8 +55,6 @@ class MyMath {
         var oldStep = 100;
         var newMin = 100;
         var newMax = 0;
-        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
-        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
         return MyMath.mapToSmallerRange(logger, oldMin, oldMax, oldStep, newMin, newMax);
     }
 
