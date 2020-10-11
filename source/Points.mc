@@ -126,41 +126,30 @@ class Points {
     }
 
     public function getBoundingBox() {
-        return new BoundingBox(
-            new Point(getMinX(), getMinY()),
-            new Point(getMaxX(), getMaxY()));
-    }
-
-    public function getMinX() {
-        var result = MyMath.MAX_INT;
-        for (var i = 0; i < pointsArray.size(); i++) {
-            result = MyMath.min(result, pointsArray[i].x);
+        if (pointsArray == null || pointsArray.size() <= 0) {
+            throw new BoundingBoxException("Cannot compute bounding box of empty array.");
         }
-        return result;
-    }
 
-    public function getMaxX() {
-        var result = MyMath.MIN_INT;
-        for (var i = 0; i < pointsArray.size(); i++) {
-            result = MyMath.max(result, pointsArray[i].x);
-        }
-        return result;
-    }
+        var minX = pointsArray[0].x;
+        var maxX = pointsArray[0].x;
+        var minY = pointsArray[0].y;
+        var maxY = pointsArray[0].y;
 
-    public function getMinY() {
-        var result = MyMath.MAX_INT;
-        for (var i = 0; i < pointsArray.size(); i++) {
-            result = MyMath.min(result, pointsArray[i].y);
+        for (var i = 1; i < pointsArray.size(); i++) {
+            var point = pointsArray[i];
+            if (point.x < minX) {
+                minX = point.x;
+            } else if (point.x > maxX) {
+                maxX = point.x;
+            }
+            if (point.y < minY) {
+                minY = point.y;
+            } else if (point.y > maxY) {
+                maxY = point.y;
+            }
         }
-        return result;
-    }
 
-    public function getMaxY() {
-        var result = MyMath.MIN_INT;
-        for (var i = 0; i < pointsArray.size(); i++) {
-            result = MyMath.max(result, pointsArray[i].y);
-        }
-        return result;
+        return new BoundingBox(new Point(minX, maxY), new Point(maxX, minY));
     }
 
     public function get(index) {
@@ -265,30 +254,61 @@ class Points {
     }
 
     (:test)
-    function minXOk(logger) {
-        var pointsArray = [new Point(1, 2), new Point(3, 4), new Point(5, 6)];
+    function boundingBoxOkWhenOnePoint(logger) {
+        var pointsArray = [];
+        pointsArray.add(new Point(2, 2));
         var points = new Points(pointsArray);
-        return points.getMinX() == 1;
+        var boundingBox = points.getBoundingBox();
+        logger.debug("boundingBox=" + boundingBox);
+        return
+            boundingBox.topLeft.x == 2 &&
+            boundingBox.topLeft.y == 2 &&
+            boundingBox.bottomRight.x == 2 &&
+            boundingBox.bottomRight.y == 2;
     }
 
     (:test)
-    function maxXOk(logger) {
-        var pointsArray = [new Point(1, 2), new Point(3, 4), new Point(5, 6)];
+    function boundingBoxOkWhenMultiplePoints(logger) {
+        var pointsArray = [];
+        pointsArray.add(new Point(2, 2));
+        pointsArray.add(new Point(1, 4));
+        pointsArray.add(new Point(3, 7));
+        pointsArray.add(new Point(5, 6));
+        pointsArray.add(new Point(6, 4));
+        pointsArray.add(new Point(4, 2));
         var points = new Points(pointsArray);
-        return points.getMaxX() == 5;
+        var boundingBox = points.getBoundingBox();
+        logger.debug("boundingBox=" + boundingBox);
+        return
+            boundingBox.topLeft.x == 1 &&
+            boundingBox.topLeft.y == 7 &&
+            boundingBox.bottomRight.x == 6 &&
+            boundingBox.bottomRight.y == 2;
     }
 
     (:test)
-    function minYOk(logger) {
-        var pointsArray = [new Point(1, 2), new Point(3, 4), new Point(5, 6)];
-        var points = new Points(pointsArray);
-        return points.getMinY() == 2;
+    function boundingBoxThrowsWhenNullPoints(logger) {
+        var points = new Points(null);
+
+        try {
+            points.getBoundingBox();
+        } catch (e) {
+            return true;
+        }
+
+        return false;
     }
 
     (:test)
-    function maxYOk(logger) {
-        var pointsArray = [new Point(1, 2), new Point(3, 4), new Point(5, 6)];
-        var points = new Points(pointsArray);
-        return points.getMaxY() == 6;
+    function boundingBoxThrowsWhenZeroPoints(logger) {
+        var points = new Points([]);
+
+        try {
+            points.getBoundingBox();
+        } catch (e) {
+            return true;
+        }
+
+        return false;
     }
 }
