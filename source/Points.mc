@@ -189,11 +189,11 @@ class Points {
             pointArray[i] = point;
             point = point.clone();
 
-            var multiplier = Math.rand() % 2 ? 1 : -1;
-            point.x += (Math.rand() % 1000) * 0.000001 * multiplier;
+            var sign = Math.rand() % 2 ? 1 : -1;
+            point.x += (Math.rand() % 1000) * 0.000001 * sign;
 
-            multiplier = Math.rand() % 2 ? 1 : -1;
-            point.y += (Math.rand() % 1000) * 0.000001 * multiplier;
+            sign = Math.rand() % 2 ? 1 : -1;
+            point.y += (Math.rand() % 1000) * 0.000001 * sign;
             i++;
         } while (i < pointArray.size());
 
