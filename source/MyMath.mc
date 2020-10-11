@@ -9,7 +9,11 @@ class MyMath {
 
     // See https://stackoverflow.com/questions/929103/convert-a-number-range-to-another-range-maintaining-ratio
     public static function mapValueToRange(oldMin, oldMax, newMin, newMax, oldValue) {
-        return ((oldValue - oldMin) * (newMax - newMin) / (oldMax - oldMin + SMALL_DOUBLE)) + newMin;
+        if (oldMax - oldMin == 0) {
+            return newMin;
+        } else {
+            return ((oldValue - oldMin) * (newMax - newMin) / (oldMax - oldMin)) + newMin;
+        }
     }
 
     public static function hypot(x, y) {
@@ -22,6 +26,59 @@ class MyMath {
 
     public static function max(x, y) {
         return (x > y) ? x : y;
+    }
+
+    (:test)
+    function mapToZeroRangeOk(logger) {
+        var oldMin = 1000;
+        var oldMax = 5000;
+        var oldStep = 100;
+        var newMin = 20;
+        var newMax = newMin;
+        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
+        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
+        return MyMath.mapToSmallerRange(logger, oldMin, oldMax, oldStep, newMin, newMax);
+    }
+
+    (:test)
+    function mapToSmallerRangeOk(logger) {
+        var oldMin = 1000;
+        var oldMax = 5000;
+        var oldStep = 100;
+        var newMin = 20;
+        var newMax = 30;
+        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
+        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
+        return MyMath.mapToSmallerRange(logger, oldMin, oldMax, oldStep, newMin, newMax);
+    }
+
+    (:test)
+    function mapToInvertedSmallerRangeOk(logger) {
+        var oldMin = 1000;
+        var oldMax = 5000;
+        var oldStep = 100;
+        var newMin = 100;
+        var newMax = 0;
+        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
+        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
+        return MyMath.mapToSmallerRange(logger, oldMin, oldMax, oldStep, newMin, newMax);
+    }
+
+    (:test)
+    function mapToLargerRangeOk(logger) {
+        var oldMin = 10;
+        var oldMax = 20;
+        var oldStep = 1;
+        var newMin = 100;
+        var newMax = 400;
+        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
+        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
+        logger.debug("actual first=" + actual[0]);
+        logger.debug("actual last=" + actual[actual.size() - 1]);
+
+        return
+            actual[0] == newMin &&
+            actual[actual.size() - 1] == newMax;
     }
 
     private static function getExpected(logger, oldMin, oldMax, oldStep) {
@@ -42,15 +99,11 @@ class MyMath {
         return actual;
     }
 
-    (:test)
-    function mapToSmallerRangeOk(logger) {
-        var oldMin = 1000;
-        var oldMax = 5000;
-        var oldStep = 100;
-        var newMin = 20;
-        var newMax = 30;
+    private static function mapToSmallerRange(logger, oldMin, oldMax, oldStep, newMin, newMax) {
         var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
         var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
+        logger.debug("actual first=" + actual[0]);
+        logger.debug("actual last=" + actual[actual.size() - 1]);
 
         for (var newValue = newMin; newValue <= newMax; newValue++) {
             if (actual.indexOf(newValue) != -1) {
@@ -60,46 +113,6 @@ class MyMath {
                 return false;
             }
         }
-        return true;
-    }
-
-    (:test)
-    function mapToInvertedSmallerRangeOk(logger) {
-        var oldMin = 1000;
-        var oldMax = 5000;
-        var oldStep = 100;
-        var newMin = 100;
-        var newMax = 0;
-        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
-        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
-        logger.debug("actual[0]=" + actual[0]);
-        logger.debug("actual[actual.size() - 1]=" + actual[actual.size() - 1]);
-
-        for (var newValue = newMin; newValue <= newMax; newValue++) {
-            if (actual.indexOf(newValue) != -1) {
-                logger.debug("indexOf(" + newValue + ")=" + actual.indexOf(newValue));
-            } else {
-                logger.debug("not found newValue=" + newValue);
-                return false;
-            }
-        }
-        return
-            actual[0] == newMin &&
-            actual[actual.size() - 1] == newMax;
-    }
-
-    (:test)
-    function mapToLargerRangeOk(logger) {
-        var oldMin = 10;
-        var oldMax = 20;
-        var oldStep = 1;
-        var newMin = 100;
-        var newMax = 400;
-        var expected = MyMath.getExpected(logger, oldMin, oldMax, oldStep);
-        var actual = MyMath.getActual(logger, oldMin, oldMax, oldStep, newMin, newMax);
-        logger.debug("actual[0]=" + actual[0]);
-        logger.debug("actual[actual.size() - 1]=" + actual[actual.size() - 1]);
-
         return
             actual[0] == newMin &&
             actual[actual.size() - 1] == newMax;

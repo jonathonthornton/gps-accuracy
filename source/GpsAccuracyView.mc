@@ -116,7 +116,6 @@ class GpsAccuracyView extends WatchUi.View {
 
             // Convert the lat/long values to pixel x/y values.
             var boundingBox = calculateBoundingBox(metres);
-            System.println(boundingBox);
             var pixelArray = points.toPixelArray(boundingBox);
 
             // Draw the points.

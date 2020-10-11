@@ -90,11 +90,11 @@ class Point {
 
     (:test)
     function calculateGCDOk(logger) {
-        var point1 = new Point(38.555421, -94.799646);
-        var point2 = new Point(38.855421, -94.698646);
-        var gcd = point1.calculateGCD(point2);
+        var mtDonnaBuang = new Point(-37.706628, 145.681540);
+        var lakeMountain = new Point(-37.495378, 145.877245);
+        var gcd = mtDonnaBuang.calculateGCD(lakeMountain);
         logger.debug("GCD=" + gcd);
-        return gcd.toNumber() == 34490;
+        return (gcd - 29140).abs() < 10;
     }
 
     (:test)

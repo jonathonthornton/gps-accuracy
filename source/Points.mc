@@ -91,8 +91,6 @@ class Points {
         var boundingBoxFrom = mercPoints.getBoundingBox();
         var result = new [mercArray.size()];
 
-        System.println("points size=" + pointsArray.size() + " mercPoints size=" + mercArray.size());
-
         for (var i = 0; i < mercArray.size(); i++) {
             var merc = mercArray[i];
 
