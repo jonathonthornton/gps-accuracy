@@ -131,9 +131,9 @@ class Points {
         }
 
         var minX = pointsArray[0].x;
-        var maxX = pointsArray[0].x;
         var minY = pointsArray[0].y;
-        var maxY = pointsArray[0].y;
+        var maxX = minX;
+        var maxY = minY;
 
         for (var i = 1; i < pointsArray.size(); i++) {
             var point = pointsArray[i];
