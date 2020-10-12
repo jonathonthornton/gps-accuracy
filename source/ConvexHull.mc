@@ -1,5 +1,6 @@
 using Toybox.System;
 
+// See https://www.nayuki.io/page/convex-hull-algorithm
 class ConvexHull {
     // Returns a new list of points representing the convex hull of
     // the given set of points. The convex hull excludes collinear points.
@@ -54,7 +55,7 @@ class ConvexHull {
 
         lowerHull.remove(lowerHull[lowerHull.size() - 1]);
 
-        if (!(upperHull.size() == 1 && upperHull.equals(lowerHull))) {
+        if (!(upperHull.size() == 1 && Arrays.equals(upperHull, lowerHull))) {
             upperHull.addAll(lowerHull);
         }
         return upperHull;

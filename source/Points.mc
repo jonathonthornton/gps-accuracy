@@ -189,13 +189,17 @@ class Points {
         return new Points(pointArray);
     }
 
-    // Edges are parallel, but shape only approximately square. Shape is a rectangle.
+    // Edges are parallel and angles are right, but shape only approximately square. Shape is a rectangle.
     public static function getSquare() {
+        var latTop = -37.706963;
+        var latBottom = -37.715580;
+        var longLeft = 145.680826;
+        var longRight = 145.692423;
         var pointArray = [
-            new Point(-37.706963, 145.680826), // Top left.
-            new Point(-37.706963, 145.692423), // Top right.
-            new Point(-37.715580, 145.680826), // Bottom left.
-            new Point(-37.715580, 145.692423)  // Bottom right.
+            new Point(latTop, longLeft),
+            new Point(latTop, longRight),
+            new Point(latBottom, longLeft),
+            new Point(latBottom, longRight)
         ];
         return new Points(pointArray);
     }

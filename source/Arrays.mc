@@ -2,6 +2,29 @@ using Toybox.Math;
 
 class Arrays {
 
+    // Array elements must implement the equals() method.
+    public static function equals(a1, a2) {
+        if (a1 == null) {
+            return a2 == null;
+        }
+
+        if (a2 == null) {
+            return false;
+        }
+
+        if (a1.size() != a2.size()) {
+            return false;
+        }
+
+        for (var i = 0; i < a1.size(); i++) {
+            if (!a1[i].equals(a2[i])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     // Array elements must implement the clone() method.
     public static function shuffle(array) {
         var size = array.size();
@@ -131,5 +154,45 @@ class Arrays {
         }
 
         return true;
+    }
+
+    (:test)
+    function equalsTrueWhenEqual(logger) {
+        var a1 = [new Point(1, 1)];
+        var a2 = [new Point(1, 1)];
+        return Arrays.equals(a1, a2);
+    }
+
+    (:test)
+    function equalsTrueWhenBothNull(logger) {
+        return Arrays.equals(null, null);
+    }
+
+    (:test)
+    function equalsFalseWhenDifferentLength(logger) {
+        var a1 = [new Point(1, 1), new Point(2, 2)];
+        var a2 = [new Point(1, 1)];
+        return !Arrays.equals(a1, a2);
+    }
+
+    (:test)
+    function equalsFalseWhenDifferentContent(logger) {
+        var a1 = [new Point(1, 1), new Point(2, 2)];
+        var a2 = [new Point(1, 1), new Point(3, 3)];
+        return !Arrays.equals(a1, a2);
+    }
+
+    (:test)
+    function equalsFalseWhenFirstNull(logger) {
+        var a1 = null;
+        var a2 = [new Point(1, 1)];
+        return !Arrays.equals(a1, a2);
+    }
+
+    (:test)
+    function equalsFalseWhenSecondNull(logger) {
+        var a1 = [new Point(1, 1)];
+        var a2 = null;
+        return !Arrays.equals(a1, a2);
     }
 }
