@@ -59,7 +59,7 @@ class GpsAccuracyView extends WatchUi.View {
         } else {
             drawNoPositionText(dc);
         }
-     }
+    }
 
     public function setPosition(info) {
         self.info = info;
